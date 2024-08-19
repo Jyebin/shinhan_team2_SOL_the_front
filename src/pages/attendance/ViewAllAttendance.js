@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/ViewAllAttendance.css';
+import '../../assets/attendancePage/ViewAllAttendance.css';
 
 function ViewAllAttendance() {
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자

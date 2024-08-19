@@ -138,11 +138,11 @@ main {
 }
 
 .overspending {
-    background-image: url('../assets/attendance/sadBird.png');
+    background-image: url('../../assets/attendancePage/img/sadBird.png');
 }
 
 .saving {
-    background-image: url('../assets/attendance/richBird.png');
+    background-image: url('../../assets/attendancePage/img/richBird.png');
 }
 
 .attendance-button {
