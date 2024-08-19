@@ -41,6 +41,7 @@ function ViewAllAttendance() {
             );
         }
         for (let i = 1; i <= daysInMonth; i++) {
+            // 한 자리 숫자일 경우 01, 02와 같이 표현되게 formatting
             const dateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
             const attendanceInfo = attendanceData.find(
                 (item) => item.date === dateString,
@@ -50,15 +51,15 @@ function ViewAllAttendance() {
             if (attendanceInfo) {
                 attendanceClass =
                     attendanceInfo.type === 'saving'
-                        ? 'attend-saving'
-                        : 'attend-overspending';
+                        ? 'attend saving'
+                        : 'attend overspending';
             }
             days.push(
                 // 출석을 이미 했다면 스탬프 출력
                 <div key={i} className={`calendar-day ${attendanceClass}`}>
                     <span>{i}</span>
                     {attendanceInfo && (
-                        <div className={`${attendanceInfo.type}`}></div>
+                        <div className={`stamp ${attendanceInfo.type}`}></div>
                     )}
                 </div>,
             );

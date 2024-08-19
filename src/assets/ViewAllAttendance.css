@@ -34,6 +34,7 @@ main {
     align-items: center;
 }
 
+/* 오늘까지 n일 출석했어요 */
 .attendance-summary {
     text-align: center;
     margin-top: 15px;
@@ -50,15 +51,39 @@ main {
     font-size: 20px;
 }
 
+/* 캘린더 */
 .calendar-container {
     margin-bottom: 20px;
     width: 90%;
 }
 
+/* 캘린더 현재 위치 */
 .calendar-container h3 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 10px;
+}
+
+/* 캘린더 넘기기 */
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-navigation button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #0046ff;
+}
+
+.calendar-navigation h3 {
+    margin: 0;
 }
 
 .calendar {
@@ -67,6 +92,7 @@ main {
     padding: 7px;
 }
 
+/* 캘린더 내부 스타일 */
 .calendar-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -100,24 +126,23 @@ main {
     transform: translate(-50%, -50%);
 }
 
-.calendar-day.attend-overspending {
+/* 캘린더 스탬프 */
+.calendar-day.attend {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.calendar-day.attend span {
+    display: none;
+}
+
+.overspending {
     background-image: url('../assets/attendance/sadBird.png');
-    background-size: cover;
-    background-position: center;
 }
 
-.calendar-day.attend-overspending span {
-    display: none;
-}
-
-.calendar-day.attend-saving {
+.saving {
     background-image: url('../assets/attendance/richBird.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.calendar-day.attend-saving span {
-    display: none;
 }
 
 .attendance-button {
@@ -134,31 +159,11 @@ main {
     cursor: pointer;
 }
 
-.attendance-button:hover {
+.attendance-button:active {
     background-color: #40a9ff;
 }
 
-.calendar-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.calendar-navigation button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    font-weight: 900;
-    cursor: pointer;
-    padding: 5px 10px;
-    color: #0046ff;
-}
-
-.calendar-navigation h3 {
-    margin: 0;
-}
-
+/* 주의사항 */
 .attendance-info {
     width: 85%;
     padding: 15px;
