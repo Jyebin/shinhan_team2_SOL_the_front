@@ -1,0 +1,113 @@
+.ViewAllAttendance {
+    max-width: 414px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    background-color: #ffffff;
+}
+
+.attendance-summary {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.calendar-container {
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.calendar {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 달력에서 빈 공간
+    .calendar-day.empty {
+} */
+
+.calendar-day.attended {
+    color: #e6f7ff;
+    background-color: #e6f7ff;
+}
+
+.stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #1890ff;
+    font-size: 20px;
+}
+
+.attendance-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #0046ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.attendance-button:hover {
+    background-color: #40a9ff;
+}
+
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-navigation button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.calendar-navigation h3 {
+    margin: 0;
+}
