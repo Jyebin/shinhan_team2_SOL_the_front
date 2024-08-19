@@ -9,6 +9,7 @@ import '../../assets/mainPage/NoSavingsMain.css';
 const SavingsMain = ({ containerClass, buttonClass }) => {
     return (
         <div className={`mobileViewContainer ${containerClass}`}>
+            <button className="attendanceBtn mainBtn"></button>
             <button className={`mainBtn ${buttonClass}`}></button>
         </div>
     );

@@ -18,7 +18,7 @@ const MainPage = () => {
 
     const checkSavingsStatus = () => {
         // 여기에 적금 여부를 판단하는 로직 구현
-        return true; // 임시로 true 반환 (적금이 있는 경우)
+        return false; // 임시로 true 반환 (적금이 있는 경우)
     };
 
     if (state === null) {

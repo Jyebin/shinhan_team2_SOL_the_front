@@ -1,6 +1,6 @@
 .makeCan {
-    bottom: -23%;
-    left: -30%; /* 왼쪽 아래 배치 */
+    bottom: 25%;
+    left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn1.png);
     background-size: contain;
