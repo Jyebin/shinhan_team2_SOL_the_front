@@ -1,16 +1,26 @@
 // 공통 컴포넌트
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 추가
 
 import '../../assets/mainPage/MainPage.css';
 import '../../assets/mainPage/ActiveSavingsMain.css';
 import '../../assets/mainPage/NoSavingsMain.css';
 
 const SavingsMain = ({ containerClass, buttonClass }) => {
+    const navigate = useNavigate(); // useNavigate 훅 사용
+
+    const handleMakeCanClick = () => {
+        navigate('/ISRegister'); // 버튼 클릭 시 /ISRegister 경로로 이동
+    };
+
     return (
         <div className={`mainContainer ${containerClass}`}>
-            <button className="attendanceBtn mainBtn"></button>
-            <button className={`mainBtn ${buttonClass}`}></button>
+            <button className="mainBtn attendanceBtn"></button>
+            <button
+                className={`mainBtn makeCanBtn ${buttonClass}`}
+                onClick={handleMakeCanClick}
+            ></button>
         </div>
     );
 };

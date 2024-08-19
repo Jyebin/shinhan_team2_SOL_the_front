@@ -6,11 +6,21 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
-
     position: relative;
 }
 
 .mainBtn {
+    width: 118px;
+    height: 34px;
+
+    position: absolute;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer; /* pc option */
+}
+
+.mainBtn .makeCanBtn {
     width: 118px;
     height: 34px;
 
