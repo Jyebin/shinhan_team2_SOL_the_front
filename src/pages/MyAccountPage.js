@@ -20,7 +20,7 @@ const mockData = [
 
 const MyAccountPage = () => {
     return (
-        <Container>
+        <Container style={{ backgroundColor: '#f3f6fb' }}>
             <div className="accountsList">
                 {mockData.map((account, index) => (
                     <Account key={index} account={account} />

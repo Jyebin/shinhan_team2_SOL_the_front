@@ -4,7 +4,6 @@ import '../../assets/myAccountPage/Account.css';
 import dotsUrl from '../../assets/myAccountPage/img/dots.png';
 
 const Account = ({ account }) => {
-    console.log('Account Data:', account);
     return (
         <div className="account-container">
             <div className="account-header">
