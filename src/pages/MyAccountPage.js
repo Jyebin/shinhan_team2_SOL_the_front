@@ -1,10 +1,12 @@
 import Container from '../components/common/Container';
 import Account from '../components/myAccount/Account';
+import MyAccountHeader from '../components/myAccount/MyAccountHeader';
 
 import '../assets/myAccountPage/MyAccountPage.css';
-import accountsImgUrl from '../assets/myAccountPage/img/accounts.png';
+import accountsImgUrl from '../assets/attendancePage/img/poorBird.png';
+import savingsImgUrl from '../assets/attendancePage/img/flexBird.png';
 
-const mockData = [
+const accountsData = [
     {
         name: '쏠편한 입출금통장(저축예금)',
         number: '110-576-040419',
@@ -19,6 +21,16 @@ const mockData = [
     },
 ];
 
+const savingsData = [
+    {
+        name: '청년 주택드림 청약통장',
+        number: '1073-118-146426',
+        amount: 2500000,
+    },
+];
+
+// const mockData = [];
+
 const MyAccountPage = () => {
     return (
         <Container
@@ -28,15 +40,35 @@ const MyAccountPage = () => {
                 'flex-direction': 'column',
             }}
         >
-            <div className="first-header">
-                <img src={accountsImgUrl} className="omok-img" />
-                <p className="first-category">입출금</p>
-                <p className="first-count">2</p>
-            </div>
+            <MyAccountHeader
+                imgSrc={accountsImgUrl}
+                headerName="입출금"
+                headerCount="2"
+            />
             <div className="accounts-list">
-                {mockData.map((account, index) => (
-                    <Account key={index} account={account} />
-                ))}
+                {accountsData && accountsData.length > 0 ? (
+                    accountsData.map((account, index) => (
+                        <Account key={index} account={account} />
+                    ))
+                ) : (
+                    <p>계좌 정보가 없습니다.</p>
+                )}
+            </div>
+
+            <MyAccountHeader
+                imgSrc={savingsImgUrl}
+                headerName="적금"
+                headerCount="1"
+            />
+
+            <div className="accounts-list">
+                {savingsData && savingsData.length > 0 ? (
+                    savingsData.map((account, index) => (
+                        <Account key={index} account={account} />
+                    ))
+                ) : (
+                    <p>계좌 정보가 없습니다.</p>
+                )}
             </div>
         </Container>
     );

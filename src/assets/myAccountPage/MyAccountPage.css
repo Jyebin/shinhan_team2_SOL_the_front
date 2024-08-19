@@ -5,26 +5,26 @@
     align-items: center;
 }
 
-.first-header {
+.myAccount-header {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.omok-img {
+.myAccount-header-img {
     width: 55px;
     height: 55px;
 
     margin: 0px 0px 0px 10px;
 }
 
-.first-category {
+.myAccount-header-name {
     font-size: 22px;
     font-weight: 800;
     margin: 0px;
 }
 
-.first-count {
+.myAccount-header-count {
     font-size: 18px;
     font-weight: 600;
 
