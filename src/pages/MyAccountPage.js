@@ -1,5 +1,11 @@
+import Container from '../components/common/Container';
+
 const MyAccountPage = () => {
-    return <div></div>;
+    return (
+        <Container>
+            <div>hi</div>
+        </Container>
+    );
 };
 
 export default MyAccountPage;
