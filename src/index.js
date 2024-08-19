@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/index.css';
+
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import MainPage from './pages/MainPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
