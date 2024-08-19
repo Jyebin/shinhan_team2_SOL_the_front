@@ -2,7 +2,8 @@
 
 import '../../assets/myAccountPage/Account.css';
 import dotsUrl from '../../assets/myAccountPage/img/dots.png';
-import canUrl from '../../assets/common/img/can_icon.png';
+
+import Can from './Can';
 
 const Account = ({ account }) => {
     return (
@@ -22,13 +23,7 @@ const Account = ({ account }) => {
             </div>
 
             {account.hasCan && ( // hasCan이 true인 경우에만 표시\
-                <div>
-                    <hr />
-                    <div className="extra-info">
-                        <p className="extra-can">깡통</p>
-                        <img src={canUrl} className="extra-img" />
-                    </div>
-                </div>
+                <Can />
             )}
         </div>
     );
