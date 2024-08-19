@@ -10,7 +10,7 @@ const PostAttendance = () => {
     const handleSubmit = () => {
         const length = message.trim().length;
         if (length >= 1 && length <= 300) {
-            const response = { status: '부적절' }; // 테스트용 가상 응답
+            const response = { status: '절약' }; // 테스트용 가상 응답
 
             if (response.status === '부적절') {
                 setPopupMessage(
@@ -19,11 +19,22 @@ const PostAttendance = () => {
                 setPopupVisible(true);
                 setMessage('');
                 setButtonColor('default');
-            } else {
+            } else if (response.status === '과소비') {
                 setButtonColor('success');
                 setMessage('');
                 setPopupMessage(
-                    '돈 쓰는 게 취미니?💸너무 쓰지 말고, 저금도 좀 해!<br>은행에 쌓아놓은 돈으로 "노후 준비"라는 거 알아?<br>나중에 맛있는 거 먹으려면 지금 좀 아껴야 해! 😜',
+                    '돈 쓰는 게 취미니?💸너무 쓰지 말고, 저금도 좀 해!<br>은행에 쌓아놓은 돈으로 "노후 준비"라는 거 알아?<br>나중에 맛있는 거 먹으려면 지금 좀 아껴야 해! 😜<br><div class="popupImg"></div>',
+                );
+                setPopupVisible(true);
+
+                setTimeout(() => {
+                    setButtonColor('default');
+                }, 3000);
+            } else if (response.status === '절약') {
+                setButtonColor('success');
+                setMessage('');
+                setPopupMessage(
+                    '오, 너 진짜 대단해! 😎 커피 대신 애사비 마신 거 완전 절약 천재야! 💪 이제부터 너를 "절약의 신"이라고 부를게! 다음에도 이런 꿀팁 있으면 꼭 나한테도 알려줘~ 진짜 최고! 👏🌟<br><div class="popupImg2"></div>',
                 );
                 setPopupVisible(true);
 
