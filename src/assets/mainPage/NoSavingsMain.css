@@ -6,9 +6,3 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-
-.empty {
-    background-image: url('../mainPage/img/main_empty.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
