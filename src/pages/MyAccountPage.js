@@ -1,6 +1,8 @@
 import Container from '../components/common/Container';
 import Account from '../components/myAccount/Account';
 
+import '../assets/myAccountPage/MyAccountPage.css';
+
 const mockData = [
     {
         name: '쏠편한 입출금통장(저축예금)',
@@ -19,9 +21,11 @@ const mockData = [
 const MyAccountPage = () => {
     return (
         <Container>
-            {mockData.map((account, index) => (
-                <Account key={index} account={account} />
-            ))}
+            <div className="accountsList">
+                {mockData.map((account, index) => (
+                    <Account key={index} account={account} />
+                ))}
+            </div>
         </Container>
     );
 };
