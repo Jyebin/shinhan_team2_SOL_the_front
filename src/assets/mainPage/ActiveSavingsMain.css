@@ -6,9 +6,3 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-
-.active {
-    background-image: url('../mainPage/img/main_active.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-}
