@@ -1,14 +1,8 @@
 .checkCan {
-    bottom: 16%;
+    bottom: 3%;
     left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.active {
-    background-image: url('../mainPage/img/main_active.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
