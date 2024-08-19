@@ -38,6 +38,7 @@ const MyAccountPage = () => {
                 backgroundColor: '#f3f6fb',
                 display: 'flex',
                 'flex-direction': 'column',
+                'justify-content': 'flex-start',
             }}
         >
             <MyAccountHeader
