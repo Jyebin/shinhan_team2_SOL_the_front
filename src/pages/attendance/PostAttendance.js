@@ -6,17 +6,19 @@ const PostAttendance = () => {
     const [buttonColor, setButtonColor] = useState('default');
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
+    const [popupType, setPopupType] = useState('');
 
     const handleSubmit = () => {
         const length = message.trim().length;
         if (length >= 1 && length <= 300) {
-            const response = { status: '절약' }; // 테스트용 가상 응답
+            const response = { status: '과소비' }; // 테스트용 가상 응답
 
             if (response.status === '부적절') {
                 setPopupMessage(
                     '작성하신 내용에<br>과소비 반성 / 절약 인증<br> 관련 내용이 없습니다.<br>다시 작성해주세요.<br><br>※ 문제 발생 시<br>고객센터 문의 바랍니다.',
                 );
                 setPopupVisible(true);
+                setPopupType('부적절');
                 setMessage('');
                 setButtonColor('default');
             } else if (response.status === '과소비') {
@@ -26,6 +28,7 @@ const PostAttendance = () => {
                     '돈 쓰는 게 취미니?💸너무 쓰지 말고, 저금도 좀 해!<br>은행에 쌓아놓은 돈으로 "노후 준비"라는 거 알아?<br>나중에 맛있는 거 먹으려면 지금 좀 아껴야 해! 😜<br><div class="popupImg"></div>',
                 );
                 setPopupVisible(true);
+                setPopupType('과소비');
 
                 setTimeout(() => {
                     setButtonColor('default');
@@ -37,6 +40,7 @@ const PostAttendance = () => {
                     '오, 너 진짜 대단해! 😎 커피 대신 애사비 마신 거 완전 절약 천재야! 💪 이제부터 너를 "절약의 신"이라고 부를게! 다음에도 이런 꿀팁 있으면 꼭 나한테도 알려줘~ 진짜 최고! 👏🌟<br><div class="popupImg2"></div>',
                 );
                 setPopupVisible(true);
+                setPopupType('절약');
 
                 setTimeout(() => {
                     setButtonColor('default');
@@ -97,12 +101,21 @@ const PostAttendance = () => {
                                     __html: popupMessage,
                                 }}
                             />
-                            <button
-                                className="popup-button"
-                                onClick={closePopup}
-                            >
-                                돌아가기
-                            </button>
+                            {popupType === '부적절' ? (
+                                <button
+                                    className="popup-button"
+                                    onClick={closePopup}
+                                >
+                                    돌아가기
+                                </button>
+                            ) : (
+                                <button
+                                    className="close-button close-popup-button"
+                                    onClick={closePopup}
+                                >
+                                    X
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
