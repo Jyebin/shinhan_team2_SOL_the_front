@@ -6,8 +6,14 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
+}
 
-    background-image: url('../mainPage/main_empty.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+.mainBtn {
+    width: 118px;
+    height: 34px;
+
+    position: relative;
+
+    border: none;
+    cursor: pointer; /* pc option */
 }
