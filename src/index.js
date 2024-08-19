@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/index.css';
-import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
-import MainPage from './pages/MainPage';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    <React.StrictMode>
-        <MainPage />
-    </React.StrictMode>,
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
 );
