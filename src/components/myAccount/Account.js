@@ -1,6 +1,6 @@
 // 입출금 통장 정보를 알려주는 component
 
-const Account = (account) => {
+const Account = ({ account }) => {
     console.log('Account Data:', account);
     return (
         <div className="account">
