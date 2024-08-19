@@ -2,6 +2,7 @@ import Container from '../components/common/Container';
 import Account from '../components/myAccount/Account';
 
 import '../assets/myAccountPage/MyAccountPage.css';
+import accountsImgUrl from '../assets/myAccountPage/img/accounts.png';
 
 const mockData = [
     {
@@ -20,8 +21,19 @@ const mockData = [
 
 const MyAccountPage = () => {
     return (
-        <Container style={{ backgroundColor: '#f3f6fb' }}>
-            <div className="accountsList">
+        <Container
+            style={{
+                backgroundColor: '#f3f6fb',
+                display: 'flex',
+                'flex-direction': 'column',
+            }}
+        >
+            <div className="first-header">
+                <img src={accountsImgUrl} className="omok-img" />
+                <p className="first-category">입출금</p>
+                <p className="first-count">2</p>
+            </div>
+            <div className="accounts-list">
                 {mockData.map((account, index) => (
                     <Account key={index} account={account} />
                 ))}

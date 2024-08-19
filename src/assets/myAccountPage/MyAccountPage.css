@@ -1,6 +1,32 @@
-.accountsList {
+.accounts-list {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.first-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.omok-img {
+    width: 55px;
+    height: 55px;
+
+    margin: 0px 0px 0px 10px;
+}
+
+.first-category {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0px;
+}
+
+.first-count {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-left: 10px;
 }
