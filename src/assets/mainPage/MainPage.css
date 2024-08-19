@@ -1,21 +1,13 @@
 .mobileViewContainer {
-    width: 600px; /* 일반적인 모바일 화면 크기 */
-    height: 100vh;
+    width: 350px; /* 일반적인 모바일 화면 크기 */
+    height: 804px;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    overflow: auto;
 
-@media (max-width: 600px) {
-    .mobileViewContainer {
-        width: 100%;
-        height: 100vh;
-    }
-}
-
-.mainEmpty_img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지 비율을 유지하며 컨테이너에 맞춤 */
+    background-image: url('../mainPage/main_empty.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
