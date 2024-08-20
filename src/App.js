@@ -5,6 +5,8 @@ import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
 import Header from './components/navigator/Header';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
+import PostAttendance from './pages/attendance/PostAttendance';
+import Login from './pages/Login';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -73,6 +75,11 @@ function App() {
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
                     />
+                    <Route
+                        path="/attendance/post"
+                        element={<PostAttendance />}
+                    />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </Router>

@@ -92,12 +92,6 @@ function ViewAllAttendance() {
 
     return (
         <div className="ViewAllAttendance">
-            <header>
-                {/* 버튼 클릭 시 메인화면으로 연결 */}
-                <button>&lt;</button>
-                <h1>출석부</h1>
-            </header>
-
             <main>
                 <section className="attendance-summary">
                     <h2>
