@@ -55,6 +55,12 @@ const PostAttendance = ({ onBack }) => {
         }
     };
 
+    const handleClose = () => {
+        if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
+            window.location.href = '/attendance/main';
+        }
+    };
+
     const closePopup = () => {
         setPopupVisible(false);
     };

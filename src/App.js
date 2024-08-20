@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import Header from './components/navigator/Header';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
+import Login from './pages/Login';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -56,8 +57,9 @@ function App() {
                     />
                     <Route
                         path="/attendance/post"
-                        element={<PostAttendance />} // 글쓰기 페이지 컴포넌트 대체 필요
+                        element={<PostAttendance />}
                     />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </Router>
