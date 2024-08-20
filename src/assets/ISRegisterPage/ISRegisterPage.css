@@ -1,0 +1,10 @@
+.mainContainer {
+    width: 350px;
+    height: 804px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    position: relative;
+}
