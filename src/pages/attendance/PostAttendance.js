@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../assets/PostAttendance.css';
 
-const PostAttendance = () => {
+const PostAttendance = ({ onBack }) => {
     const [message, setMessage] = useState('');
     const [buttonColor, setButtonColor] = useState('default');
     const [popupVisible, setPopupVisible] = useState(false);
@@ -67,20 +67,12 @@ const PostAttendance = () => {
 
     return (
         <div className="container">
-            <div className="header-content">
-                <button className="close-button" onClick={handleClose}>
-                    X
-                </button>
-                <h1 className="title">글 쓰기</h1>
-            </div>
-            <div className="separator"></div>
             <textarea
                 className="text-area"
                 placeholder="오늘의 과소비 or 절약 인증 글을 작성해주세요. (최대 300자)"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
             />
-            <div className="separator"></div>
             <button
                 className={`submit-button ${buttonColor}`}
                 onClick={handleSubmit}
