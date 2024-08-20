@@ -4,6 +4,7 @@ import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
 import Header from './components/navigator/Header';
+import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -67,6 +68,10 @@ function App() {
                                 formData={formData}
                             />
                         }
+                    />
+                    <Route
+                        path="/ViewAllAttendance"
+                        element={<ViewAllAttendance />}
                     />
                 </Routes>
             </div>
