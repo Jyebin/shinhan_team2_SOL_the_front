@@ -70,7 +70,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/ViewAllAttendance"
+                        path="/attendance/main"
                         element={<ViewAllAttendance />}
                     />
                 </Routes>

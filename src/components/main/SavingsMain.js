@@ -14,7 +14,7 @@ const SavingsMain = ({ containerClass, buttonClass, imgSrc }) => {
     };
 
     const handleAttendanceClick = () => {
-        navigate('/ViewAllAttendance'); // 버튼 클릭 시 /ViewAllAttendance 경로로 이동
+        navigate('/attendance/main'); // 버튼 클릭 시 /ViewAllAttendance 경로로 이동
     };
 
     return (

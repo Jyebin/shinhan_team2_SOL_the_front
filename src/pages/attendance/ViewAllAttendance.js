@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/attendancePage/ViewAllAttendance.css';
+import { Link } from 'react-router-dom';
 
 function ViewAllAttendance() {
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자
@@ -131,12 +132,12 @@ function ViewAllAttendance() {
                 </section>
             </main>
 
-            <button
-                className="attendance-button"
-                onClick={handleAttendanceCheck}
+            <Link
+                to="http://localhost:3000/attendance/post"
+                className="btn attendance-button"
             >
                 오늘 출석체크하기
-            </button>
+            </Link>
 
             <div className="attendance-info">
                 · 하루에 한 번 오늘 날짜만 출석할 수 있어요.
