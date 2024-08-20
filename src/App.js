@@ -8,6 +8,7 @@ import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 import MyAccountPage from './pages/MyAccountPage';
 import Login from './pages/Login';
+import CommunityPage from './pages/CommunityPage';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -62,6 +63,7 @@ function App() {
                         element={<PostAttendance />}
                     />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/community" element={<CommunityPage />} />
                 </Routes>
             </div>
         </Router>
