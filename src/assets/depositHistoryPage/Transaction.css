@@ -1,0 +1,32 @@
+.transaction {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-date {
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.transaction-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-weight: bold;
+}
+
+.amount {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.balance-info {
+    color: #888;
+}
