@@ -1,8 +1,8 @@
 .account-info {
-    background-color: #f0f0f0;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
     margin-bottom: 20px;
+    width: 90%;
 }
 
 .bank-info {
@@ -29,6 +29,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: right;
 }
 
 .buttons {
@@ -46,9 +47,11 @@
 
 .account-details-btn {
     background-color: #e0e0e0;
+    width: 170px;
 }
 
 .deposit-btn {
     background-color: #007bff;
     color: white;
+    width: 170px;
 }

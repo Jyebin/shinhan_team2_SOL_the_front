@@ -5,12 +5,17 @@ import TransactionHistory from '../components/depositHistory/TransactionHistory'
 
 const DepositHistoryPage = () => {
     return (
-        <div>
-            <Container>
-                <AccountInfo />
-                <TransactionHistory />
-            </Container>
-        </div>
+        <Container
+            style={{
+                backgroundColor: '#f3f6fb',
+                display: 'flex',
+                'flex-direction': 'column',
+                'justify-content': 'flex-start',
+            }}
+        >
+            <AccountInfo />
+            <TransactionHistory />
+        </Container>
     );
 };
 
