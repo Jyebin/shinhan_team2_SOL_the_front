@@ -4,7 +4,6 @@ import '../../assets/depositHistoryPage/TransactionHistory.css';
 const TransactionHistory = () => {
     return (
         <div className="transaction-history">
-            <h2>2024년</h2>
             <Transaction
                 date="2024.07.26 03:25:57"
                 month="24.07월분"
