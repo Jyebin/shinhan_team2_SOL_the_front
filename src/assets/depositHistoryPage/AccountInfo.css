@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.account-info {
+    background-color: #cbe5f9;
+    padding: 20px;
+    width: 90%;
+}
+
+.bank-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bank-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.account-number {
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.account-name {
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.balance {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0px 10px 0px;
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #97cbf3;
+    width: 170px;
+}
