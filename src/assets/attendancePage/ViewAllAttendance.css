@@ -1,8 +1,12 @@
 .ViewAllAttendance {
-    width: 350px;
+    width: 390px;
     max-width: 414px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+}
+
+.mainContainer {
+    display: block;
 }
 
 header {
@@ -59,7 +63,7 @@ main {
 
 /* 캘린더 현재 위치 */
 .calendar-container h3 {
-    font-size: 24px;
+    font-size: 26px;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -69,7 +73,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 0 60px 10px 60px;
 }
 
 .calendar-navigation button {
@@ -107,6 +111,7 @@ main {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: calc(100% - 40px);
+    padding-bottom: 10px;
 }
 
 .calendar-day {
@@ -114,7 +119,7 @@ main {
     align-items: center;
     justify-content: center;
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1.1;
     font-size: 1em;
     font-weight: bold;
 }
@@ -147,14 +152,14 @@ main {
 
 .attendance-button {
     display: block;
-    width: 280px;
+    width: 85%;
     padding: 15px;
-    margin: 15px auto;
+    margin: 30px auto;
     background-color: #0046ff;
     color: white;
     border: none;
-    border-radius: 40px;
-    font-size: 14px;
+    border-radius: 30px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -170,8 +175,8 @@ main {
 /* 주의사항 */
 .attendance-info {
     width: 85%;
-    padding: 15px;
-    margin: 20px auto;
+    padding: 15px 15px;
+    margin: 0 auto;
     border-radius: 5px;
     background-color: #efeff5;
     font-weight: 600;
