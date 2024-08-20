@@ -18,11 +18,7 @@ const MyCanPage = () => {
             </div>
 
             <div className="bucket-image-container">
-                <img
-                    src={canUrl} // 여기에 깡통 이미지를 삽입하세요
-                    alt="bucket"
-                    className="bucket-image"
-                />
+                <img src={canUrl} alt="bucket" className="bucket-image" />
             </div>
 
             <div className="button-container">
