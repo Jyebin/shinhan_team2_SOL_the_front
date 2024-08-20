@@ -23,3 +23,5 @@ const MyCanPage = () => {
         </Container>
     );
 };
+
+export default MyCanPage;
