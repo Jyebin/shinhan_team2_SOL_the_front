@@ -35,8 +35,10 @@ function Header({ onBack, onCancel, step }) {
                 return '출석부';
             case '/attendance/post':
                 return '글쓰기';
+            case '/MyAccount':
+                return '내 계좌';
             default:
-                return '적금';
+                return '';
         }
     };
 
