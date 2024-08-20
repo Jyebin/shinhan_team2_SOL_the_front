@@ -1,8 +1,15 @@
+import React, { useState } from 'react';
 import Container from '../components/common/Container';
 import canUrl from '../assets/common/img/can_img.png';
 import '../assets/myCan/MyCanPage.css';
 
 const MyCanPage = () => {
+    const [flipped, setFlipped] = useState(false);
+
+    const onClick = () => {
+        setFlipped(!flipped);
+    };
+
     return (
         <Container
             style={{
@@ -17,8 +24,12 @@ const MyCanPage = () => {
                 <p className="bucket-subtitle">깡통을 눌러 뒤집어주세요</p>
             </div>
 
-            <div className="bucket-image-container">
-                <img src={canUrl} alt="bucket" className="bucket-image" />
+            <div className="bucket-image-container" onClick={onClick}>
+                <img
+                    src={canUrl}
+                    alt="bucket"
+                    className={`bucket-image ${flipped ? 'flipped' : ''}`}
+                />
             </div>
 
             <div className="button-container">

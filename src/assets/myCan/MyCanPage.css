@@ -26,12 +26,20 @@ body {
     justify-content: center;
     align-items: center;
     margin: 40px 0;
+    position: relative; /* 동전 위치를 절대적으로 잡기 위해 추가 */
 }
 
 .bucket-image {
     width: 200px;
     height: auto;
     animation: floating 3s ease-in-out infinite;
+    transition: transform 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.bucket-image.flipped {
+    transform: rotateX(180deg); /* 이미지 뒤집기 효과 */
+    animation: none; /* 애니메이션 삭제 */
 }
 
 @keyframes floating {
