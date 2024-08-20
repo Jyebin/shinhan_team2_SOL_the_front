@@ -56,26 +56,27 @@ function ViewAllAttendance() {
                         : 'attend overspending';
             }
             days.push(
-                // 출석을 이미 했다면 스탬프 출력
-                <div key={i} className={`calendar-day ${attendanceClass}`}>
+                // 날짜 출력, 출석을 이미 했다면 스탬프 출력
+                <div
+                    key={i}
+                    className={`calendar-day ${attendanceClass}`}
+                    onClick={
+                        attendanceInfo
+                            ? () => viewAttendancePosts(attendanceInfo)
+                            : null
+                    }
+                >
                     <span>{i}</span>
-                    {attendanceInfo && (
-                        <div className={`stamp ${attendanceInfo.type}`}></div>
-                    )}
                 </div>,
             );
         }
         return days;
     };
 
+    // 달력 몇 주 있는지
     const getCalendarRows = () => {
         const totalDays = firstDayOfMonth + daysInMonth;
         return Math.ceil(totalDays / 7);
-    };
-
-    const handleAttendanceCheck = () => {
-        // 출석 체크 API 호출
-        alert('오늘 출석이 완료되었습니다!');
     };
 
     // 화살표 클릭 시 몇 월인지 변경
@@ -88,6 +89,10 @@ function ViewAllAttendance() {
             );
             return newDate;
         });
+    };
+
+    const viewAttendancePosts = () => {
+        alert('출력');
     };
 
     return (
