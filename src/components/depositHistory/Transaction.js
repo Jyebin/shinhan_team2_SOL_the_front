@@ -1,17 +1,19 @@
 import React from 'react';
 import '../../assets/depositHistoryPage/Transaction.css';
 
-const Transaction = ({ date, month, description, amount, balance }) => {
+const Transaction = ({ transaction }) => {
     return (
         <div className="transaction">
-            <div className="transaction-date">
-                {date} | {month}
-            </div>
+            <div className="transaction-date">{transaction.date}</div>
             <div className="transaction-info">
-                <span className="description">{description}</span>
-                <span className="amount">{amount}</span>
+                <span className="description">{transaction.description}</span>
+                <span className="amount">
+                    {transaction.amount.toLocaleString()}원
+                </span>
             </div>
-            <div className="balance-info">{balance}</div>
+            <div className="balance-info">
+                잔액 {transaction.balance.toLocaleString()}원
+            </div>
         </div>
     );
 };

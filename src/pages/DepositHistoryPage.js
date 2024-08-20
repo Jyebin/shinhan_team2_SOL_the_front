@@ -19,6 +19,7 @@ const DepositHistoryPage = () => {
             }}
         >
             <AccountInfo name={name} number={number} amount={amount} />
+            <hr />
             <TransactionHistory />
         </Container>
     );

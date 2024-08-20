@@ -1,17 +1,19 @@
 import '../../assets/depositHistoryPage/AccountInfo.css';
 
+import logoImageUrl from '../../assets/depositHistoryPage/img/bank_logo.png';
+
 const AccountInfo = ({ name, number, amount }) => {
     return (
         <div className="account-info">
             <div className="bank-info">
-                <i className="bank-icon">🌊</i>
-                <span className="account-number">{number}</span>
+                <img src={logoImageUrl} className="bank-logo"></img>
+                <span className="account-name">{name}</span>
             </div>
-            <div className="account-name">{name}</div>
+            <div className="account-number">신한 {number}</div>
             <div className="balance">{amount.toLocaleString()}원</div>
             <div className="buttons">
-                <button className="account-details-btn">계좌상세</button>
-                <button className="deposit-btn">입금</button>
+                <button className="account-details-btn">이체</button>
+                <button className="deposit-btn">계좌관리</button>
             </div>
         </div>
     );
