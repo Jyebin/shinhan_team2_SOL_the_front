@@ -7,7 +7,7 @@ import '../../assets/mainPage/MainPage.css';
 import '../../assets/mainPage/ActiveSavingsMain.css';
 import '../../assets/mainPage/NoSavingsMain.css';
 
-const SavingsMain = ({ containerClass, buttonClass }) => {
+const SavingsMain = ({ containerClass, buttonClass, imgSrc }) => {
     const navigate = useNavigate(); // useNavigate 훅 사용
 
     const handleMakeCanClick = () => {
@@ -16,6 +16,7 @@ const SavingsMain = ({ containerClass, buttonClass }) => {
 
     return (
         <div className={`mainContainer ${containerClass}`}>
+            <img src={imgSrc} alt="mainImage" className="mainBackground" />
             <button className="mainBtn attendanceBtn"></button>
             <button
                 className={`mainBtn makeCanBtn ${buttonClass}`}

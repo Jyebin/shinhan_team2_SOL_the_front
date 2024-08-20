@@ -6,29 +6,27 @@ import React, { useState } from 'react';
 import Header from './components/navigator/Header';
 
 function App() {
-    const [step, setStep] = useState(0); // Step 상태를 App.js에서 관리
-    const [formData, setFormData] = useState({}); // 입력된 데이터를 저장
+    const [step, setStep] = useState(0);
+    const [formData, setFormData] = useState({});
 
     const handleCancel = () => {
-        setFormData({}); // 폼 데이터 초기화
-        setStep(0); // 첫 번째 스텝으로 돌아감
+        setFormData({});
+        setStep(0);
     };
 
     const handleBack = (navigate) => {
         if (step > 0 && step < 5) {
-            // 5번 페이지에서는 이전 버튼 비활성화
-            setStep(step - 1); // 이전 스텝으로 이동
+            setStep(step - 1);
         } else if (step === 0) {
-            navigate('/'); // ISInfo에서는 이전 버튼을 누르면 MainPage로 이동
+            navigate('/');
         }
     };
 
     const nextStep = (newData) => {
-        setFormData({ ...formData, ...newData }); // 폼 데이터를 업데이트
-        setStep(step + 1); // 다음 스텝으로 이동
+        setFormData({ ...formData, ...newData });
+        setStep(step + 1);
     };
 
-    // 페이지별 제목 설정
     const getTitle = () => {
         switch (step) {
             case 0:
