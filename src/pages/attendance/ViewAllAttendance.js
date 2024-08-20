@@ -138,7 +138,7 @@ function ViewAllAttendance() {
                 오늘 출석체크하기
             </button>
 
-            <div class="attendance-info">
+            <div className="attendance-info">
                 · 하루에 한 번 오늘 날짜만 출석할 수 있어요.
             </div>
         </div>
