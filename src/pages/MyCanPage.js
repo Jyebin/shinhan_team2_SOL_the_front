@@ -13,8 +13,8 @@ const MyCanPage = () => {
             }}
         >
             <div className="bucket-content">
-                <h2 className="content-title">깡통에 얼마나 모였을까요?</h2>
-                <p className="content-subtitle">깡통을 눌러 뒤집어주세요</p>
+                <h2 className="bucket-title">깡통에 얼마나 모였을까요?</h2>
+                <p className="bucket-subtitle">깡통을 눌러 뒤집어주세요</p>
             </div>
 
             <div className="bucket-image-container">
@@ -22,7 +22,7 @@ const MyCanPage = () => {
             </div>
 
             <div className="button-container">
-                <button className="main-button">깡통 해지하기</button>
+                <button className="terminate-button">깡통 해지하기</button>
             </div>
         </Container>
     );
