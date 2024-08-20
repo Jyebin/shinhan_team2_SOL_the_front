@@ -4,7 +4,8 @@ import '../../assets/depositHistoryPage/Transaction.css';
 const Transaction = ({ transaction }) => {
     return (
         <div className="transaction">
-            <div className="transaction-date">{transaction.date}</div>
+            <span className="transaction-date">{transaction.date}</span>
+            <span className="transaction-time"> {transaction.time}</span>
             <div className="transaction-info">
                 <span className="description">{transaction.description}</span>
                 <span className="amount">

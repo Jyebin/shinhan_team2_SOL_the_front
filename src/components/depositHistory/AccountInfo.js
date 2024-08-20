@@ -12,8 +12,8 @@ const AccountInfo = ({ name, number, amount }) => {
             <div className="account-number">신한 {number}</div>
             <div className="balance">{amount.toLocaleString()}원</div>
             <div className="buttons">
-                <button className="account-details-btn">이체</button>
-                <button className="deposit-btn">계좌관리</button>
+                <button className="btn">이체</button>
+                <button className="btn">계좌관리</button>
             </div>
         </div>
     );
