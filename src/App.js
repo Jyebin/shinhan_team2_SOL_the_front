@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import Header from './components/navigator/Header';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
+import MyAccountPage from './pages/MyAccountPage';
 import Login from './pages/Login';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
                     />
+                    <Route path="/MyAccount" element={<MyAccountPage />} />
                     <Route
                         path="/attendance/post"
                         element={<PostAttendance />}
