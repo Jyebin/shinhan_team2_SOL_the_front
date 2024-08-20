@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/attendancePage/ViewAllAttendance.css';
+import { Link } from 'react-router-dom';
 
 function ViewAllAttendance() {
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자
@@ -55,26 +56,27 @@ function ViewAllAttendance() {
                         : 'attend overspending';
             }
             days.push(
-                // 출석을 이미 했다면 스탬프 출력
-                <div key={i} className={`calendar-day ${attendanceClass}`}>
+                // 날짜 출력, 출석을 이미 했다면 스탬프 출력
+                <div
+                    key={i}
+                    className={`calendar-day ${attendanceClass}`}
+                    onClick={
+                        attendanceInfo
+                            ? () => viewAttendancePosts(attendanceInfo)
+                            : null
+                    }
+                >
                     <span>{i}</span>
-                    {attendanceInfo && (
-                        <div className={`stamp ${attendanceInfo.type}`}></div>
-                    )}
                 </div>,
             );
         }
         return days;
     };
 
+    // 달력 몇 주 있는지
     const getCalendarRows = () => {
         const totalDays = firstDayOfMonth + daysInMonth;
         return Math.ceil(totalDays / 7);
-    };
-
-    const handleAttendanceCheck = () => {
-        // 출석 체크 API 호출
-        alert('오늘 출석이 완료되었습니다!');
     };
 
     // 화살표 클릭 시 몇 월인지 변경
@@ -89,14 +91,12 @@ function ViewAllAttendance() {
         });
     };
 
+    const viewAttendancePosts = () => {
+        alert('출력');
+    };
+
     return (
         <div className="ViewAllAttendance">
-            <header>
-                {/* 버튼 클릭 시 메인화면으로 연결 */}
-                <button>&lt;</button>
-                <h1>출석부</h1>
-            </header>
-
             <main>
                 <section className="attendance-summary">
                     <h2>
@@ -131,14 +131,14 @@ function ViewAllAttendance() {
                 </section>
             </main>
 
-            <button
-                className="attendance-button"
-                onClick={handleAttendanceCheck}
+            <Link
+                to="http://localhost:3000/attendance/post"
+                className="btn attendance-button"
             >
                 오늘 출석체크하기
-            </button>
+            </Link>
 
-            <div class="attendance-info">
+            <div className="attendance-info">
                 · 하루에 한 번 오늘 날짜만 출석할 수 있어요.
             </div>
         </div>
