@@ -9,28 +9,47 @@
 
 .transaction-date {
     color: #888;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .transaction-time {
     color: #888;
+    font-size: 13px;
+}
+
+.deposit-status {
+    float: right;
+    font-size: 13px;
+    margin-top: 7px;
 }
 
 .transaction-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin: 5px 0 5px 0;
 }
 
 .description {
     font-weight: bold;
+    font-size: 17px;
 }
 
 .amount {
-    color: #007bff;
     font-weight: bold;
+    font-size: 17px;
 }
 
 .balance-info {
     color: #888;
+    text-align: right;
+    font-size: 13px;
+}
+
+.amount-positive {
+    color: #eb3d4f;
+}
+
+.amount-negative {
+    color: #0471e9;
 }
