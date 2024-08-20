@@ -6,7 +6,7 @@ import '../assets/myCan/MyCanPage.css';
 const MyCanPage = () => {
     const [flipped, setFlipped] = useState(false);
 
-    const onClick = () => {
+    const handleClick = () => {
         setFlipped(!flipped);
     };
 
@@ -24,7 +24,7 @@ const MyCanPage = () => {
                 <p className="bucket-subtitle">깡통을 눌러 뒤집어주세요</p>
             </div>
 
-            <div className="bucket-image-container" onClick={onClick}>
+            <div className="bucket-image-container" onClick={handleClick}>
                 <img
                     src={canUrl}
                     alt="bucket"
