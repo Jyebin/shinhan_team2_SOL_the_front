@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
 import Header from './components/navigator/Header';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
+import PostAttendance from './pages/attendance/PostAttendance';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -28,25 +29,6 @@ function App() {
         setStep(step + 1);
     };
 
-    const getTitle = () => {
-        switch (step) {
-            case 0:
-                return '적금 정보';
-            case 1:
-                return '적금 가입 1단계';
-            case 2:
-                return '적금 가입 2단계';
-            case 3:
-                return '적금 가입 3단계';
-            case 4:
-                return '적금 가입 4단계';
-            case 5:
-                return '가입 완료';
-            default:
-                return '적금';
-        }
-    };
-
     return (
         <Router>
             <div className="mainContainer">
@@ -54,7 +36,6 @@ function App() {
                     onBack={handleBack}
                     onCancel={handleCancel}
                     step={step}
-                    title={getTitle()}
                 />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
@@ -72,6 +53,10 @@ function App() {
                     <Route
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
+                    />
+                    <Route
+                        path="/attendance/post"
+                        element={<PostAttendance />} // 글쓰기 페이지 컴포넌트 대체 필요
                     />
                 </Routes>
             </div>
