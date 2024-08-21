@@ -55,12 +55,10 @@ body {
     height: auto;
     animation: floating 3s ease-in-out infinite; /* 기본 상태에서 떠다니는 애니메이션 */
     transition: transform 0.6s ease-in-out;
-    transform-origin: center; /* 회전의 중심을 이미지 상단으로 설정 */
 }
 
 .bucket-image.flipped {
-    animation: none; /* 떠다니는 애니메이션 중지 */
-    transition: transform 0.6s ease-in-out; /* 회전 애니메이션 적용 */
+    animation: flip 0.6s ease-in-out; /* 회전 애니메이션 적용 */
     transform: rotateX(-180deg); /* X축을 기준으로 접히는 회전 */
 }
 
