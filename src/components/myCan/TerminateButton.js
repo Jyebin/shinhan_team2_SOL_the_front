@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../assets/myCan/TerminateButton.css';
 
-const TerminateButton = () => {
+const TerminateButton = ({ onClick }) => {
     return (
         <div className="button-container">
-            <button className="terminate-button">깡통 해지하기</button>
+            <button className="terminate-button" onClick={onClick}>
+                깡통 해지하기
+            </button>
         </div>
     );
 };

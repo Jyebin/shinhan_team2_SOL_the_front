@@ -3,6 +3,7 @@ import Container from '../components/common/Container';
 import CanContent from '../components/myCan/CanContent';
 import CanImageContainer from '../components/myCan/CanImageContainer';
 import TerminateButton from '../components/myCan/TerminateButton';
+import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴포넌트 추가
 
 import lineUrl from '../assets/common/img/line.png';
 
@@ -12,6 +13,7 @@ const MyCanPage = () => {
     const [flipped, setFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [showModal, setShowModal] = useState(false); // 모달 상태 추가
 
     const handleClick = () => {
         if (isAnimating) return;
@@ -61,6 +63,14 @@ const MyCanPage = () => {
         setFlipped(!flipped);
     };
 
+    const handleTerminateClick = () => {
+        setShowModal(true); // 모달을 띄우기 위해 상태를 true로 설정
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false); // 모달 닫기
+    };
+
     return (
         <Container
             style={{
@@ -77,7 +87,8 @@ const MyCanPage = () => {
                 handleClick={handleClick}
             />
             <img src={lineUrl} className="line" alt="line" />
-            <TerminateButton />
+            <TerminateButton onClick={handleTerminateClick} />
+            {showModal && <ConfirmModal onClose={handleCloseModal} />}
         </Container>
     );
 };
