@@ -2,14 +2,12 @@ import React from 'react';
 import '../../assets/ISRegisterPage/ISRegister5.css'; // 스타일 파일을 별도로 관리
 
 function ISRegister5({ formData }) {
-    const handleMainPageRedirect = () => {
-        // 쏠거지 메인 페이지로 이동 (예시: /main)
-        window.location.href = '/main';
+    const handleMainPageRedirect = () => { 
+        window.location.href = '/';
     };
 
-    const handleConfirmation = () => {
-        // ISInfoPage로 이동 (예시: /info)
-        window.location.href = '/info';
+    const handleConfirmation = () => { 
+        window.location.href = '/ISRegister';
     };
 
     return (
