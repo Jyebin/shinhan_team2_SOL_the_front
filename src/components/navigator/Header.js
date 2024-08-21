@@ -38,6 +38,8 @@ function Header({ onBack, onCancel, step }) {
                 return '출석부';
             case '/attendance/post':
                 return '글쓰기';
+            case '/test':
+                return '거래 내역';
             case '/MyAccount':
                 return '내 계좌';
             default:
@@ -49,6 +51,14 @@ function Header({ onBack, onCancel, step }) {
             if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
                 navigate('/attendance/main');
             }
+        } else {
+            onBack(navigate);
+        }
+    };
+
+    const handleBackClick = () => {
+        if (location.pathname === '/attendance/post') {
+            navigate('/attendance/main');
         } else {
             onBack(navigate);
         }
