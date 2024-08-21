@@ -1,5 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Permanent+Marker&display=swap');
 .mainContainer {
     justify-content: flex-start;
 }
@@ -21,29 +21,30 @@ main {
 /* 오늘까지 n일 출석했어요 */
 .attendance-summary {
     text-align: center;
-    margin-top: 15px;
     margin-bottom: 10px;
 }
 
 .attendance-summary h2 {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .attendance-summary h2 span {
     color: #0046ff;
-    font-weight: 700;
-    font-size: 20px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 600;
+    font-size: 32px;
 }
 
 /* 캘린더 */
 .calendar-container {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     width: 90%;
 }
 
 /* 캘린더 현재 위치 */
 .calendar-container h3 {
-    font-size: 26px;
+    font-size: 24px;
     text-align: center;
     margin-bottom: 10px;
 }

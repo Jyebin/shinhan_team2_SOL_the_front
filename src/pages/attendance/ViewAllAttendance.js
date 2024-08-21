@@ -97,6 +97,8 @@ function ViewAllAttendance() {
 
     return (
         <div className="ViewAllAttendance">
+            <br />
+            <br />
             <main>
                 <section className="attendance-summary">
                     <h2>

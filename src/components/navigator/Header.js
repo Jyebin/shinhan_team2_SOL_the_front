@@ -9,6 +9,9 @@ function Header({ onBack, onCancel, step }) {
     if (location.pathname === '/') {
         return null; // MainPage에서는 Header를 렌더링하지 않음
     }
+    if (location.pathname === '/login') {
+        return null;
+    }
 
     const getTitle = () => {
         switch (location.pathname) {
@@ -41,14 +44,20 @@ function Header({ onBack, onCancel, step }) {
                 return '';
         }
     };
+    const handleBackClick = () => {
+        if (location.pathname === '/attendance/post') {
+            if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
+                navigate('/attendance/main');
+            }
+        } else {
+            onBack(navigate);
+        }
+    };
 
     return (
         <header className="header">
             {step < 5 && ( // step이 5가 아닐 때만 뒤로가기 버튼을 표시
-                <button
-                    className="header-button"
-                    onClick={() => onBack(navigate)}
-                >
+                <button className="header-button" onClick={handleBackClick}>
                     &lt;
                 </button>
             )}
