@@ -3,9 +3,9 @@ import canUrl from '../../assets/common/img/can_img.png';
 import coinUrl from '../../assets/common/img/coin_img.png';
 import '../../assets/myCan/CanImageContainer.css';
 
-const CanImageContainer = ({ flipped, coins, handleClick }) => {
+const CanImageContainer = ({ flipped, coins, onClick }) => {
     return (
-        <div className="bucket-image-container" onClick={handleClick}>
+        <div className="bucket-image-container" onClick={onClick}>
             <img
                 src={canUrl}
                 alt="bucket"
