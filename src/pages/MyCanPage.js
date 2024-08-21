@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../components/common/Container';
 import canUrl from '../assets/common/img/can_img.png';
+import coinUrl from '../assets/common/img/coin_img.png';
 import '../assets/myCan/MyCanPage.css';
 
 const balance = 32099;
@@ -16,13 +17,14 @@ const MyCanPage = () => {
 
             for (let i = 0; i < coinCount; i++) {
                 const position = {
-                    left: `${Math.random() * 40 + 30}%`, // 깡통 중심에서 떨어지도록 위치 조정
+                    left: '50%',
+                    top: `${100 - i * 10}%`, // 각 동전이 층층이 쌓이도록 top 위치를 설정
                 };
 
                 setTimeout(() => {
                     newCoins.push(position);
                     setCoins([...newCoins]); // 새 배열로 업데이트
-                }, i * 500); // 0.3초 간격으로 동전이 떨어지도록 설정
+                }, i * 300); // 0.3초 간격으로 동전이 떨어지도록 설정
             }
         } else {
             setCoins([]); // 다시 클릭하면 동전을 초기화
@@ -56,9 +58,9 @@ const MyCanPage = () => {
                         <div
                             key={index}
                             className="coin"
-                            style={{ left: position.left }}
+                            style={{ left: position.left, top: position.top }}
                         >
-                            💰
+                            <img src={coinUrl} className="coin" />
                         </div>
                     ))}
                 </div>

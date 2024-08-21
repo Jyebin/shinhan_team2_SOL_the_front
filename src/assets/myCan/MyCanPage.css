@@ -75,22 +75,19 @@ body {
 }
 
 .coin {
-    font-size: 1.5rem; /* 동전 크기를 줄임 */
+    width: 50px;
     position: absolute; /* 동전의 위치를 절대적으로 설정 */
     animation: drop 1s ease forwards;
     transform-origin: top;
-    top: 10%; /* 깡통 상단에서 조금 아래로 시작하도록 조정 */
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.6); /* 위치 조정 및 스케일 줄이기 */
 }
 
 @keyframes drop {
     0% {
-        transform: translateY(0) scale(0.6);
-        opacity: 1;
+        transform: translateY(-200px) scale(0.8); /* 동전이 위에서 떨어지기 시작 */
+        opacity: 0;
     }
     100% {
-        transform: translateY(150px) scale(1); /* 동전이 떨어질 때 크기가 커지도록 설정 */
+        transform: translateY(0) scale(1); /* 동전이 바닥에 닿을 때까지 떨어짐 */
         opacity: 1;
     }
 }
