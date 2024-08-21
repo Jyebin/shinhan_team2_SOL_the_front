@@ -70,6 +70,8 @@ hr {
     align-items: center;
     display: flex;
     justify-content: space-between;
+
+    z-index: 100;
 }
 
 .extra-can {
