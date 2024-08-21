@@ -85,7 +85,7 @@ const MyCanPage = () => {
         >
             <CanContent />
             <CanImageContainer
-                coinFlipped={coinFlipped}
+                flipped={coinFlipped}
                 coins={coins}
                 onClick={onClick}
             />
