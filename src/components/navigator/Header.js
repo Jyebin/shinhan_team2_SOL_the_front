@@ -45,13 +45,18 @@ function Header({ onBack, onCancel, step }) {
         }
     };
 
+    const handleBackClick = () => {
+        if (location.pathname === '/attendance/post') {
+            navigate('/attendance/main');
+        } else {
+            onBack(navigate);
+        }
+    };
+
     return (
         <header className="header">
             {step < 5 && ( // step이 5가 아닐 때만 뒤로가기 버튼을 표시
-                <button
-                    className="header-button"
-                    onClick={() => onBack(navigate)}
-                >
+                <button className="header-button" onClick={handleBackClick}>
                     &lt;
                 </button>
             )}
