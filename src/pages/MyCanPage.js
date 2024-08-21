@@ -13,18 +13,18 @@ const days = 40;
 const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
-    const [flipped, setFlipped] = useState(false);
+    const [coinFlipped, setCoinFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
     const [isAnimating, setIsAnimating] = useState(false);
     const [showModal, setShowModal] = useState(false); // 모달 상태 추가
 
-    const handleClick = () => {
+    const onClick = () => {
         if (isAnimating) return;
 
         setIsAnimating(true);
 
-        if (!flipped) {
-            setFlipped(true);
+        if (!coinFlipped) {
+            setCoinFlipped(true);
 
             setTimeout(() => {
                 const newCoins = [];
@@ -63,7 +63,7 @@ const MyCanPage = () => {
             setCoins([]);
             setIsAnimating(false);
         }
-        setFlipped(!flipped);
+        setCoinFlipped(!coinFlipped);
     };
 
     const handleTerminateClick = () => {
@@ -85,12 +85,12 @@ const MyCanPage = () => {
         >
             <CanContent />
             <CanImageContainer
-                flipped={flipped}
+                coinFlipped={coinFlipped}
                 coins={coins}
-                handleClick={handleClick}
+                onClick={onClick}
             />
             <img src={lineUrl} className="line" alt="line" />
-            <div className="interest-rate">
+            <div className="my-interest-rate">
                 총 {days}일 출석 완료로 <br /> 현재 적용중인 이율은
                 <span> {interestRate}% </span>입니다.
             </div>
