@@ -18,6 +18,8 @@ const DepositHistoryPage = () => {
                 justifyContent: 'flex-start',
             }}
         >
+            <br />
+            <br />
             <AccountInfo name={name} number={number} amount={amount} />
             <hr />
             <TransactionHistory />

@@ -38,6 +38,8 @@ function Header({ onBack, onCancel, step }) {
                 return '출석부';
             case '/attendance/post':
                 return '글쓰기';
+            case '/test':
+                return '거래 내역';
             case '/MyAccount':
                 return '내 계좌';
             default:
