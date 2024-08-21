@@ -3,10 +3,31 @@ import Container from '../components/common/Container';
 import canUrl from '../assets/common/img/can_img.png';
 import '../assets/myCan/MyCanPage.css';
 
+const balance = 32099;
+
 const MyCanPage = () => {
     const [flipped, setFlipped] = useState(false);
+    const [coins, setCoins] = useState([]);
 
     const handleClick = () => {
+        if (!flipped) {
+            const newCoins = [];
+            const coinCount = Math.floor(balance / 10000);
+
+            for (let i = 0; i < coinCount; i++) {
+                const position = {
+                    left: `${Math.random() * 40 + 30}%`, // 깡통 중심에서 떨어지도록 위치 조정
+                };
+
+                setTimeout(() => {
+                    newCoins.push(position);
+                    setCoins([...newCoins]); // 새 배열로 업데이트
+                }, i * 500); // 0.3초 간격으로 동전이 떨어지도록 설정
+            }
+        } else {
+            setCoins([]); // 다시 클릭하면 동전을 초기화
+        }
+
         setFlipped(!flipped);
     };
 
@@ -30,6 +51,17 @@ const MyCanPage = () => {
                     alt="bucket"
                     className={`bucket-image ${flipped ? 'flipped' : ''}`}
                 />
+                <div className="coins-container">
+                    {coins.map((position, index) => (
+                        <div
+                            key={index}
+                            className="coin"
+                            style={{ left: position.left }}
+                        >
+                            💰
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <div className="button-container">
