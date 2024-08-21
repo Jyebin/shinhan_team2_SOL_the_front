@@ -63,6 +63,7 @@ const PostAttendance = ({ onBack }) => {
 
     const closePopup = () => {
         setPopupVisible(false);
+        window.location.href = '/attendance/main';
     };
 
     return (
