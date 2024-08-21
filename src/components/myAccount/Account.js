@@ -1,13 +1,19 @@
 // 입출금 통장 정보를 알려주는 component
 
+import { useNavigate } from 'react-router-dom';
 import '../../assets/myAccountPage/Account.css';
 import dotsUrl from '../../assets/myAccountPage/img/dots.png';
 
 import Can from './Can';
 
 const Account = ({ account }) => {
+    const navigate = useNavigate();
+
+    const onClick = () => {
+        navigate('/depositHistory', { state: { account } });
+    };
     return (
-        <div className="account-container">
+        <div className="account-container" onClick={onClick}>
             <div className="account-header">
                 <div>
                     <p className="account-number">{account.number}</p>
