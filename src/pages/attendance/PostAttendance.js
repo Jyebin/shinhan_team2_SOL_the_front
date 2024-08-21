@@ -44,7 +44,7 @@ const PostAttendance = ({ onBack }) => {
 
                 setTimeout(() => {
                     setButtonColor('default');
-                }, 3000);
+                }, 9000);
             }
         } else {
             setButtonColor('error');
