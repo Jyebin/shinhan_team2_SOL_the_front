@@ -3,12 +3,12 @@ import '../../assets/depositHistoryPage/TransactionHistory.css';
 
 const transactionData = [
     {
-        date: '2024.08.20',
-        time: '11:59:37',
-        description: '토스페이 충전',
+        date: '2024.08.19',
+        time: '19:36:02',
+        description: '깡통',
         status: '출금',
-        amount: 21500,
-        balance: 172604,
+        amount: 100,
+        balance: 194004,
     },
     {
         date: '2024.08.19',
