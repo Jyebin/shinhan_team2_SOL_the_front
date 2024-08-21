@@ -31,7 +31,7 @@ const MyCanPage = () => {
                 for (let i = 0; i < coinCount; i++) {
                     const position = {
                         left: '18%',
-                        top: `${220 - i * 10}%`,
+                        top: `${200 - i * 10}%`,
                     };
 
                     setTimeout(() => {
