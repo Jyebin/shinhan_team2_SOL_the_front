@@ -9,6 +9,9 @@ function Header({ onBack, onCancel, step }) {
     if (location.pathname === '/') {
         return null; // MainPage에서는 Header를 렌더링하지 않음
     }
+    if (location.pathname === '/login') {
+        return null;
+    }
 
     const getTitle = () => {
         switch (location.pathname) {
