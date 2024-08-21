@@ -44,8 +44,11 @@ function App() {
                 />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
-                    <Route path="/test" element={<DepositHistoryPage />} />
-                    <Route path="/MyCanPage" element={<MyCanPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/ISRegister"
                         element={

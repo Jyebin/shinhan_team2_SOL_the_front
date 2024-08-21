@@ -83,6 +83,8 @@ const MyCanPage = () => {
                 justifyContent: 'flex-start',
             }}
         >
+            <br />
+            <br />
             <CanContent />
             <CanImageContainer
                 flipped={coinFlipped}
