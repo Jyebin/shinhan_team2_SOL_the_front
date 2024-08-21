@@ -1,0 +1,184 @@
+/* 공통 스타일 */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+.register-content {
+    flex: 1;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.register-footer {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.next-button {
+    width: 100%;
+    max-width: 360px;
+    padding: 16px;
+    font-size: 16px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.next-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.checkbox-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.checkbox-img-small {
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+}
+
+/* ISRegister1 전용 스타일 */
+.register-content.isregister1 h3,
+.register-content.isregister2 h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.register-content.isregister1 p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.interest-calculation {
+    margin-bottom: 24px;
+}
+
+.interest-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: #eef7fe;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.interest-label,
+.interest-value {
+    font-size: 14px;
+    color: #333;
+}
+
+.interest-value {
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.interest-details {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.conditions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.conditions-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.condition-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.condition-text {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.condition-rate {
+    color: #0066cc;
+    font-weight: bold;
+    margin-left: auto;
+    text-align: right;
+    min-width: 80px;
+}
+
+.important-notes {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+/* ISRegister2 전용 스타일 */
+.terms-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.terms-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.terms-item.all-agree img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.terms-item:not(.all-agree) img {
+    margin-right: 10px;
+    width: 13px;
+    height: 13px;
+}
+
+.terms-item label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.custom-hr {
+    border: 0;
+    height: 1px;
+    background: #cccccc;
+    margin: 12px 0;
+}

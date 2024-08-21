@@ -1,7 +1,8 @@
 .isinfo-container {
     width: 100%;
-    max-width: 390px;
-    margin: 0 auto;
+    max-width: 100%;
+    height: 100%;
+    margin: 10px auto;
     background-color: #f3f7fb;
     display: flex;
     flex-direction: column;
