@@ -41,6 +41,8 @@ const MyAccountPage = () => {
                 'justify-content': 'flex-start',
             }}
         >
+            <br />
+            <br />
             <MyAccountHeader
                 imgSrc={accountsImgUrl}
                 headerName="입출금"
