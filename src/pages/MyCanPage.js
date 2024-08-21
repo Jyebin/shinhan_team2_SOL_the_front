@@ -6,6 +6,7 @@ import TerminateButton from '../components/myCan/TerminateButton';
 import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴포넌트 추가
 
 import lineUrl from '../assets/common/img/line.png';
+import '../assets/myCan/MyCanPage.css';
 
 const balance = 49999;
 
