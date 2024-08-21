@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Container from '../components/common/Container';
-import canUrl from '../assets/common/img/can_img.png';
-import coinUrl from '../assets/common/img/coin_img.png';
+import CanContent from '../components/myCan/CanContent';
+import CanImageContainer from '../components/myCan/CanImageContainer';
+import TerminateButton from '../components/myCan/TerminateButton';
+import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴포넌트 추가
+
 import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
@@ -10,12 +13,13 @@ const balance = 49999;
 const MyCanPage = () => {
     const [flipped, setFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
-    const [isAnimating, setIsAnimating] = useState(false); // 애니메이션 상태 추가
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [showModal, setShowModal] = useState(false); // 모달 상태 추가
 
     const handleClick = () => {
-        if (isAnimating) return; // 애니메이션 중이면 클릭 방지
+        if (isAnimating) return;
 
-        setIsAnimating(true); // 애니메이션 시작
+        setIsAnimating(true);
 
         if (!flipped) {
             setFlipped(true);
@@ -27,14 +31,13 @@ const MyCanPage = () => {
                 for (let i = 0; i < coinCount; i++) {
                     const position = {
                         left: '18%',
-                        top: `${220 - i * 10}%`, // 각 동전이 층층이 쌓이도록 top 위치를 설정
+                        top: `${200 - i * 10}%`,
                     };
 
                     setTimeout(() => {
                         newCoins.push(position);
-                        setCoins([...newCoins]); // 새 배열로 업데이트
+                        setCoins([...newCoins]);
 
-                        // 숫자가 1초 후에 사라지게 설정
                         setTimeout(() => {
                             setCoins((prevCoins) =>
                                 prevCoins.map((coin, idx) =>
@@ -43,23 +46,30 @@ const MyCanPage = () => {
                                         : coin,
                                 ),
                             );
-                        }, 1000); // 1초 후에 숫자가 사라지게 설정
-                    }, i * 300); // 0.3초 간격으로 동전이 떨어지도록 설정
+                        }, 1000);
+                    }, i * 300);
                 }
 
-                // 모든 동전 애니메이션이 끝난 후에 클릭을 다시 활성화
                 setTimeout(
                     () => {
-                        setIsAnimating(false); // 애니메이션 종료
+                        setIsAnimating(false);
                     },
                     coinCount * 300 + 800,
-                ); // 동전 떨어지는 시간 고려
-            }, 600); // 깡통이 뒤집힌 후 0.6초 지연
+                );
+            }, 600);
         } else {
-            setCoins([]); // 다시 클릭하면 동전을 초기화
-            setIsAnimating(false); // 애니메이션 종료
+            setCoins([]);
+            setIsAnimating(false);
         }
         setFlipped(!flipped);
+    };
+
+    const handleTerminateClick = () => {
+        setShowModal(true); // 모달을 띄우기 위해 상태를 true로 설정
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false); // 모달 닫기
     };
 
     return (
@@ -71,45 +81,15 @@ const MyCanPage = () => {
                 justifyContent: 'flex-start',
             }}
         >
-            <div className="bucket-content">
-                <h2 className="bucket-title">깡통에 얼마나 모였을까요?</h2>
-                <p className="bucket-subtitle">깡통을 눌러 뒤집어주세요</p>
-            </div>
-
-            <div className="bucket-image-container" onClick={handleClick}>
-                <img
-                    src={canUrl}
-                    alt="bucket"
-                    className={`bucket-image ${flipped ? 'flipped' : ''}`}
-                />
-                {coins.map((position, index) => (
-                    <div
-                        key={index}
-                        className="coin"
-                        style={{ left: position.left, top: position.top }}
-                    >
-                        <img
-                            src={coinUrl}
-                            className="coin"
-                            alt={`coin-${index}`}
-                        />
-                        <div
-                            className="plus-one"
-                            style={{
-                                top: `${200 - index * 10}%`,
-                                opacity:
-                                    position.displayNumber === false ? 0 : 1,
-                            }}
-                        >
-                            +{index + 1}
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <CanContent />
+            <CanImageContainer
+                flipped={flipped}
+                coins={coins}
+                handleClick={handleClick}
+            />
             <img src={lineUrl} className="line" alt="line" />
-            <div className="button-container">
-                <button className="terminate-button">깡통 해지하기</button>
-            </div>
+            <TerminateButton onClick={handleTerminateClick} />
+            {showModal && <ConfirmModal onClose={handleCloseModal} />}
         </Container>
     );
 };
