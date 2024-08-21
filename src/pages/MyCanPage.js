@@ -9,6 +9,8 @@ import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
 const balance = 49999;
+const days = 40;
+const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
     const [flipped, setFlipped] = useState(false);
@@ -88,6 +90,10 @@ const MyCanPage = () => {
                 handleClick={handleClick}
             />
             <img src={lineUrl} className="line" alt="line" />
+            <div className="interest-rate">
+                총 {days}일 출석 완료로 <br /> 현재 적용중인 이율은
+                <span> {interestRate}% </span>입니다.
+            </div>
             <TerminateButton onClick={handleTerminateClick} />
             {showModal && <ConfirmModal onClose={handleCloseModal} />}
         </Container>
