@@ -88,3 +88,13 @@
     height: 10px;
     margin-top: 70px;
 }
+
+.interest-rate {
+    margin-top: 40px;
+    font-weight: 500;
+}
+
+.interest-rate span {
+    color: #eb3d4f;
+    font-weight: bold;
+}
