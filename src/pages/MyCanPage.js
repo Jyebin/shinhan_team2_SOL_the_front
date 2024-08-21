@@ -89,7 +89,7 @@ const MyCanPage = () => {
                 coins={coins}
                 onClick={onClick}
             />
-            <img src={lineUrl} className="line" alt="line" />
+            <img src={lineUrl} className="my-can-line" alt="line" />
             <div className="my-interest-rate">
                 총 {days}일 출석 완료로 <br /> 현재 적용중인 이율은
                 <span> {interestRate}% </span>입니다.
