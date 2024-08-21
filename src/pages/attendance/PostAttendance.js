@@ -11,7 +11,7 @@ const PostAttendance = ({ onBack }) => {
     const handleSubmit = () => {
         const length = message.trim().length;
         if (length >= 1 && length <= 300) {
-            const response = { status: '과소비' }; // 테스트용 가상 응답
+            const response = { status: '절약' }; // 테스트용 가상 응답
 
             if (response.status === '부적절') {
                 setPopupMessage(
@@ -44,7 +44,7 @@ const PostAttendance = ({ onBack }) => {
 
                 setTimeout(() => {
                     setButtonColor('default');
-                }, 3000);
+                }, 9000);
             }
         } else {
             setButtonColor('error');
@@ -61,8 +61,15 @@ const PostAttendance = ({ onBack }) => {
         }
     };
 
+    // 팝업을 단순히 닫기 위한 함수
+    const closePopupOnly = () => {
+        setPopupVisible(false);
+    };
+
+    // 팝업 닫고 페이지 이동하는 함수
     const closePopup = () => {
         setPopupVisible(false);
+        window.location.href = '/attendance/main';
     };
 
     return (
@@ -98,14 +105,14 @@ const PostAttendance = ({ onBack }) => {
                             {popupType === '부적절' ? (
                                 <button
                                     className="popup-button"
-                                    onClick={closePopup}
+                                    onClick={closePopupOnly} //돌아가기 -> 팝업만 닫음
                                 >
                                     돌아가기
                                 </button>
                             ) : (
                                 <button
                                     className="close-button close-popup-button"
-                                    onClick={closePopup}
+                                    onClick={closePopup} // X -> 팝업 닫고 출석부로 이동
                                 >
                                     X
                                 </button>

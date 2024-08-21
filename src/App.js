@@ -9,6 +9,7 @@ import PostAttendance from './pages/attendance/PostAttendance';
 import MyAccountPage from './pages/MyAccountPage';
 import Login from './pages/Login';
 import CommunityPage from './pages/CommunityPage';
+import DepositHistoryPage from './pages/DepositHistoryPage';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -42,6 +43,7 @@ function App() {
                 />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/test" element={<DepositHistoryPage />} />
                     <Route
                         path="/ISRegister"
                         element={
