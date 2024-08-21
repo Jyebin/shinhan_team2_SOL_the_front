@@ -9,7 +9,7 @@ const interestRates = {
     signupBonus: 1.0,
 };
 
-const ISRegister1 = ({ nextStep }) => {
+const ISRegister1 = ({ nextStep, setFormData }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [totalInterestRate, setTotalInterestRate] = useState(
         interestRates.baseRate,
@@ -61,6 +61,14 @@ const ISRegister1 = ({ nextStep }) => {
         },
         [selectedBonuses],
     );
+
+    const handleNext = () => {
+        setFormData((prevData) => ({
+            ...prevData,
+            totalInterestRate: totalInterestRate.toFixed(2), // 이율 저장
+        }));
+        nextStep();
+    };
 
     return (
         <div className="register-container">
@@ -169,7 +177,7 @@ const ISRegister1 = ({ nextStep }) => {
 
             <footer className="register-footer">
                 <button
-                    onClick={nextStep}
+                    onClick={handleNext}
                     disabled={!isScrolled}
                     className="next-button"
                 >

@@ -1,76 +1,48 @@
-import './assets/App.css';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
-import React, { useState } from 'react';
 import Header from './components/navigator/Header';
-import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
-import PostAttendance from './pages/attendance/PostAttendance';
-import MyAccountPage from './pages/MyAccountPage';
-import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
-import DepositHistoryPage from './pages/DepositHistoryPage';
-import MyCanPage from './pages/MyCanPage';
 
 function App() {
-    const [step, setStep] = useState(0);
+    // 상태 관리
     const [formData, setFormData] = useState({});
-
-    const handleCancel = () => {
-        setFormData({});
-        setStep(0);
-    };
-
-    const handleBack = (navigate) => {
-        if (step > 0 && step < 5) {
-            setStep(step - 1);
-        } else if (step === 0) {
-            navigate('/');
-        }
-    };
+    const [step, setStep] = useState(0);
 
     const nextStep = (newData) => {
         setFormData({ ...formData, ...newData });
         setStep(step + 1);
     };
 
+    const prevStep = () => {
+        if (step > 0) {
+            setStep(step - 1);
+        }
+    };
+
+    const handleCancel = () => {
+        setFormData({});
+        setStep(0);
+    };
+
     return (
         <Router>
             <div className="mainContainer">
-                <Header
-                    onBack={handleBack}
-                    onCancel={handleCancel}
-                    step={step}
-                />
+                <Header onCancel={handleCancel} step={step} />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
-                    <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/ISRegister"
                         element={
                             <ISRegisterPage
                                 step={step}
                                 nextStep={nextStep}
-                                prevStep={handleBack}
+                                prevStep={prevStep}
                                 formData={formData}
+                                setFormData={setFormData} // 여기서 전달
                             />
                         }
                     />
-                    <Route
-                        path="/attendance/main"
-                        element={<ViewAllAttendance />}
-                    />
-                    <Route path="/MyAccount" element={<MyAccountPage />} />
-                    <Route
-                        path="/attendance/post"
-                        element={<PostAttendance />}
-                    />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/community" element={<CommunityPage />} />
                 </Routes>
             </div>
         </Router>

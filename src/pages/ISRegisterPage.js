@@ -7,7 +7,7 @@ import ISRegister4 from '../components/ISRegister/ISRegister4';
 import ISRegister5 from '../components/ISRegister/ISRegister5';
 import '../assets/ISRegisterPage/ISRegisterPage.css';
 
-function ISRegisterPage({ step, nextStep, prevStep, formData }) {
+function ISRegisterPage({ step, nextStep, prevStep, formData, setFormData }) {
     switch (step) {
         case 0:
             return <ISInfo nextStep={nextStep} />;
@@ -17,6 +17,7 @@ function ISRegisterPage({ step, nextStep, prevStep, formData }) {
                     nextStep={nextStep}
                     prevStep={prevStep}
                     formData={formData}
+                    setFormData={setFormData} // 전달
                 />
             );
         case 2:
@@ -25,6 +26,7 @@ function ISRegisterPage({ step, nextStep, prevStep, formData }) {
                     nextStep={nextStep}
                     prevStep={prevStep}
                     formData={formData}
+                    setFormData={setFormData} // 전달
                 />
             );
         case 3:
@@ -33,6 +35,7 @@ function ISRegisterPage({ step, nextStep, prevStep, formData }) {
                     nextStep={nextStep}
                     prevStep={prevStep}
                     formData={formData}
+                    setFormData={setFormData} // 전달
                 />
             );
         case 4:
@@ -41,6 +44,7 @@ function ISRegisterPage({ step, nextStep, prevStep, formData }) {
                     nextStep={nextStep}
                     prevStep={prevStep}
                     formData={formData}
+                    setFormData={setFormData} // 전달
                 />
             );
         case 5:
