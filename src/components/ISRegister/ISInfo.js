@@ -1,55 +1,70 @@
 import React from 'react';
 import '../../assets/ISRegisterPage/ISInfo.css';
 
+import infoImage0 from '../../assets/ISRegisterPage/img/info0.png';
+import infoImage1 from '../../assets/ISRegisterPage/img/info1.png';
+import infoImage2 from '../../assets/ISRegisterPage/img/info2.png';
+
 const ISInfo = ({ nextStep }) => {
     return (
         <div className="isinfo-container">
             <main className="isinfo-main">
-                <h2 className="product-title">신한 쓸거지 깡통 적금</h2>
-                <div className="tags">
-                    <span>#20회이상</span>
-                    <span>#출석인증하면</span>
-                    <span>#추가우대금리</span>
-                </div>
-
-                <div className="interest-info">
-                    <div className="interest-rate">
-                        <span>이자율</span>
-                        <strong>기본 연 8.00%</strong>
-                        <span className="highlight">최고 연 10.00%</span>
-                        <span>(6개월 세전)</span>
+                <div className="product-info">
+                    <br />
+                    <br />
+                    <h2 className="product-title">신한 쏠거지 깡통 적금</h2>
+                    <div className="tags">
+                        <span>#20회이상</span>
+                        <span>#쏠거지출석인증시</span>
+                        <span>#추가우대금리</span>
                     </div>
-                    <div className="deposit-limit">
-                        <span>저축한도</span>
-                        <strong>고객별 월 10만원</strong>
+
+                    <img src={infoImage0} alt="이미지" className="info-image" />
+
+                    <div className="interest-info">
+                        <div className="interest-rate">
+                            <span>이자율</span>
+                            <strong>기본 연 8.00%</strong>
+                            <span className="highlight">최고 연 10.00%</span>
+                            <span>(6개월 세전)</span>
+                        </div>
+                        <div className="deposit-limit">
+                            <span>저축한도</span>
+                            <strong>
+                                고객별
+                                <br />월 10만원
+                            </strong>
+                        </div>
                     </div>
+
+                    <button className="join-button" onClick={nextStep}>
+                        가입하기
+                    </button>
                 </div>
-
-                <button className="join-button" onClick={nextStep}>
-                    가입하기
-                </button>
-
                 <section className="additional-info">
                     <p>
-                        쓸거지 회원가입만 해도{' '}
-                        <span className="highlight">연 1.0%</span> +<br />
-                        쓸거지 출석체크 20회 이상하면{' '}
-                        <span className="highlight">연 2.0%</span>
+                        쏠거지 회원가입만 해도{' '}
+                        <span className="highlight2">연 1.0% +</span>
                         <br />
-                        우대금리 제공!
+                        쏠거지 출석체크 20회 이상하면{' '}
+                        <span className="highlight2">연 2.0%</span>
+                        <br />
+                        <span className="highlight2">우대금리 제공!</span>
                     </p>
-                    <img
-                        src="/path/to/your/image.png"
-                        alt="이미지"
-                        className="info-image"
-                    />
+                    <img src={infoImage1} alt="이미지" className="info-image" />
                 </section>
 
                 <section className="promo-info">
-                    <p>적금을 가입하면 땡겨요 2,000원 쿠폰이 최대 다섯 장!</p>
-                    <span>2024년 12월 31일까지 받을 수 있어요</span>
+                    <p>
+                        적금을 가입하면{' '}
+                        <span className="highlight2">
+                            땡겨요 2,000원
+                            <br />
+                            쿠폰이 최대 다섯 장!
+                        </span>
+                    </p>
                     <img
-                        src="/path/to/your/second-image.png"
+                        src={infoImage2}
                         alt="이미지"
                         className="promo-image"
                     />

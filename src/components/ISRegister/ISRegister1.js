@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../../assets/ISRegisterPage/ISRegister1.css';
 
-function ISRegister1({ nextStep, prevStep }) {
+function ISRegister1({ nextStep }) {
+    // prevStep 제거
     const [isScrolled, setIsScrolled] = useState(false);
     const bottomRef = useRef(null);
 
@@ -29,33 +31,78 @@ function ISRegister1({ nextStep, prevStep }) {
     }, []);
 
     return (
-        <div className="mainContainer">
-            <h2>중요사항 설명</h2>
-            <div
-                id="scrollableContent"
-                style={{
-                    height: '200px',
-                    overflowY: 'scroll',
-                    border: '1px solid black',
-                }}
-            >
-                {/* 중요한 내용이 여기에 들어갑니다 */}
-                <p>우대금리 조건 선택 시마다 예상 금리가 계산됩니다.</p>
-                <p>기본 이용: 연 7.0%</p>
-                <p>쓸거지 출석체크 20회 이상 시: 우대금리 2.0%</p>
-                <p>쓸거지 가입 시: 1.0%</p>
+        <div className="register-container">
+            {/* Header가 이미 있기 때문에 여기서는 별도의 헤더를 추가하지 않습니다 */}
+
+            <br />
+            <br />
+            <div className="register-content">
+                <h3>
+                    상품의 중요사항을 <br />
+                    충분히 읽고 확인해주세요.
+                </h3>
                 <p>
-                    여기에 더 많은 내용을 추가하여 스크롤 테스트를 해보세요...
+                    금융소비자보호법 제19조 제1항에서 규정하고 있는 상품
+                    중요사항입니다.
                 </p>
-                <p>스크롤이 맨 아래로 내려갈 때까지 스크롤 하세요...</p>
-                <p>이것은 테스트를 위한 추가 텍스트입니다...</p>
-                <p ref={bottomRef}>마지막 텍스트입니다.</p>{' '}
-                {/* 스크롤 마지막 부분을 감지하는 요소 */}
+
+                <div className="interest-calculation">
+                    <p>내 예상금리를 알아보세요.</p>
+                    <div className="interest-box">
+                        <span className="interest-label">연 예상금리</span>
+                        <span className="interest-value">연 10.00%</span>
+                    </div>
+                    <div className="interest-details">
+                        <span>기본금리</span>
+                        <span>% + 우대금리</span>
+                        <span>7.00%</span>
+                        <span>3.00%</span>
+                    </div>
+                </div>
+
+                <h4>우대금리 조건 선택</h4>
+                <ul className="conditions-list">
+                    <li>
+                        <input type="checkbox" checked readOnly /> 쏠거지
+                        출석체크 주 3회 이상시
+                        <span className="condition-rate">연 2.00%</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked readOnly /> 회원 가입
+                        <span className="condition-rate">연 1.00%</span>
+                    </li>
+                </ul>
+
+                <div className="important-notes">
+                    <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
+                    </p>
+                    <p>
+                        기본이자율은 가입일에 고시된 “신한 땡겨요 적금”의
+                        기본이자율을 적용합니다.
+                    </p>
+                    <p>
+                        실제 우대이자율은 예금 기간 중에 요건을 충족한 경우
+                        적용됩니다.
+                    </p>
+                    <p>
+                        우대이자율은 중도해지 한 계좌에 대해서는 적용하지
+                        않으며, 만기해지 시에만 지급됩니다.
+                    </p>
+                </div>
             </div>
-            <button onClick={prevStep}>이전</button>
-            <button onClick={nextStep} disabled={!isScrolled}>
-                다음
-            </button>
+
+            <footer className="register-footer">
+                <button
+                    onClick={nextStep}
+                    disabled={!isScrolled}
+                    className="next-button"
+                >
+                    확인
+                </button>
+            </footer>
         </div>
     );
 }
