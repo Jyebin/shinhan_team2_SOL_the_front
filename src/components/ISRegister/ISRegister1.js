@@ -9,10 +9,10 @@ const interestRates = {
     signupBonus: 1.0,
 };
 
-const ISRegister1 = ({ nextStep, setFormData }) => {
+const ISRegister1 = ({ nextStep, setFormData, formData }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [totalInterestRate, setTotalInterestRate] = useState(
-        interestRates.baseRate,
+        formData.totalInterestRate || interestRates.baseRate,
     );
     const [selectedBonuses, setSelectedBonuses] = useState({
         attendance: false,
@@ -63,10 +63,10 @@ const ISRegister1 = ({ nextStep, setFormData }) => {
     );
 
     const handleNext = () => {
-        setFormData((prevData) => ({
-            ...prevData,
+        setFormData({
             totalInterestRate: totalInterestRate.toFixed(2), // 이율 저장
-        }));
+        });
+        console.log('Total Interest Rate:', totalInterestRate.toFixed(2)); // 콘솔에 출력
         nextStep();
     };
 
@@ -188,4 +188,4 @@ const ISRegister1 = ({ nextStep, setFormData }) => {
     );
 };
 
-export default ISRegister1;
+export default ISRegister1

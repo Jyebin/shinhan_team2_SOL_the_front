@@ -4,42 +4,58 @@ import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
 
+// 상태와 단계 관련 상수 정의
+const initialFormState = {
+    data: {},
+    step: 0,
+};
+
 function App() {
-    // 상태 관리
-    const [formData, setFormData] = useState({});
-    const [step, setStep] = useState(0);
+    // 상태 관리: formData와 step을 하나의 객체로 관리
+    const [formState, setFormState] = useState(initialFormState);
 
     const nextStep = (newData) => {
-        setFormData({ ...formData, ...newData });
-        setStep(step + 1);
+        setFormState((prevState) => ({
+            ...prevState,
+            data: { ...prevState.data, ...newData },
+            step: prevState.step + 1,
+        }));
     };
 
     const prevStep = () => {
-        if (step > 0) {
-            setStep(step - 1);
-        }
+        setFormState((prevState) => ({
+            ...prevState,
+            step: prevState.step > 0 ? prevState.step - 1 : 0,
+        }));
     };
 
     const handleCancel = () => {
-        setFormData({});
-        setStep(0);
+        setFormState(initialFormState);
+    };
+
+    const handleBack = (navigate) => {
+        if (formState.step > 0) {
+            prevStep();
+        } else {
+            navigate(-1); // 이전 페이지로 이동
+        }
     };
 
     return (
         <Router>
             <div className="mainContainer">
-                <Header onCancel={handleCancel} step={step} />
+                <Header onBack={handleBack} onCancel={handleCancel} step={formState.step} />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route
                         path="/ISRegister"
                         element={
                             <ISRegisterPage
-                                step={step}
+                                step={formState.step}
                                 nextStep={nextStep}
                                 prevStep={prevStep}
-                                formData={formData}
-                                setFormData={setFormData} // 여기서 전달
+                                formData={formState.data}
+                                setFormData={(data) => setFormState({ ...formState, data })}
                             />
                         }
                     />

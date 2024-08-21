@@ -1,13 +1,18 @@
 import React from 'react';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
-function ISRegister4({ nextStep, formData }) {
+function ISRegister4({ nextStep, prevStep, formData }) {
     // 오늘 날짜 구하기
     const today = new Date().toISOString().slice(0, 10);
 
     // formData에서 필요한 데이터 가져오기
-    const selectedAccount = formData.account || '계좌 정보 없음';
-    const appliedInterestRate = formData.totalInterestRate || '0.00';
+    const selectedAccount = formData?.account || '계좌 정보 없음';
+    const appliedInterestRate = formData?.totalInterestRate || '0.00';
+
+    // 콘솔에 formData 출력
+    console.log('Form Data at Register4:', formData);
+    console.log('Selected Account at Register4:', selectedAccount);
+    console.log('Applied Interest Rate at Register4:', appliedInterestRate);
 
     return (
         <div className="register-container">

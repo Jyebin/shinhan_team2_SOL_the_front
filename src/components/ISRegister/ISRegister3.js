@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
-function ISRegister3({ nextStep, setFormData }) {
-    const [account, setAccount] = useState('');
+function ISRegister3({ nextStep, setFormData, formData }) {
+    const [account, setAccount] = useState(formData.account || '');
     const [enteredPassword, setEnteredPassword] = useState('');
     const [warning, setWarning] = useState('비밀번호 네 자리를 입력해주세요.');
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
@@ -18,6 +18,9 @@ function ISRegister3({ nextStep, setFormData }) {
     const handleAccountSelect = (e) => {
         const selectedAccount = e.target.value;
 
+        // 콘솔에 선택한 값을 출력
+        console.log('Selected Account:', selectedAccount);
+
         if (selectedAccount === '') {
             // 기본 옵션이 선택된 경우
             setAccount(''); // 계좌 상태 초기화
@@ -25,7 +28,16 @@ function ISRegister3({ nextStep, setFormData }) {
             setIsPasswordCorrect(false); // 비밀번호 상태 초기화
         } else {
             // 다른 계좌가 선택된 경우
-            setAccount(selectedAccount);
+            const updatedAccount = selectedAccount;
+
+            setAccount(updatedAccount); // 상태 업데이트
+            setFormData((prevData) => ({
+                ...prevData,
+                account: updatedAccount, // formData 업데이트
+            }));
+
+            console.log('Updated Form Data:', { ...formData, account: updatedAccount });
+
             setEnteredPassword('');
             setWarning('비밀번호 네 자리를 입력해주세요.');
             setIsPasswordCorrect(false);
@@ -55,16 +67,21 @@ function ISRegister3({ nextStep, setFormData }) {
             if (enteredPassword === correctPassword) {
                 setIsPasswordCorrect(true);
                 setShowPasswordModal(false);
-                setFormData((prevData) => ({
-                    ...prevData,
-                    account: account, // 선택한 계좌를 저장
-                }));
                 nextStep();
             } else {
                 setWarning('올바른 비밀번호가 아닙니다. 다시 입력해주세요.');
                 setEnteredPassword('');
             }
         }
+    };
+
+    const handleNext = () => {
+        // 다음 단계로 넘어가기 전에 formData 업데이트
+        setFormData((prevData) => ({
+            ...prevData,
+            account: account, // 최종적으로 formData에 account 반영
+        }));
+        nextStep();
     };
 
     return (
@@ -174,7 +191,7 @@ function ISRegister3({ nextStep, setFormData }) {
             </div>
             <footer className="register-footer">
                 <button
-                    onClick={nextStep}
+                    onClick={handleNext}
                     className="next-button"
                     disabled={!isPasswordCorrect}
                 >
