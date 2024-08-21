@@ -1,14 +1,18 @@
 .header {
-    width: 100%; /* 부모 요소의 너비에 맞춤 */
+    width: 390px; /* 헤더의 너비를 고정 */
     height: 50px; /* 고정된 높이 설정 */
     display: flex;
     justify-content: space-between; /* 양쪽에 버튼을 배치 */
     align-items: center;
-    padding: 0 10px; /* 좌우 여백을 줘서 내부 콘텐츠를 정렬 */
+    padding: 0 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* 헤더 배경색 */
-    box-sizing: border-box; /* padding을 width에 포함시킴 */
-    position: relative; /* 중앙 정렬을 위한 상대적 위치 */
+    background-color: #fff;
+    box-sizing: border-box;
+    position: fixed; /* 헤더를 고정 위치로 설정 */
+    top: 0; /* 상단에 고정 */
+    left: 50%;
+    transform: translateX(-50%); /* 헤더를 화면 중앙에 고정 */
+    z-index: 1000; /* 스크롤 콘텐츠 위에 있도록 설정 */
 }
 
 .header-title {
