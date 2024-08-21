@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/ISRegisterPage/ISRegister.css';
 import checkNo from '../../assets/common/img/check_no.png';
 import checkYes from '../../assets/common/img/check_yes.png';
 import checkNo2 from '../../assets/common/img/check_no2.png';
 import checkYes2 from '../../assets/common/img/check_yes2.png';
 
-function ISRegister2({ nextStep }) {
-    const [agreements, setAgreements] = useState({
+function ISRegister2({ nextStep, formData, setFormData }) {
+    const [agreements, setAgreements] = useState(formData.agreements || {
         all: false,
         terms1: false,
         terms2: false,
@@ -40,11 +40,22 @@ function ISRegister2({ nextStep }) {
         });
     };
 
+    const handleNext = () => {
+        // 다음 단계로 넘어가기 전에 필요한 데이터 저장
+        setFormData((prevData) => ({
+            ...prevData,
+            agreements: agreements,
+        }));
+        nextStep();
+    };
+
     return (
         <div className="register-container">
             <div className="register-content isregister2">
                 <br />
+                <br />
                 <h2>약관에 동의해 주세요</h2>
+                <br />
                 <div className="terms-container">
                     <div
                         className="terms-item all-agree"
@@ -136,7 +147,7 @@ function ISRegister2({ nextStep }) {
 
             <footer className="register-footer">
                 <button
-                    onClick={nextStep}
+                    onClick={handleNext}
                     disabled={
                         !Object.values(agreements).slice(1).every(Boolean)
                     }

@@ -1,0 +1,82 @@
+.register-completion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.check-icon {
+    margin-bottom: 20px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-mark {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333333;
+    margin: 10px 0;
+}
+
+.highlight {
+    color: #007bff;
+}
+
+.sub-title {
+    font-size: 20px;
+    color: #666666;
+    margin: 5px 0;
+}
+
+.date-info {
+    font-size: 16px;
+    color: #333333;
+    margin: 20px 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main-button, .confirm-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.main-button {
+    background-color: #007bff;
+}
+
+.confirm-button {
+    background-color: #007bff;
+}
+
+.main-button:hover, .confirm-button:hover {
+    background-color: #0056b3;
+}
