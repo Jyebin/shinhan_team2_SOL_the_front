@@ -55,12 +55,6 @@ const PostAttendance = ({ onBack }) => {
         }
     };
 
-    const handleClose = () => {
-        if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
-            window.location.href = '/attendance/main';
-        }
-    };
-
     // 팝업을 단순히 닫기 위한 함수
     const closePopupOnly = () => {
         setPopupVisible(false);
@@ -74,6 +68,8 @@ const PostAttendance = ({ onBack }) => {
 
     return (
         <div className="container">
+            <br />
+            <br />
             <textarea
                 className="text-area"
                 placeholder="오늘의 과소비 or 절약 인증 글을 작성해주세요. (최대 300자)"

@@ -97,6 +97,8 @@ function ViewAllAttendance() {
 
     return (
         <div className="ViewAllAttendance">
+            <br />
+            <br />
             <main>
                 <section className="attendance-summary">
                     <h2>
@@ -133,7 +135,7 @@ function ViewAllAttendance() {
 
             <Link
                 to="http://localhost:3000/attendance/post"
-                className="btn attendance-button"
+                className="attendance-button"
             >
                 오늘 출석체크하기
             </Link>

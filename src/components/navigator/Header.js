@@ -46,10 +46,11 @@ function Header({ onBack, onCancel, step }) {
                 return '';
         }
     };
-
     const handleBackClick = () => {
         if (location.pathname === '/attendance/post') {
-            navigate('/attendance/main');
+            if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
+                navigate('/attendance/main');
+            }
         } else {
             onBack(navigate);
         }
