@@ -3,7 +3,7 @@ import Container from '../components/common/Container';
 import CanContent from '../components/myCan/CanContent';
 import CanImageContainer from '../components/myCan/CanImageContainer';
 import TerminateButton from '../components/myCan/TerminateButton';
-import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴포넌트 추가
+import ConfirmModal from '../components/myCan/ConfirmModal';
 
 import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
@@ -13,65 +13,65 @@ const days = 40;
 const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
-    const [coinFlipped, setCoinFlipped] = useState(false);
+    const [canFlipped, setCanFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [showModal, setShowModal] = useState(false); // 모달 상태 추가
+    const [showModal, setShowModal] = useState(false);
 
-    const onClick = () => {
+    const onClick = async () => {
         if (isAnimating) return;
+        // 한 번 클릭한 상태로 애니메이션이 실행 중이면 block
 
         setIsAnimating(true);
+        // 클릭하면 isAnimation true로 state 변경
 
-        if (!coinFlipped) {
-            setCoinFlipped(true);
+        if (!canFlipped) {
+            // 깡통이 안 뒤집힌 상태라면
+            // coin
+            setCanFlipped(true); // 깡통 뒤집기
+            const newCoins = [];
+            const coinCount = Math.floor(balance / 10000); // 코인 개수 계산
 
-            setTimeout(() => {
-                const newCoins = [];
-                const coinCount = Math.floor(balance / 10000);
+            for (let i = 0; i < coinCount; i++) {
+                // 코인 떨어트리기 + 카운트 올리기
+                const position = {
+                    // 떨어질 포지션 계산
+                    left: '18%',
+                    top: `${200 - i * 10}%`, // 한 층씩 쌓이게
+                };
 
-                for (let i = 0; i < coinCount; i++) {
-                    const position = {
-                        left: '18%',
-                        top: `${200 - i * 10}%`,
-                    };
+                await new Promise((resolve) => setTimeout(resolve, i * 300)); // Promise를 통한 비동기 작업 관리
+                newCoins.push(position);
+                setCoins((prevCoins) => [...prevCoins, position]);
 
-                    setTimeout(() => {
-                        newCoins.push(position);
-                        setCoins([...newCoins]);
-
-                        setTimeout(() => {
-                            setCoins((prevCoins) =>
-                                prevCoins.map((coin, idx) =>
-                                    idx === i
-                                        ? { ...coin, displayNumber: false }
-                                        : coin,
-                                ),
-                            );
-                        }, 1000);
-                    }, i * 300);
-                }
-
-                setTimeout(
-                    () => {
-                        setIsAnimating(false);
-                    },
-                    coinCount * 300 + 800,
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setCoins((prevCoins) =>
+                    prevCoins.map((coin, idx) =>
+                        idx === i ? { ...coin, displayNumber: false } : coin,
+                    ),
                 );
-            }, 600);
+            }
+
+            setTimeout(
+                () => {
+                    setIsAnimating(false);
+                },
+                coinCount * 300 + 800,
+            );
         } else {
             setCoins([]);
             setIsAnimating(false);
         }
-        setCoinFlipped(!coinFlipped);
+
+        setCanFlipped((prev) => !prev);
     };
 
     const handleTerminateClick = () => {
-        setShowModal(true); // 모달을 띄우기 위해 상태를 true로 설정
+        setShowModal(true);
     };
 
     const handleCloseModal = () => {
-        setShowModal(false); // 모달 닫기
+        setShowModal(false);
     };
 
     return (
@@ -87,7 +87,7 @@ const MyCanPage = () => {
             <br />
             <CanContent />
             <CanImageContainer
-                flipped={coinFlipped}
+                flipped={canFlipped}
                 coins={coins}
                 onClick={onClick}
             />
