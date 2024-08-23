@@ -3,8 +3,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅 추가
 
 import '../../assets/mainPage/MainPage.css';
-import '../../assets/mainPage/ActiveSavingsMain.css';
-import '../../assets/mainPage/NoSavingsMain.css';
+import '../../assets/mainPage/MainButton.css';
+import MainButton from './MainButton';
 
 const SavingsMain = ({ containerClass, buttonClass, imgSrc }) => {
     const navigate = useNavigate(); // useNavigate 훅 사용
@@ -20,14 +20,14 @@ const SavingsMain = ({ containerClass, buttonClass, imgSrc }) => {
     return (
         <div className={`mainContainer ${containerClass}`}>
             <img src={imgSrc} alt="mainImage" className="mainBackground" />
-            <button
-                className="mainBtn attendanceBtn"
+            <MainButton
+                className="attendanceBtn"
                 onClick={handleAttendanceClick}
-            ></button>
-            <button
-                className={`mainBtn makeCanBtn ${buttonClass}`}
-                onClick={handleMakeCanClick}
-            ></button>
+            />
+            <MainButton className={buttonClass} onClick={handleMakeCanClick} />
+            {buttonClass === 'makeCan' && (
+                <MainButton className="checkAccount" />
+            )}
         </div>
     );
 };
