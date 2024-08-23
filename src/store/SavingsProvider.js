@@ -8,17 +8,17 @@ export const SavingsProvider = ({ children }) => {
     const [isInitialized, setIsInitialized] = useState(false);
 
     const initialize = async (userID) => {
+        // context 초기화하는 코드
         if (!isInitialized) {
             try {
-                setHasSavings(true);
                 axios
                     .get(
                         'http://localhost:9070/account/hasCan?userID=' + userID,
                     )
                     .then((res) => {
                         setHasSavings(res.data);
+                        console.log(res.data);
                     });
-                console.log(1);
             } catch (error) {
                 console.error('Failed to fetch savings status', error);
             } finally {
