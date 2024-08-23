@@ -1,6 +1,6 @@
 .mainContainer {
     width: 390px; /* 일반적인 모바일 화면 크기 */
-    height: 804px;
+    height: 844px;
     margin: auto;
     display: flex;
     justify-content: center;
