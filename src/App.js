@@ -1,76 +1,64 @@
-import './assets/App.css';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
-import React, { useState } from 'react';
 import Header from './components/navigator/Header';
-import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
-import PostAttendance from './pages/attendance/PostAttendance';
-import MyAccountPage from './pages/MyAccountPage';
-import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
-import DepositHistoryPage from './pages/DepositHistoryPage';
-import MyCanPage from './pages/MyCanPage';
+
+// 상태와 단계 관련 상수 정의
+const initialFormState = {
+    data: {},
+    step: 0,
+};
 
 function App() {
-    const [step, setStep] = useState(0);
-    const [formData, setFormData] = useState({});
+    // 상태 관리: formData와 step을 하나의 객체로 관리
+    const [formState, setFormState] = useState(initialFormState);
+
+    const nextStep = (newData) => {
+        setFormState((prevState) => ({
+            ...prevState,
+            data: { ...prevState.data, ...newData },
+            step: prevState.step + 1,
+        }));
+    };
+
+    const prevStep = () => {
+        setFormState((prevState) => ({
+            ...prevState,
+            step: prevState.step > 0 ? prevState.step - 1 : 0,
+        }));
+    };
 
     const handleCancel = () => {
-        setFormData({});
-        setStep(0);
+        setFormState(initialFormState);
     };
 
     const handleBack = (navigate) => {
-        if (step > 0 && step < 5) {
-            setStep(step - 1);
-        } else if (step === 0) {
-            navigate('/');
+        if (formState.step > 0) {
+            prevStep();
+        } else {
+            navigate(-1); // 이전 페이지로 이동
         }
-    };
-
-    const nextStep = (newData) => {
-        setFormData({ ...formData, ...newData });
-        setStep(step + 1);
     };
 
     return (
         <Router>
             <div className="mainContainer">
-                <Header
-                    onBack={handleBack}
-                    onCancel={handleCancel}
-                    step={step}
-                />
+                <Header onBack={handleBack} onCancel={handleCancel} step={formState.step} />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
-                    <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/ISRegister"
                         element={
                             <ISRegisterPage
-                                step={step}
+                                step={formState.step}
                                 nextStep={nextStep}
-                                prevStep={handleBack}
-                                formData={formData}
+                                prevStep={prevStep}
+                                formData={formState.data}
+                                setFormData={(data) => setFormState({ ...formState, data })}
                             />
                         }
                     />
-                    <Route
-                        path="/attendance/main"
-                        element={<ViewAllAttendance />}
-                    />
-                    <Route path="/MyAccount" element={<MyAccountPage />} />
-                    <Route
-                        path="/attendance/post"
-                        element={<PostAttendance />}
-                    />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/community" element={<CommunityPage />} />
                 </Routes>
             </div>
         </Router>
