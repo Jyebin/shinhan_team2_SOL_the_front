@@ -1,33 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ActiveSavings from '../components/main/ActiveSavings';
 import NoSavings from '../components/main/NoSavings';
+import { SavingsContext } from '../store/SavingsProvider';
+
+const userID = 1;
 
 const MainPage = () => {
-    const [state, setState] = useState(null);
+    const {
+        hasSavings: state,
+        isInitialized,
+        initialize,
+    } = useContext(SavingsContext);
 
     useEffect(() => {
-        const hasSavings = checkSavingsStatus();
+        initialize(userID); // 메인 페이지에 처음 접근할 때만 초기화
+    }, [initialize]);
 
-        if (hasSavings) {
-            setState('ActiveSavings');
-        } else {
-            setState('NoSavings');
-        }
-    }, []);
-
-    const checkSavingsStatus = () => {
-        return false; // 예시로 적금을 가지고 있지 않은 것으로 설정
-    };
+    if (!isInitialized) {
+        return <p>Loading...</p>; // 초기화 중일 때 로딩 표시
+    }
 
     if (state === null) {
         return <div>Loading...</div>;
     }
 
-    return (
-        <div>
-            {state === 'ActiveSavings' ? <ActiveSavings /> : <NoSavings />}
-        </div>
-    );
+    return <div>{state ? <ActiveSavings /> : <NoSavings />}</div>;
 };
 
 export default MainPage;
