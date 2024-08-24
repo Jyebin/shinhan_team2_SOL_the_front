@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
+import MyAccountPage from './pages/MyAccountPage';
 
 // 상태와 단계 관련 상수 정의
 const initialFormState = {
@@ -47,6 +48,7 @@ function App() {
                 <Header onBack={handleBack} onCancel={handleCancel} step={formState.step} />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/myAccount" element={<MyAccountPage />} />
                     <Route
                         path="/ISRegister"
                         element={
