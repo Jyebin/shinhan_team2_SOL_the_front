@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 const DepositHistoryPage = () => {
     const location = useLocation();
     const { account } = location.state;
-    console.log(account);
+
     return (
         <Container
             style={{
@@ -20,9 +20,9 @@ const DepositHistoryPage = () => {
         >
             <br />
             <br />
-            <AccountInfo name={account.name} number={account.number} amount={account.balance} />
+            <AccountInfo name={account.name} balance={account.balance} number={account.number} />
             <hr />
-            <TransactionHistory />
+            <TransactionHistory accountID={account.accountID} />
         </Container>
     );
 };
