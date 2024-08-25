@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
-// useEffect를 import하는 것을 잊지 마세요.
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import Container from '../components/common/Container';
+import CanContent from '../components/myCan/CanContent';
+import CanImageContainer from '../components/myCan/CanImageContainer';
+import TerminateButton from '../components/myCan/TerminateButton';
+import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴포넌트 추가
+
+import lineUrl from '../assets/common/img/line.png';
+import '../assets/myCan/MyCanPage.css';
+
+const days = 40;
+const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
     const location = useLocation();
