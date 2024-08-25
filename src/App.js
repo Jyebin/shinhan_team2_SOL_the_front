@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
 import MyAccountPage from './pages/MyAccountPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
+import MyCanPage from './pages/MyCanPage';
 
 // 상태와 단계 관련 상수 정의
 const initialFormState = {
@@ -51,6 +52,7 @@ function App() {
                     <Route path="/" element={<MainPage />} />
                     <Route path="/myAccount" element={<MyAccountPage />} />
                     <Route path="/depositHistory" element={<DepositHistoryPage />} />
+                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/ISRegister"
                         element={

@@ -13,7 +13,7 @@ const Account = ({ account }) => {
         navigate('/depositHistory', { state: { account } });
     };
     const canClick = () => {
-        navigate('/myCan');
+        navigate('/myCan', { state: { account } });
     };
     return (
         <div className="account-container">
