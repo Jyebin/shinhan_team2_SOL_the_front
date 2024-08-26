@@ -15,7 +15,8 @@ function ISRegister4({ formData }) {
                 <br />
                 {/* <h2>적금 정보확인</h2> */}
                 <h3>적금 가입 정보를 확인하세요</h3>
-                <br />
+                <hr />
+                {/* <br /> */}
                 <div className="info-section">
                     <div className="info-row">
                         <span className="label">출금계좌</span>

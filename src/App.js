@@ -79,17 +79,7 @@ function App() {
                         element={<DepositHistoryPage />}
                     />
                     <Route path="/myCan" element={<MyCanPage />} />
-                    <Route
-                        path="/ISRegister"
-                        element={
-                            <ISRegisterPage
-                                step={step}
-                                nextStep={nextStep}
-                                prevStep={handleBack}
-                                formData={formData}
-                            />
-                        }
-                    />
+
                     <Route
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
