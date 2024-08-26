@@ -10,7 +10,7 @@ const SavingsMain = ({ containerClass, buttonClass, imgSrc }) => {
     const navigate = useNavigate(); // useNavigate 훅 사용
 
     const handleMakeCanClick = () => {
-        navigate('/ISRegister'); // 버튼 클릭 시 /ISRegister 경로로 이동
+        navigate('/ISInfo'); // 버튼 클릭 시 /ISRegister 경로로 이동
     };
 
     const handleAttendanceClick = () => {

@@ -1,63 +1,65 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ISRegisterPage from './pages/ISRegisterPage';
+import ISInfo from './components/ISRegister/ISInfo';
+import ISRegister1 from './components/ISRegister/ISRegister1';
+import ISRegister2 from './components/ISRegister/ISRegister2';
+import ISRegister3 from './components/ISRegister/ISRegister3';
+import ISRegister4 from './components/ISRegister/ISRegister4';
+import ISRegister5 from './components/ISRegister/ISRegister5';
 import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
 
-// 상태와 단계 관련 상수 정의
-const initialFormState = {
-    data: {},
-    step: 0,
-};
-
 function App() {
-    // 상태 관리: formData와 step을 하나의 객체로 관리
-    const [formState, setFormState] = useState(initialFormState);
+    const [formData, setFormData] = useState({});
 
-    const nextStep = (newData) => {
-        setFormState((prevState) => ({
-            ...prevState,
-            data: { ...prevState.data, ...newData },
-            step: prevState.step + 1,
+    const updateFormData = (newData) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            ...newData,
         }));
-    };
-
-    const prevStep = () => {
-        setFormState((prevState) => ({
-            ...prevState,
-            step: prevState.step > 0 ? prevState.step - 1 : 0,
-        }));
-    };
-
-    const handleCancel = () => {
-        setFormState(initialFormState);
-    };
-
-    const handleBack = (navigate) => {
-        if (formState.step > 0) {
-            prevStep();
-        } else {
-            navigate(-1); // 이전 페이지로 이동
-        }
     };
 
     return (
         <Router>
+            <Header />
             <div className="mainContainer">
-                <Header onBack={handleBack} onCancel={handleCancel} step={formState.step} />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/ISInfo" element={<ISInfo />} />
                     <Route
-                        path="/ISRegister"
+                        path="/ISRegister1"
                         element={
-                            <ISRegisterPage
-                                step={formState.step}
-                                nextStep={nextStep}
-                                prevStep={prevStep}
-                                formData={formState.data}
-                                setFormData={(data) => setFormState({ ...formState, data })}
+                            <ISRegister1
+                                formData={formData}
+                                updateFormData={updateFormData}
                             />
                         }
+                    />
+                    <Route
+                        path="/ISRegister2"
+                        element={
+                            <ISRegister2
+                                formData={formData}
+                                updateFormData={updateFormData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/ISRegister3"
+                        element={
+                            <ISRegister3
+                                formData={formData}
+                                updateFormData={updateFormData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/ISRegister4"
+                        element={<ISRegister4 formData={formData} />}
+                    />
+                    <Route
+                        path="/ISRegister5"
+                        element={<ISRegister5 formData={formData} />}
                     />
                 </Routes>
             </div>
