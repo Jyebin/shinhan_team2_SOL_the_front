@@ -14,8 +14,9 @@ import MyCanPage from './pages/MyCanPage';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
+// import CommunityPage from './pages/CommunityPage';
 import ErrorPage from './pages/ErrorPage';
+import SolPage from './pages/SolPage';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -90,7 +91,8 @@ function App() {
                         element={<PostAttendance />}
                     />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/community" element={<CommunityPage />} />
+                    <Route path="/sol" element={<SolPage />} />
+                    {/* <Route path="/community" element={<CommunityPage />} /> */}
                     <Route path="*" element={<ErrorPage />} />{' '}
                 </Routes>
             </div>
