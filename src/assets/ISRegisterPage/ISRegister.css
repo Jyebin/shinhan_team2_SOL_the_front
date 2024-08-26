@@ -22,7 +22,7 @@
 .register-footer {
     padding: 16px;
     background-color: #fff;
-    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1); /* 푸터 그림자 상단에 표시 */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 푸터 그림자 상단에 표시 */
     position: sticky;
     bottom: 0;
 }

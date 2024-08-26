@@ -1,82 +1,85 @@
-import './assets/App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ISRegisterPage from './pages/ISRegisterPage';
-import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ISInfo from './components/ISRegister/ISInfo';
+import ISRegister1 from './components/ISRegister/ISRegister1';
+import ISRegister2 from './components/ISRegister/ISRegister2';
+import ISRegister3 from './components/ISRegister/ISRegister3';
+import ISRegister4 from './components/ISRegister/ISRegister4';
+import ISRegister5 from './components/ISRegister/ISRegister5';
+import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
-import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
-import PostAttendance from './pages/attendance/PostAttendance';
-import LoginSuccess from './pages/attendance/LoginSuccess';
 import MyAccountPage from './pages/MyAccountPage';
-import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
-
-
-// 상태와 단계 관련 상수 정의
-const initialFormState = {
-    data: {},
-    step: 0,
-};
-
+import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
+import PostAttendance from './pages/attendance/PostAttendance';
+import Login from './pages/Login';
+import CommunityPage from './pages/CommunityPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
-    const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({});
 
-    const handleCancel = () => {
-        setFormData({});
-        setStep(0);
-    };
-
-    const handleBack = (navigate) => {
-        if (step > 0 && step < 5) {
-            setStep(step - 1);
-        } else if (step === 0) {
-            navigate('/');
-        }
-    };
-
-    const nextStep = (newData) => {
-        setFormData({ ...formData, ...newData });
-        setStep(step + 1);
+    const updateFormData = (newData) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            ...newData,
+        }));
     };
 
     return (
         <Router>
+            <Header />
             <div className="mainContainer">
-                <Header
-                    onBack={handleBack}
-                    onCancel={handleCancel}
-                    step={step}
-                />
                 <Routes>
-                    <Route path="/login-success" element={<LoginSuccess />} />
                     <Route path="/" element={<MainPage />} />
-                    <Route path="/test" element={<DepositHistoryPage />} />
-                    <Route path="/MyCanPage" element={<MyCanPage />} />
+                    <Route path="/ISInfo" element={<ISInfo />} />
                     <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
-                    <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
-                    <Route
-                        path="/ISRegister"
+                        path="/ISRegister1"
                         element={
-                            <ISRegisterPage
-                                step={step}
-                                nextStep={nextStep}
-                                prevStep={handleBack}
+                            <ISRegister1
                                 formData={formData}
+                                updateFormData={updateFormData}
                             />
                         }
                     />
+                    <Route
+                        path="/ISRegister2"
+                        element={
+                            <ISRegister2
+                                formData={formData}
+                                updateFormData={updateFormData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/ISRegister3"
+                        element={
+                            <ISRegister3
+                                formData={formData}
+                                updateFormData={updateFormData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/ISRegister4"
+                        element={<ISRegister4 formData={formData} />}
+                    />
+                    <Route
+                        path="/ISRegister5"
+                        element={<ISRegister5 formData={formData} />}
+                    />
+                    <Route path="/myAccount" element={<MyAccountPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
@@ -88,6 +91,7 @@ function App() {
                     />
                     <Route path="/login" element={<Login />} />
                     <Route path="/community" element={<CommunityPage />} />
+                    <Route path="*" element={<ErrorPage />} />{' '}
                 </Routes>
             </div>
         </Router>
