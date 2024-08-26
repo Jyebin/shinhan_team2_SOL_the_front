@@ -13,7 +13,7 @@ const Account = ({ account }) => {
         navigate('/depositHistory', { state: { account } });
     };
     const canClick = () => {
-        navigate('/myCan');
+        navigate('/myCan', { state: { account } });
     };
     return (
         <div className="account-container">
@@ -27,7 +27,7 @@ const Account = ({ account }) => {
                 </div>
                 <div className="account-body">
                     <p className="account-amount">
-                        {account.amount.toLocaleString()}원
+                        {account.balance.toLocaleString()}원
                     </p>
                     <button className="account-transfer">이체</button>
                 </div>

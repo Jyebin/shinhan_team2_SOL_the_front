@@ -4,13 +4,15 @@ import ISRegisterPage from './pages/ISRegisterPage';
 import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
 import Header from './components/navigator/Header';
-import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
-import PostAttendance from './pages/attendance/PostAttendance';
 import MyAccountPage from './pages/MyAccountPage';
-import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
+
+// 상태와 단계 관련 상수 정의
+const initialFormState = {
+    data: {},
+    step: 0,
+};
 
 function App() {
     const [step, setStep] = useState(0);
@@ -44,6 +46,12 @@ function App() {
                 />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/myAccount" element={<MyAccountPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/depositHistory"
                         element={<DepositHistoryPage />}
