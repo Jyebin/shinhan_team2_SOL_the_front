@@ -3,13 +3,15 @@ import '../../assets/depositHistoryPage/Transaction.css';
 
 const Transaction = ({ transaction }) => {
     const amountStatus =
-        transaction.status === '입금' ? 'amount-positive' : 'amount-negative';
+        transaction.status ? 'amount-positive' : 'amount-negative';
+    const amountStatusname =
+        transaction.status ? '입금' : '출금';
     return (
         <div className="transaction">
             <span className="transaction-date">{transaction.date}</span>
             <span className="transaction-time"> {transaction.time}</span>
             <span className={`deposit-status ${amountStatus}`}>
-                {transaction.status}
+                {amountStatusname}
             </span>
             <div className="transaction-info">
                 <span className="description">{transaction.description}</span>
