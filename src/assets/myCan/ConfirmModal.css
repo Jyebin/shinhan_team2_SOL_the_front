@@ -108,3 +108,8 @@ input[type='checkbox']:checked + label {
     cursor: pointer;
     flex: 1;
 }
+.confirmation-popup + .confirm-button {
+    display: block;
+    margin: 20px auto 0 auto;
+    text-align: center;
+}
