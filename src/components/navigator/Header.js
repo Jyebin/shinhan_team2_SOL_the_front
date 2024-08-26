@@ -28,7 +28,17 @@ function Header({ onBack, onCancel, step }) {
 
     // 이전 버튼 클릭 시 처리
     const handleBackClick = () => {
-        if (location.pathname.toLowerCase() === '/isinfo') {
+        const path = location.pathname.toLowerCase();
+
+        if (path === '/attendance/post') {
+            navigate('/attendance/main'); // attendance/post에서 무조건 attendance/main으로 이동
+        } else if (path === '/attendance/main') {
+            navigate('/'); // attendance/main에서 무조건 /로 이동
+        } else if (path === '/myaccount') {
+            navigate('/'); // myaccount에서 무조건 /로 이동
+        } else if (path === '/mycan') {
+            navigate('/myaccount'); // mycan에서 무조건 /myaccount로 이동
+        } else if (path === '/isinfo') {
             navigate('/'); // MainPage로 이동
         } else {
             if (onBack) {
