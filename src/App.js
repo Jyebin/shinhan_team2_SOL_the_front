@@ -8,6 +8,13 @@ import ISRegister4 from './components/ISRegister/ISRegister4';
 import ISRegister5 from './components/ISRegister/ISRegister5';
 import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
+import MyAccountPage from './pages/MyAccountPage';
+import DepositHistoryPage from './pages/DepositHistoryPage';
+import MyCanPage from './pages/MyCanPage';
+import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
+import PostAttendance from './pages/attendance/PostAttendance';
+import Login from './pages/Login';
+import CommunityPage from './pages/CommunityPage';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -61,6 +68,39 @@ function App() {
                         path="/ISRegister5"
                         element={<ISRegister5 formData={formData} />}
                     />
+                    <Route path="/myAccount" element={<MyAccountPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
+                    <Route
+                        path="/ISRegister"
+                        element={
+                            <ISRegisterPage
+                                step={step}
+                                nextStep={nextStep}
+                                prevStep={handleBack}
+                                formData={formData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/attendance/main"
+                        element={<ViewAllAttendance />}
+                    />
+                    <Route path="/MyAccount" element={<MyAccountPage />} />
+                    <Route
+                        path="/attendance/post"
+                        element={<PostAttendance />}
+                    />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/community" element={<CommunityPage />} />
                 </Routes>
             </div>
         </Router>
