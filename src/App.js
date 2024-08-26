@@ -14,6 +14,14 @@ import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
 import PrivateRoute from './components/common/PrivateRoute';
 
+
+// 상태와 단계 관련 상수 정의
+const initialFormState = {
+    data: {},
+    step: 0,
+};
+
+
 function App() {
     const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({});
@@ -77,6 +85,16 @@ function App() {
                             </PrivateRoute>
                         }
                     />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
+                    <Route
+                        path="/depositHistory"
+                        element={<DepositHistoryPage />}
+                    />
+                    <Route path="/myCan" element={<MyCanPage />} />
                     <Route
                         path="/ISRegister"
                         element={
