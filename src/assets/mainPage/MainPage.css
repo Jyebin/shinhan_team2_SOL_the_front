@@ -34,3 +34,16 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.solContainer {
+    width: 390px;
+    height: 844px;
+    overflow: hidden;
+}
+
+.solBackground {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
+}
