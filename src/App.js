@@ -7,6 +7,10 @@ import Header from './components/navigator/Header';
 import MyAccountPage from './pages/MyAccountPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
+import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
+import PostAttendance from './pages/attendance/PostAttendance';
+import Login from './pages/Login';
+import CommunityPage from './pages/CommunityPage';
 
 // 상태와 단계 관련 상수 정의
 const initialFormState = {
