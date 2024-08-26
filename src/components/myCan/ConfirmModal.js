@@ -22,10 +22,10 @@ const ConfirmModal = ({ onClose }) => {
                     </div>
                 </div>
                 <div className="modal-buttons">
-                    <button className="confirm-button" onClick={onClose}>
+                    <button className="can-confirm-button" onClick={onClose}>
                         확인
                     </button>
-                    <button className="cancel-button" onClick={onClose}>
+                    <button className="can-cancel-button" onClick={onClose}>
                         취소
                     </button>
                 </div>
