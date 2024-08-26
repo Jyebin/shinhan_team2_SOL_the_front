@@ -62,6 +62,22 @@ const PostAttendance = ({ onBack }) => {
 
     // 팝업 닫고 페이지 이동하는 함수
     const closePopup = () => {
+        const dummyData = [
+            { date: '2024-08-01', type: 'overspending' },
+            { date: '2024-08-02', type: 'saving' },
+            { date: '2024-08-12', type: 'overspending' },
+            { date: '2024-08-13', type: 'saving' },
+            { date: '2024-08-17', type: 'overspending' },
+        ];
+        const newAttendance = { date: '2024-08-26', type: 'saving' }; // 타입은 'saving' 또는 'overspending'으로 설정
+        const updatedDummyData = [...dummyData, newAttendance];
+
+        // localStorage에 저장
+        localStorage.setItem(
+            'attendanceData',
+            JSON.stringify(updatedDummyData),
+        );
+
         setPopupVisible(false);
         window.location.href = '/attendance/main';
     };

@@ -1,24 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/attendancePage/ViewAllAttendance.css';
 import { Link } from 'react-router-dom';
+import richBirdImage from '../../assets/attendancePage/img/richBird.png';
 
 function ViewAllAttendance() {
+    const [message, setMessage] = useState('');
+    const [buttonColor, setButtonColor] = useState('default');
+    const [popupVisible, setPopupVisible] = useState(false);
+    const [popupMessage, setPopupMessage] = useState('');
+    const [popupType, setPopupType] = useState('');
+
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자
     const [currentDate, setCurrentDate] = useState(new Date()); // 달력 호출을 위한 현재 날짜, 기본: 오늘
     const [attendanceData, setAttendanceData] = useState([]); // 출석한 날짜 및 출석글 타입, 총 출석 일자를 계산하기 때문에 전체 데이터를 한번에 호출
 
     useEffect(() => {
-        // 여기서 출석 데이터 호출 API 호출
-        // dummy data
-        const dummyData = [
+        // // 여기서 출석 데이터 호출 API 호출
+        // // dummy data
+        // const dummyData = [
+        //     { date: '2024-08-01', type: 'overspending' },
+        //     { date: '2024-08-02', type: 'saving' },
+        //     { date: '2024-08-12', type: 'overspending' },
+        //     { date: '2024-08-13', type: 'saving' },
+        //     { date: '2024-08-17', type: 'overspending' },
+        // ];
+        // setAttendanceData(dummyData); // 출석한 날짜 설정
+        // setTotalAttendanceDays(dummyData.length); // 총 출석 일자 설정
+        const initialDummyData = [
             { date: '2024-08-01', type: 'overspending' },
             { date: '2024-08-02', type: 'saving' },
             { date: '2024-08-12', type: 'overspending' },
             { date: '2024-08-13', type: 'saving' },
             { date: '2024-08-17', type: 'overspending' },
         ];
-        setAttendanceData(dummyData); // 출석한 날짜 설정
-        setTotalAttendanceDays(dummyData.length); // 총 출석 일자 설정
+
+        // 로컬스토리지에서 추가된 데이터를 가져옴
+        const storedData =
+            JSON.parse(localStorage.getItem('attendanceData')) || [];
+
+        // 더미 데이터와 로컬스토리지 데이터를 병합하여 최종 출석 데이터 생성
+        const mergedData = [...initialDummyData, ...storedData];
+
+        setAttendanceData(mergedData);
+        if (mergedData.length == 11) {
+            setTotalAttendanceDays(mergedData.length - 5);
+        } else {
+            setTotalAttendanceDays(mergedData.length);
+        }
     }, []);
 
     // 달력 생성을 위한 함수
@@ -91,8 +119,15 @@ function ViewAllAttendance() {
         });
     };
 
-    const viewAttendancePosts = () => {
-        alert('출력');
+    const viewAttendancePosts = (attendanceInfo) => {
+        setPopupMessage(
+            `오늘 나 커피 사마시는 대신에 집에서 가져온 애사비 마셨어`,
+        );
+        setPopupVisible(true);
+    };
+
+    const closePopup = () => {
+        setPopupVisible(false);
     };
 
     return (
@@ -143,6 +178,18 @@ function ViewAllAttendance() {
             <div className="attendance-info">
                 · 하루에 한 번 오늘 날짜만 출석할 수 있어요.
             </div>
+
+            {popupVisible && (
+                <div className="popup-background">
+                    <div className="popup-content">
+                        <div className="popup-message">{popupMessage}</div>
+                        <img src={richBirdImage} className="popup-image" />
+                        <button className="popup-button" onClick={closePopup}>
+                            닫기
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
