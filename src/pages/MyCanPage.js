@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import Container from '../components/common/Container';
 import CanContent from '../components/myCan/CanContent';
 import CanImageContainer from '../components/myCan/CanImageContainer';
@@ -8,15 +10,32 @@ import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴
 import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
-const balance = 49999;
 const days = 40;
 const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
+    const location = useLocation();
+    const { account } = location.state;
+    const accountID = account.accountID;
+
+    const [amount, setAmount] = useState(0);
     const [coinFlipped, setCoinFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
     const [isAnimating, setIsAnimating] = useState(false);
     const [showModal, setShowModal] = useState(false); // 모달 상태 추가
+
+    useEffect(() => {
+        const getCanAmount = async (accountID) => {
+            try {
+                const res = await axios.get('http://localhost:9070/account/can/amount?accountID=' + accountID);
+                setAmount(res.data);
+            } catch (error) {
+                console.error('Failed to fetch "getCanAmount"', error);
+            }
+        };
+
+        getCanAmount(accountID);
+    }, [accountID]); // accountID가 변경될 때만 호출되도록 의존성을 설정
 
     const onClick = () => {
         if (isAnimating) return;
@@ -28,7 +47,7 @@ const MyCanPage = () => {
 
             setTimeout(() => {
                 const newCoins = [];
-                const coinCount = Math.floor(balance / 10000);
+                const coinCount = Math.floor(amount / 10000);
 
                 for (let i = 0; i < coinCount; i++) {
                     const position = {

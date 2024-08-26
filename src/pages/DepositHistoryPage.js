@@ -3,12 +3,12 @@ import Container from '../components/common/Container';
 import AccountInfo from '../components/depositHistory/AccountInfo';
 import TransactionHistory from '../components/depositHistory/TransactionHistory';
 
-// 예비 데이터
-const name = '쏠편한 입출금통장(저축예금)';
-const number = '110-576-040419';
-const amount = 25000;
+import { useLocation } from 'react-router-dom';
 
 const DepositHistoryPage = () => {
+    const location = useLocation();
+    const { account } = location.state;
+
     return (
         <Container
             style={{
@@ -20,9 +20,9 @@ const DepositHistoryPage = () => {
         >
             <br />
             <br />
-            <AccountInfo name={name} number={number} amount={amount} />
+            <AccountInfo name={account.name} balance={account.balance} number={account.number} />
             <hr />
-            <TransactionHistory />
+            <TransactionHistory accountID={account.accountID} />
         </Container>
     );
 };

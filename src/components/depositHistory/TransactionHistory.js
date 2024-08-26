@@ -1,34 +1,27 @@
 import Transaction from './Transaction';
 import '../../assets/depositHistoryPage/TransactionHistory.css';
+import axios from 'axios'
+import React, { useState, useEffect } from 'react';
 
-const transactionData = [
-    {
-        date: '2024.08.19',
-        time: '19:36:02',
-        description: '깡통',
-        status: '출금',
-        amount: 100,
-        balance: 194004,
-    },
-    {
-        date: '2024.08.19',
-        time: '19:36:00',
-        description: '구글페이먼트코리',
-        status: '출금',
-        amount: 14900,
-        balance: 194104,
-    },
-    {
-        date: '2024.08.14',
-        time: '12:41:11',
-        description: '국민취업지원',
-        status: '입금',
-        amount: 500000,
-        balance: 500000,
-    },
-];
+const TransactionHistory = (accountID) => {
+    const id = accountID.accountID; // 객체 -> 변수 변환
 
-const TransactionHistory = () => {
+    const [transactionData, setTransactionData] = useState([]);
+
+    const getTransactionList = async (accountID) => {
+        try {
+            const res = await axios.get('http://localhost:9070/account/transaction/list?accountID=' + accountID);
+            console.log(res.data);
+            setTransactionData(res.data);
+        } catch (error) {
+            console.error('Failed to fetch "getAccountList"', error);
+        }
+    };
+
+    useEffect(() => {
+        getTransactionList(id);
+    }, []); // 빈 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행
+
     return (
         <div className="transaction-history">
             {transactionData && transactionData.length > 0 ? (
