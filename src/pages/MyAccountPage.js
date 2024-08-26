@@ -1,44 +1,44 @@
+import React, { useState, useEffect } from 'react';
 import Container from '../components/common/Container';
 import Account from '../components/myAccount/Account';
+import axios from 'axios';
 import MyAccountHeader from '../components/myAccount/MyAccountHeader';
 
 import '../assets/myAccountPage/MyAccountPage.css';
 import accountsImgUrl from '../assets/attendancePage/img/poorBird.png';
 import savingsImgUrl from '../assets/attendancePage/img/flexBird.png';
 
-const accountsData = [
-    {
-        name: '쏠편한 입출금통장(저축예금)',
-        number: '110-576-040419',
-        amount: 25000,
-        hasCan: true,
-    },
-    {
-        name: '스무살 우리 통장',
-        number: '1002-459-729439',
-        amount: 50000,
-        hasCan: false,
-    },
-];
-
 const savingsData = [
     {
         name: '청년 주택드림 청약통장',
         number: '1073-118-146426',
-        amount: 2500000,
+        balance: 2500000,
     },
 ];
 
-// const mockData = [];
-
 const MyAccountPage = () => {
+    const [accountsData, setAccountsData] = useState([]);
+
+    const getAccountList = async (userID) => {
+        try {
+            const res = await axios.get('http://localhost:9070/account/list?userID=' + userID);
+            setAccountsData(res.data);
+        } catch (error) {
+            console.error('Failed to fetch "getAccountList"', error);
+        }
+    };
+
+    useEffect(() => {
+        getAccountList(1);
+    }, []); // 빈 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행
+
     return (
         <Container
             style={{
                 backgroundColor: '#f3f6fb',
                 display: 'flex',
-                'flex-direction': 'column',
-                'justify-content': 'flex-start',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
             }}
         >
             <br />
@@ -46,7 +46,7 @@ const MyAccountPage = () => {
             <MyAccountHeader
                 imgSrc={accountsImgUrl}
                 headerName="입출금"
-                headerCount="2"
+                headerCount={accountsData.length}
             />
             <div className="accounts-list">
                 {accountsData && accountsData.length > 0 ? (
@@ -61,7 +61,7 @@ const MyAccountPage = () => {
             <MyAccountHeader
                 imgSrc={savingsImgUrl}
                 headerName="적금"
-                headerCount="1"
+                headerCount={savingsData.length}
             />
 
             <div className="accounts-list">
