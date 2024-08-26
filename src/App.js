@@ -15,6 +15,7 @@ import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 import Login from './pages/Login';
 import CommunityPage from './pages/CommunityPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -79,7 +80,6 @@ function App() {
                         element={<DepositHistoryPage />}
                     />
                     <Route path="/myCan" element={<MyCanPage />} />
-
                     <Route
                         path="/attendance/main"
                         element={<ViewAllAttendance />}
@@ -91,6 +91,7 @@ function App() {
                     />
                     <Route path="/login" element={<Login />} />
                     <Route path="/community" element={<CommunityPage />} />
+                    <Route path="*" element={<ErrorPage />} />{' '}
                 </Routes>
             </div>
         </Router>

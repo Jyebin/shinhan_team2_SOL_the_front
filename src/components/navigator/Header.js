@@ -6,8 +6,23 @@ function Header({ onBack, onCancel, step }) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // MainPage 또는 로그인 페이지에서는 헤더를 표시하지 않음
-    if (location.pathname === '/' || location.pathname === '/login') {
+    // 특정 경로에서만 헤더를 표시
+    const validPaths = [
+        '/isinfo',
+        '/isregister1',
+        '/isregister2',
+        '/isregister3',
+        '/isregister4',
+        '/isregister5',
+        '/attendance/main',
+        '/attendance/post',
+        '/diposithistory',
+        '/myaccount',
+        '/mycan',
+    ];
+
+    // 경로가 유효하지 않으면 헤더를 표시하지 않음
+    if (!validPaths.includes(location.pathname.toLowerCase())) {
         return null;
     }
 
@@ -16,7 +31,11 @@ function Header({ onBack, onCancel, step }) {
         if (location.pathname.toLowerCase() === '/isinfo') {
             navigate('/'); // MainPage로 이동
         } else {
-            onBack(navigate); // 이전 페이지로 이동
+            if (onBack) {
+                onBack(navigate);
+            } else {
+                navigate(-1); // 기본 동작으로 뒤로 가기
+            }
         }
     };
 
