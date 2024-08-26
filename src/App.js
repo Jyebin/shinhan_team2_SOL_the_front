@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import CommunityPage from './pages/CommunityPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
+import PrivateRoute from './components/common/PrivateRoute';
 
 function App() {
     const [step, setStep] = useState(0);
@@ -44,32 +45,77 @@ function App() {
                     step={step}
                 />
                 <Routes>
-                    <Route path="/login-success" element={<LoginSuccess />} />
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="/test" element={<DepositHistoryPage />} />
-                    <Route path="/MyCanPage" element={<MyCanPage />} />
+                    <Route
+                        path="/login-success"
+                        element={
+                            <PrivateRoute>
+                                <LoginSuccess />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/"
+                        element={
+                            <PrivateRoute>
+                                <MainPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/test"
+                        element={
+                            <PrivateRoute>
+                                <DepositHistoryPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/MyCanPage"
+                        element={
+                            <PrivateRoute>
+                                <MyCanPage />
+                            </PrivateRoute>
+                        }
+                    />
                     <Route
                         path="/ISRegister"
                         element={
-                            <ISRegisterPage
-                                step={step}
-                                nextStep={nextStep}
-                                prevStep={handleBack}
-                                formData={formData}
-                            />
+                            <PrivateRoute>
+                                <ISRegisterPage
+                                    step={step}
+                                    nextStep={nextStep}
+                                    prevStep={handleBack}
+                                    formData={formData}
+                                />
+                            </PrivateRoute>
                         }
                     />
                     <Route
                         path="/attendance/main"
-                        element={<ViewAllAttendance />}
+                        element={
+                            <PrivateRoute>
+                                <ViewAllAttendance />
+                            </PrivateRoute>
+                        }
                     />
                     <Route path="/MyAccount" element={<MyAccountPage />} />
                     <Route
                         path="/attendance/post"
-                        element={<PostAttendance />}
+                        element={
+                            <PrivateRoute>
+                                <PostAttendance />
+                            </PrivateRoute>
+                        }
                     />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/community" element={<CommunityPage />} />
+                    <Route
+                        path="/community"
+                        element={
+                            <PrivateRoute>
+                                <CommunityPage />
+                            </PrivateRoute>
+                        }
+                    />
                 </Routes>
             </div>
         </Router>
