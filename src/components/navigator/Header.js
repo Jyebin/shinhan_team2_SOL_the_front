@@ -16,7 +16,7 @@ function Header({ onBack, onCancel, step }) {
         '/isregister5',
         '/attendance/main',
         '/attendance/post',
-        '/diposithistory',
+        '/deposithistory',
         '/myaccount',
         '/mycan',
     ];
@@ -26,65 +26,53 @@ function Header({ onBack, onCancel, step }) {
         return null;
     }
 
+    // 경로별 이전 버튼의 동작 정의
+    const backNavigationPaths = {
+        '/attendance/post': '/attendance/main',
+        '/attendance/main': '/',
+        '/myaccount': '/',
+        '/mycan': '/myaccount',
+        '/deposithistory': '/myaccount',
+        '/isinfo': '/',
+    };
+
     // 이전 버튼 클릭 시 처리
     const handleBackClick = () => {
         const path = location.pathname.toLowerCase();
+        const targetPath = backNavigationPaths[path];
 
-        if (path === '/attendance/post') {
-            navigate('/attendance/main'); // attendance/post에서 무조건 attendance/main으로 이동
-        } else if (path === '/attendance/main') {
-            navigate('/'); // attendance/main에서 무조건 /로 이동
-        } else if (path === '/myaccount') {
-            navigate('/'); // myaccount에서 무조건 /로 이동
-        } else if (path === '/mycan') {
-            navigate('/myaccount'); // mycan에서 무조건 /myaccount로 이동
-        } else if (path === '/isinfo') {
-            navigate('/'); // MainPage로 이동
+        if (targetPath) {
+            navigate(targetPath); // 정의된 경로로 이동
+        } else if (onBack) {
+            onBack(navigate); // onBack 함수가 있으면 실행
         } else {
-            if (onBack) {
-                onBack(navigate);
-            } else {
-                navigate(-1); // 기본 동작으로 뒤로 가기
-            }
+            navigate(-1); // 기본 동작으로 뒤로 가기
         }
     };
 
     // 페이지에 따라 헤더의 타이틀 설정
-    const getTitle = () => {
-        switch (location.pathname.toLowerCase()) {
-            case '/isinfo':
-                return '적금 정보';
-            case '/isregister1':
-                return '적금 가입 1/4';
-            case '/isregister2':
-                return '적금 가입 2/4';
-            case '/isregister3':
-                return '적금 가입 3/4';
-            case '/isregister4':
-                return '적금 가입 4/4';
-            case '/isregister5':
-                return '가입 완료';
-            case '/attendance/main':
-                return '출석부';
-            case '/attendance/post':
-                return '글쓰기';
-            case '/diposithistory':
-                return '거래 내역';
-            case '/myaccount':
-                return '내 계좌';
-            case '/mycan':
-                return '내 깡통';
-            default:
-                return '';
-        }
+    const titles = {
+        '/isinfo': '적금 정보',
+        '/isregister1': '적금 가입 1/4',
+        '/isregister2': '적금 가입 2/4',
+        '/isregister3': '적금 가입 3/4',
+        '/isregister4': '적금 가입 4/4',
+        '/isregister5': '가입 완료',
+        '/attendance/main': '출석부',
+        '/attendance/post': '글쓰기',
+        '/deposithistory': '거래 내역',
+        '/myaccount': '내 계좌',
+        '/mycan': '내 깡통',
     };
+
+    const title = titles[location.pathname.toLowerCase()] || '';
 
     return (
         <header className="header">
             <button className="header-button" onClick={handleBackClick}>
                 &lt;
             </button>
-            <h1 className="header-title">{getTitle()}</h1>
+            <h1 className="header-title">{title}</h1>
             {[
                 '/isregister1',
                 '/isregister2',
