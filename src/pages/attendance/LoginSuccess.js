@@ -28,9 +28,7 @@ function LoginSuccess() {
                 .get('http://localhost:3000/', {
                     headers: { Authorization: `Bearer ${token}` },
                 })
-                .then((res) => {
-                    setData(res.data);
-                    console.log(res.data);
+                .then(() => {
                     if (!from) {
                         navigate('/');
                     }

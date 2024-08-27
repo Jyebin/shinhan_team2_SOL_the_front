@@ -15,14 +15,10 @@ import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 import Login from './pages/Login';
 import CommunityPage from './pages/CommunityPage';
-import DepositHistoryPage from './pages/DepositHistoryPage';
-import MyCanPage from './pages/MyCanPage';
+import ErrorPage from './pages/ErrorPage';
 
-// 상태와 단계 관련 상수 정의
-const initialFormState = {
-    data: {},
-    step: 0,
-};
+import LoginSuccess from './pages/attendance/LoginSuccess';
+import PrivateRoute from './components/common/PrivateRoute';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -40,28 +36,109 @@ function App() {
             <div className="mainContainer">
                 <Routes>
                     <Route path="/login-success" element={<LoginSuccess />} />
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="/test" element={<DepositHistoryPage />} />
-                    <Route path="/MyCanPage" element={<MyCanPage />} />
                     <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
-                    <Route
-                        path="/depositHistory"
-                        element={<DepositHistoryPage />}
-                    />
-                    <Route path="/myCan" element={<MyCanPage />} />
-                    <Route
-                        path="/ISRegister"
+                        path="/"
                         element={
-                            <ISRegisterPage
-                                step={step}
-                                nextStep={nextStep}
-                                prevStep={handleBack}
-                                formData={formData}
-                            />
+                            <PrivateRoute>
+                                <MainPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISInfo"
+                        element={
+                            <PrivateRoute>
+                                <ISInfo />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISRegister1"
+                        element={
+                            <PrivateRoute>
+                                <ISRegister1
+                                    formData={formData}
+                                    updateFormData={updateFormData}
+                                />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISRegister2"
+                        element={
+                            <PrivateRoute>
+                                <ISRegister2
+                                    formData={formData}
+                                    updateFormData={updateFormData}
+                                />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISRegister3"
+                        element={
+                            <PrivateRoute>
+                                <ISRegister3
+                                    formData={formData}
+                                    updateFormData={updateFormData}
+                                />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISRegister4"
+                        element={
+                            <PrivateRoute>
+                                <ISRegister4 formData={formData} />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ISRegister5"
+                        element={
+                            <PrivateRoute>
+                                <ISRegister5 formData={formData} />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/myAccount"
+                        element={
+                            <PrivateRoute>
+                                <MyAccountPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/depositHistory"
+                        element={
+                            <PrivateRoute>
+                                <DepositHistoryPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/myCan"
+                        element={
+                            <PrivateRoute>
+                                <MyCanPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/depositHistory"
+                        element={
+                            <PrivateRoute>
+                                <DepositHistoryPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/myCan"
+                        element={
+                            <PrivateRoute>
+                                <MyCanPage />
+                            </PrivateRoute>
                         }
                     />
                     <Route
@@ -72,7 +149,14 @@ function App() {
                             </PrivateRoute>
                         }
                     />
-                    <Route path="/MyAccount" element={<MyAccountPage />} />
+                    <Route
+                        path="/MyAccount"
+                        element={
+                            <PrivateRoute>
+                                <MyAccountPage />
+                            </PrivateRoute>
+                        }
+                    />
                     <Route
                         path="/attendance/post"
                         element={
@@ -83,6 +167,7 @@ function App() {
                     />
                     <Route path="/login" element={<Login />} />
                     <Route path="/community" element={<CommunityPage />} />
+                    <Route path="*" element={<ErrorPage />} />{' '}
                 </Routes>
             </div>
         </Router>
