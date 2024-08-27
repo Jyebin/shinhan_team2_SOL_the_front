@@ -25,11 +25,15 @@ function LoginSuccess() {
             ); // 토큰 저장 확인
 
             axios
-                .get('http://localhost:3000/login-success', {
+                .get('http://localhost:3000/', {
                     headers: { Authorization: `Bearer ${token}` },
                 })
                 .then((res) => {
                     setData(res.data);
+                    console.log(res.data);
+                    if (!from) {
+                        navigate('/');
+                    }
                     navigate(from); // 원래 경로로 리디렉션
                 })
                 .catch((error) => {
