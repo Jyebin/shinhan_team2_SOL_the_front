@@ -27,18 +27,28 @@ const ISRegister1 = ({ formData, updateFormData }) => {
         if (contentRef.current) {
             const { scrollTop, scrollHeight, clientHeight } =
                 contentRef.current;
-            setIsScrolled(scrollTop + clientHeight >= scrollHeight);
+            const isBottom = scrollTop + clientHeight >= scrollHeight - 5; // 끝에 도달하기 5px 전에 감지
+            setIsScrolled(isBottom);
         }
     }, []);
 
     useEffect(() => {
         const contentElement = contentRef.current;
+        const handleTouchMove = () => {
+            handleScroll();
+        };
+
         if (contentElement) {
             contentElement.addEventListener('scroll', handleScroll);
+            contentElement.addEventListener('touchmove', handleTouchMove);
         }
         return () => {
             if (contentElement) {
                 contentElement.removeEventListener('scroll', handleScroll);
+                contentElement.removeEventListener(
+                    'touchmove',
+                    handleTouchMove,
+                );
             }
         };
     }, [handleScroll]);
@@ -157,21 +167,6 @@ const ISRegister1 = ({ formData, updateFormData }) => {
                         시 확인이 가능합니다.
                     </p>
                     <p>
-                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
-                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
-                        시 확인이 가능합니다.
-                    </p>
-                    <p>
-                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
-                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
-                        시 확인이 가능합니다.
-                    </p>
-                    <p>
-                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
-                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
-                        시 확인이 가능합니다.
-                    </p>
-                    <p>
                         기본이자율은 가입일에 고시된 “신한 땡겨요 적금”의
                         기본이자율을 적용합니다.
                     </p>
@@ -182,6 +177,21 @@ const ISRegister1 = ({ formData, updateFormData }) => {
                     <p>
                         우대이자율은 중도해지 한 계좌에 대해서는 적용하지
                         않으며, 만기해지 시에만 지급됩니다.
+                    </p>
+                    <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
+                    </p>
+                    <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
+                    </p>
+                    <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
                     </p>
                 </div>
             </div>

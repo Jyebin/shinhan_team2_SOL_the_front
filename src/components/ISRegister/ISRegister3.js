@@ -83,7 +83,7 @@ function ISRegister3({ formData, updateFormData }) {
                     >
                         <option value="">출금 계좌를 선택하세요</option>
                         <option value="우리은행 1230-23423-233">
-                            우리은행 1230-23423-233
+                            신한은행 1230-23423-233
                         </option>
                         <option value="신한은행 110-459-123456">
                             신한은행 110-459-123456
@@ -171,16 +171,16 @@ function ISRegister3({ formData, updateFormData }) {
                         </div>
                     </div>
                 )}
+                <footer className="register-footer">
+                    <button
+                        onClick={handleNext}
+                        className="next-button"
+                        disabled={!isPasswordCorrect}
+                    >
+                        다음
+                    </button>
+                </footer>
             </div>
-            <footer className="register-footer">
-                <button
-                    onClick={handleNext}
-                    className="next-button"
-                    disabled={!isPasswordCorrect}
-                >
-                    다음
-                </button>
-            </footer>
         </div>
     );
 }

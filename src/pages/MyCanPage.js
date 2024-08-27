@@ -10,7 +10,7 @@ import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴
 import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
-const days = 40;
+const days = 20;
 const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
@@ -27,7 +27,10 @@ const MyCanPage = () => {
     useEffect(() => {
         const getCanAmount = async (accountID) => {
             try {
-                const res = await axios.get('http://localhost:9070/account/can/amount?accountID=' + accountID);
+                const res = await axios.get(
+                    'http://192.168.0.63:9070/account/can/balance?accountID=' +
+                        accountID,
+                );
                 setAmount(res.data);
             } catch (error) {
                 console.error('Failed to fetch "getCanAmount"', error);

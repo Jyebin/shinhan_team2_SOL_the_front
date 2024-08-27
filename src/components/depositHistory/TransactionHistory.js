@@ -1,6 +1,6 @@
 import Transaction from './Transaction';
 import '../../assets/depositHistoryPage/TransactionHistory.css';
-import axios from 'axios'
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const TransactionHistory = (accountID) => {
@@ -10,7 +10,10 @@ const TransactionHistory = (accountID) => {
 
     const getTransactionList = async (accountID) => {
         try {
-            const res = await axios.get('http://localhost:9070/account/transaction/list?accountID=' + accountID);
+            const res = await axios.get(
+                'http://192.168.0.63:9070/account/transaction/list?accountID=' +
+                    accountID,
+            );
             console.log(res.data);
             setTransactionData(res.data);
         } catch (error) {

@@ -8,6 +8,8 @@ import '../assets/myAccountPage/MyAccountPage.css';
 import accountsImgUrl from '../assets/attendancePage/img/poorBird.png';
 import savingsImgUrl from '../assets/attendancePage/img/flexBird.png';
 
+const userID = 1;
+
 const savingsData = [
     {
         name: '청년 주택드림 청약통장',
@@ -22,7 +24,7 @@ const MyAccountPage = () => {
     const getAccountList = async (userID) => {
         try {
             const res = await axios.get(
-                'http://localhost:9070/account/list?userID=' + userID,
+                'http://192.168.0.63:9070/account/list?userID=' + userID,
             );
             setAccountsData(res.data);
         } catch (error) {
@@ -31,7 +33,7 @@ const MyAccountPage = () => {
     };
 
     useEffect(() => {
-        getAccountList(1);
+        getAccountList(userID);
     }, []); // 빈 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행
 
     return (

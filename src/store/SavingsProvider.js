@@ -13,7 +13,7 @@ export const SavingsProvider = ({ children }) => {
             try {
                 axios
                     .get(
-                        'http://localhost:9070/user/hasCan?userID=' + userID,
+                        'http://192.168.0.63:9070/user/hasCan?userID=' + userID,
                     )
                     .then((res) => {
                         setHasSavings(res.data);

@@ -1,5 +1,5 @@
 .checkCan {
-    bottom: 3%;
+    bottom: 15%;
     left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn2.png);
@@ -8,7 +8,7 @@
 }
 
 .makeCan {
-    bottom: 3%;
+    bottom: 15%;
     left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn1.png);
@@ -17,7 +17,7 @@
 }
 
 .checkAccount {
-    bottom: 9%;
+    bottom: 20%;
     left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn3.png);

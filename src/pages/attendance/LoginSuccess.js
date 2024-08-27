@@ -16,7 +16,7 @@ function LoginSuccess() {
 
             // API 호출로 추가 데이터 가져오기
             axios
-                .get(`http://localhost:3000/`, {
+                .get(`http://192.168.0.63:3000/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })
                 .then((res) => {

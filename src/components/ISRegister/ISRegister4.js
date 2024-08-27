@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
@@ -7,6 +8,21 @@ function ISRegister4({ formData }) {
     const selectedAccount = formData?.account || '계좌 정보 없음';
     const appliedInterestRate = formData?.totalInterestRate || '0.00';
     const navigate = useNavigate();
+
+    const userID = 2;
+    const accountID = 4;
+
+    const onClick = async () => {
+        try {
+            const res = await axios.post(
+                'http://192.168.0.63:9070/account/register?userID=' +
+                    userID +
+                    '&accountID=' +
+                    accountID,
+            );
+            navigate('/ISRegister5');
+        } catch (error) {}
+    };
 
     return (
         <div className="register-container">
@@ -53,10 +69,7 @@ function ISRegister4({ formData }) {
                 </div>
             </div>
             <footer className="register-footer">
-                <button
-                    onClick={() => navigate('/ISRegister5')}
-                    className="next-button"
-                >
+                <button onClick={onClick} className="next-button">
                     다음
                 </button>
             </footer>

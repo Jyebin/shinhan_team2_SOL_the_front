@@ -43,9 +43,9 @@ function ViewAllAttendance() {
 
         setAttendanceData(mergedData);
         if (mergedData.length == 11) {
-            setTotalAttendanceDays(mergedData.length - 5);
+            setTotalAttendanceDays(20);
         } else {
-            setTotalAttendanceDays(mergedData.length);
+            setTotalAttendanceDays(19);
         }
     }, []);
 
@@ -169,7 +169,7 @@ function ViewAllAttendance() {
             </main>
 
             <Link
-                to="http://localhost:3000/attendance/post"
+                to="http://192.168.0.63:3000/attendance/post"
                 className="attendance-button"
             >
                 오늘 출석체크하기
