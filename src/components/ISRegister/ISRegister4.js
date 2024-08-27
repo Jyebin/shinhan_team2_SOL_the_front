@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
@@ -7,6 +7,11 @@ function ISRegister4({ formData }) {
     const selectedAccount = formData?.account || '계좌 정보 없음';
     const appliedInterestRate = formData?.totalInterestRate || '0.00';
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // 페이지가 마운트될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="register-container">

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister5.css';
 import regiImage from '../../assets/ISRegisterPage/img/regi0.png'; // 이미지 경로에 따라 수정
 
-function ISRegister5({ formData }) { 
+function ISRegister5({ formData }) {
     const navigate = useNavigate();
 
     const handleMainPageRedirect = () => {
-        navigate('/');
+        navigate('/attendance/main');
     };
 
     const handleConfirmation = () => {
@@ -17,6 +17,11 @@ function ISRegister5({ formData }) {
     const formatDate = (date) => {
         return `${date.getFullYear()}년 ${String(date.getMonth() + 1)}월 ${String(date.getDate())}일`;
     };
+
+    useEffect(() => {
+        // 페이지가 마운트될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="register-container">

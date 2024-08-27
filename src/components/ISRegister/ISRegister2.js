@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister.css';
 import checkNo from '../../assets/common/img/check_no.png';
@@ -7,6 +7,11 @@ import checkNo2 from '../../assets/common/img/check_no2.png';
 import checkYes2 from '../../assets/common/img/check_yes2.png';
 
 function ISRegister2({ formData, updateFormData }) {
+    useEffect(() => {
+        // 페이지가 마운트될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
+
     const [agreements, setAgreements] = useState(
         formData.agreements || {
             all: false,

@@ -14,6 +14,7 @@ function ISRegister3({ formData, updateFormData }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         handleShuffle(); // 초기화 시에 키패드 숫자를 셔플
     }, []);
 
