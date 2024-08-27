@@ -14,9 +14,9 @@ const days = 40;
 const interestRate = days >= 20 ? '10.0' : '8.0';
 
 const MyCanPage = () => {
-    const location = useLocation();
-    const { account } = location.state;
-    const accountID = account.accountID;
+    // const location = useLocation();
+    // const { account } = location.state;
+    // const accountID = account.accountID;
 
     const [amount, setAmount] = useState(0);
     const [coinFlipped, setCoinFlipped] = useState(false);
@@ -25,17 +25,19 @@ const MyCanPage = () => {
     const [showModal, setShowModal] = useState(false); // 모달 상태 추가
 
     useEffect(() => {
-        const getCanAmount = async (accountID) => {
+        const getCanAmount = async () => {
             try {
-                const res = await axios.get('http://localhost:9070/account/can/amount?accountID=' + accountID);
+                const res = await axios.get(
+                    'http://localhost:9070/account/can/balance?accountID=3',
+                );
                 setAmount(res.data);
             } catch (error) {
                 console.error('Failed to fetch "getCanAmount"', error);
             }
         };
 
-        getCanAmount(accountID);
-    }, [accountID]); // accountID가 변경될 때만 호출되도록 의존성을 설정
+        getCanAmount();
+    }, []); // accountID가 변경될 때만 호출되도록 의존성을 설정
 
     const onClick = () => {
         if (isAnimating) return;
