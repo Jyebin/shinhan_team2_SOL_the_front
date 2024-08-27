@@ -16,7 +16,7 @@ function Header({ onBack, onCancel, step }) {
         '/isregister5',
         '/attendance/main',
         '/attendance/post',
-        '/diposithistory',
+        '/deposithistory',
         '/myaccount',
         '/mycan',
     ];
@@ -58,7 +58,7 @@ function Header({ onBack, onCancel, step }) {
                 return '출석부';
             case '/attendance/post':
                 return '글쓰기';
-            case '/diposithistory':
+            case '/deposithistory':
                 return '거래 내역';
             case '/myaccount':
                 return '내 계좌';

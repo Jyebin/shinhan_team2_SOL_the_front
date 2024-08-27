@@ -15,6 +15,12 @@
     z-index: 1000; /* 스크롤 콘텐츠 위에 있도록 설정 */
 }
 
+@media (max-width: 390px) {
+    .header {
+        width: 100vw;
+    }
+}
+
 .header-title {
     position: absolute;
     left: 50%;

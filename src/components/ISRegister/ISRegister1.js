@@ -12,6 +12,8 @@ const interestRates = {
 
 const ISRegister1 = ({ formData, updateFormData }) => {
     const navigate = useNavigate();
+
+    // Define the isScrolled state
     const [isScrolled, setIsScrolled] = useState(false);
     const [totalInterestRate, setTotalInterestRate] = useState(
         parseFloat(formData.totalInterestRate) || interestRates.baseRate,
@@ -27,21 +29,38 @@ const ISRegister1 = ({ formData, updateFormData }) => {
         if (contentRef.current) {
             const { scrollTop, scrollHeight, clientHeight } =
                 contentRef.current;
-            setIsScrolled(scrollTop + clientHeight >= scrollHeight);
+            setIsScrolled(scrollTop + clientHeight >= scrollHeight - 10); // 스크롤 감지를 위한 조건 조정
         }
     }, []);
 
     useEffect(() => {
+        // 페이지가 마운트될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+
         const contentElement = contentRef.current;
         if (contentElement) {
             contentElement.addEventListener('scroll', handleScroll);
         }
+
+        // 모바일 환경에서도 스크롤을 감지하기 위해 window의 스크롤 이벤트를 사용
+        window.addEventListener('scroll', handleScroll);
+
         return () => {
             if (contentElement) {
                 contentElement.removeEventListener('scroll', handleScroll);
             }
+            window.removeEventListener('scroll', handleScroll);
         };
     }, [handleScroll]);
+
+    useEffect(() => {
+        // 다른 페이지에서 돌아올 때 항상 이율을 초기화
+        setTotalInterestRate(interestRates.baseRate);
+        setSelectedBonuses({
+            attendance: false,
+            signup: false,
+        });
+    }, []);
 
     const handleCheckboxChange = useCallback(
         (bonusType) => {

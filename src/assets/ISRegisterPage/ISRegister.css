@@ -16,6 +16,8 @@
     background-color: #fff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* 모바일에서 부드러운 스크롤링 지원 */
+    height: 100%;
     /* margin-bottom: 16px; 푸터와의 간격 조정 */
 }
 

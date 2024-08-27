@@ -1,4 +1,10 @@
 /* ErrorPage.css */
+html,
+body {
+    height: 100%; /* 부모 컨테이너의 높이를 100%로 설정 */
+    margin: 0;
+}
+
 .error-page {
     display: flex;
     flex-direction: column;
@@ -7,6 +13,7 @@
     height: 100vh;
     text-align: center;
     background-color: #f8f9fa;
+    padding-left: 50px;
 }
 
 .error-page h1 {
