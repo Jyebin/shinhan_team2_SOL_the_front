@@ -1,11 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISInfo.css';
-
 import infoImage0 from '../../assets/ISRegisterPage/img/info0.png';
 import infoImage1 from '../../assets/ISRegisterPage/img/info1.png';
 import infoImage2 from '../../assets/ISRegisterPage/img/info2.png';
 
-const ISInfo = ({ nextStep }) => {
+const ISInfo = ({}) => {
+    const navigate = useNavigate();
+
+    const handleNext = () => {
+        navigate('/ISRegister1');
+    };
+
     return (
         <div className="isinfo-container">
             <main className="isinfo-main">
@@ -24,12 +30,16 @@ const ISInfo = ({ nextStep }) => {
                     <div className="interest-info">
                         <div className="interest-rate">
                             <span>이자율</span>
-                            <strong>기본 연 8.00%</strong>
-                            <span className="highlight">최고 연 10.00%</span>
+                            <br />
+                            <strong>기본 연 7.00%</strong>
+                            <br />
+                            <span className="highlight2">최고 연 10.00%</span>
+                            <br />
                             <span>(6개월 세전)</span>
                         </div>
                         <div className="deposit-limit">
                             <span>저축한도</span>
+                            <br />
                             <strong>
                                 고객별
                                 <br />월 10만원
@@ -37,7 +47,7 @@ const ISInfo = ({ nextStep }) => {
                         </div>
                     </div>
 
-                    <button className="join-button" onClick={nextStep}>
+                    <button className="join-button" onClick={handleNext}>
                         가입하기
                     </button>
                 </div>

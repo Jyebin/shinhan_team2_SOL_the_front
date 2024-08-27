@@ -1,18 +1,22 @@
-import './assets/App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ISRegisterPage from './pages/ISRegisterPage';
-import MainPage from './pages/MainPage';
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ISInfo from './components/ISRegister/ISInfo';
+import ISRegister1 from './components/ISRegister/ISRegister1';
+import ISRegister2 from './components/ISRegister/ISRegister2';
+import ISRegister3 from './components/ISRegister/ISRegister3';
+import ISRegister4 from './components/ISRegister/ISRegister4';
+import ISRegister5 from './components/ISRegister/ISRegister5';
+import MainPage from './pages/MainPage';
 import Header from './components/navigator/Header';
+import MyAccountPage from './pages/MyAccountPage';
+import DepositHistoryPage from './pages/DepositHistoryPage';
+import MyCanPage from './pages/MyCanPage';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
-import LoginSuccess from './pages/attendance/LoginSuccess';
-import MyAccountPage from './pages/MyAccountPage';
 import Login from './pages/Login';
 import CommunityPage from './pages/CommunityPage';
 import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
-import PrivateRoute from './components/common/PrivateRoute';
 
 // 상태와 단계 관련 상수 정의
 const initialFormState = {
@@ -21,61 +25,24 @@ const initialFormState = {
 };
 
 function App() {
-    const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({});
 
-    const handleCancel = () => {
-        setFormData({});
-        setStep(0);
-    };
-
-    const handleBack = (navigate) => {
-        if (step > 0 && step < 5) {
-            setStep(step - 1);
-        } else if (step === 0) {
-            navigate('/');
-        }
-    };
-
-    const nextStep = (newData) => {
-        setFormData({ ...formData, ...newData });
-        setStep(step + 1);
+    const updateFormData = (newData) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            ...newData,
+        }));
     };
 
     return (
         <Router>
+            <Header />
             <div className="mainContainer">
-                <Header
-                    onBack={handleBack}
-                    onCancel={handleCancel}
-                    step={step}
-                />
                 <Routes>
                     <Route path="/login-success" element={<LoginSuccess />} />
-                    <Route
-                        path="/"
-                        element={
-                            <PrivateRoute>
-                                <MainPage />
-                            </PrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="/test"
-                        element={
-                            <PrivateRoute>
-                                <DepositHistoryPage />
-                            </PrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="/MyCanPage"
-                        element={
-                            <PrivateRoute>
-                                <MyCanPage />
-                            </PrivateRoute>
-                        }
-                    />
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/test" element={<DepositHistoryPage />} />
+                    <Route path="/MyCanPage" element={<MyCanPage />} />
                     <Route
                         path="/depositHistory"
                         element={<DepositHistoryPage />}
@@ -89,14 +56,12 @@ function App() {
                     <Route
                         path="/ISRegister"
                         element={
-                            <PrivateRoute>
-                                <ISRegisterPage
-                                    step={step}
-                                    nextStep={nextStep}
-                                    prevStep={handleBack}
-                                    formData={formData}
-                                />
-                            </PrivateRoute>
+                            <ISRegisterPage
+                                step={step}
+                                nextStep={nextStep}
+                                prevStep={handleBack}
+                                formData={formData}
+                            />
                         }
                     />
                     <Route
@@ -117,14 +82,7 @@ function App() {
                         }
                     />
                     <Route path="/login" element={<Login />} />
-                    <Route
-                        path="/community"
-                        element={
-                            <PrivateRoute>
-                                <CommunityPage />
-                            </PrivateRoute>
-                        }
-                    />
+                    <Route path="/community" element={<CommunityPage />} />
                 </Routes>
             </div>
         </Router>

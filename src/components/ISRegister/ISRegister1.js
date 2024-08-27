@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister.css';
 import buttonOff from '../../assets/common/img/check_no.png';
 import buttonOn from '../../assets/common/img/check_yes.png';
@@ -9,10 +10,11 @@ const interestRates = {
     signupBonus: 1.0,
 };
 
-const ISRegister1 = ({ nextStep, setFormData, formData }) => {
+const ISRegister1 = ({ formData, updateFormData }) => {
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [totalInterestRate, setTotalInterestRate] = useState(
-        formData.totalInterestRate || interestRates.baseRate,
+        parseFloat(formData.totalInterestRate) || interestRates.baseRate,
     );
     const [selectedBonuses, setSelectedBonuses] = useState({
         attendance: false,
@@ -63,11 +65,10 @@ const ISRegister1 = ({ nextStep, setFormData, formData }) => {
     );
 
     const handleNext = () => {
-        setFormData({
-            totalInterestRate: totalInterestRate.toFixed(2), // 이율 저장
+        updateFormData({
+            totalInterestRate: totalInterestRate.toFixed(2),
         });
-        console.log('Total Interest Rate:', totalInterestRate.toFixed(2)); // 콘솔에 출력
-        nextStep();
+        navigate('/ISRegister2');
     };
 
     return (
@@ -161,6 +162,16 @@ const ISRegister1 = ({ nextStep, setFormData, formData }) => {
                         시 확인이 가능합니다.
                     </p>
                     <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
+                    </p>
+                    <p>
+                        “추가 우대이자율 예상”은 예금 가입 전 이해를 위해
+                        제공하는 시뮬레이션으로 실제 우대이자율 대상 여부는 가입
+                        시 확인이 가능합니다.
+                    </p>
+                    <p>
                         기본이자율은 가입일에 고시된 “신한 땡겨요 적금”의
                         기본이자율을 적용합니다.
                     </p>
@@ -188,4 +199,4 @@ const ISRegister1 = ({ nextStep, setFormData, formData }) => {
     );
 };
 
-export default ISRegister1
+export default ISRegister1;
