@@ -34,7 +34,7 @@ const MyAccountPage = () => {
     };
 
     useEffect(() => {
-        getAccountList(1);
+        getAccountList();
     }, []); // 빈 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행
 
     return (
