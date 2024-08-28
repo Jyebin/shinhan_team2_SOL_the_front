@@ -3,8 +3,6 @@ import ActiveSavings from '../components/main/ActiveSavings';
 import NoSavings from '../components/main/NoSavings';
 import { SavingsContext } from '../store/SavingsProvider';
 
-const userID = 2;
-
 const MainPage = () => {
     const {
         hasSavings: state,
@@ -13,7 +11,7 @@ const MainPage = () => {
     } = useContext(SavingsContext);
 
     useEffect(() => {
-        initialize(userID); // 메인 페이지에 처음 접근할 때만 초기화
+        initialize(); // 메인 페이지에 처음 접근할 때만 초기화
     }, [initialize]);
 
     if (!isInitialized) {
