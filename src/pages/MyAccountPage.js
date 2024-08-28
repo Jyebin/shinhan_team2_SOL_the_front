@@ -19,12 +19,14 @@ const savingsData = [
 const MyAccountPage = () => {
     const [accountsData, setAccountsData] = useState([]);
 
-    const getAccountList = async (userID) => {
+    const getAccountList = async () => {
         try {
             const res = await axios.get(
-                'http://localhost:9070/account/list?userID=' + userID,
+                'http://localhost:9070/api/account/list',
+                {
+                    withCredentials: true, // 쿠키 포함
+                },
             );
-            console.log(res);
             setAccountsData(res.data);
         } catch (error) {
             console.error('Failed to fetch "getAccountList"', error);
@@ -32,7 +34,7 @@ const MyAccountPage = () => {
     };
 
     useEffect(() => {
-        getAccountList(1);
+        getAccountList();
     }, []); // 빈 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행
 
     return (
