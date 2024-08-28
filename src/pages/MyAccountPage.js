@@ -19,7 +19,7 @@ const savingsData = [
 const MyAccountPage = () => {
     const [accountsData, setAccountsData] = useState([]);
 
-    const getAccountList = async (userID) => {
+    const getAccountList = async () => {
         try {
             const res = await axios.get(
                 'http://localhost:9070/api/account/list',
