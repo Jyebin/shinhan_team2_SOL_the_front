@@ -14,6 +14,7 @@ import MyCanPage from './pages/MyCanPage';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 import Login from './pages/Login';
+import CommunityPage from './pages/CommunityPage';
 import SolPage from './pages/SolPage';
 import ErrorPage from './pages/ErrorPage';
 
