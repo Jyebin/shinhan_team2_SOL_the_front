@@ -6,68 +6,85 @@ function Header({ onBack, onCancel, step }) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    if (location.pathname === '/') {
-        return null; // MainPage에서는 Header를 렌더링하지 않음
-    }
-    if (location.pathname === '/login') {
+    // 특정 경로에서만 헤더를 표시
+    const validPaths = [
+        '/isinfo',
+        '/isregister1',
+        '/isregister2',
+        '/isregister3',
+        '/isregister4',
+        '/isregister5',
+        '/attendance/main',
+        '/attendance/post',
+        '/deposithistory',
+        '/myaccount',
+        '/mycan',
+    ];
+
+    // 경로가 유효하지 않으면 헤더를 표시하지 않음
+    if (!validPaths.includes(location.pathname.toLowerCase())) {
         return null;
     }
 
+    // 이전 버튼 클릭 시 처리
+    const handleBackClick = () => {
+        if (location.pathname.toLowerCase() === '/isinfo') {
+            navigate('/'); // MainPage로 이동
+        } else {
+            if (onBack) {
+                onBack(navigate);
+            } else {
+                navigate(-1); // 기본 동작으로 뒤로 가기
+            }
+        }
+    };
+
+    // 페이지에 따라 헤더의 타이틀 설정
     const getTitle = () => {
-        switch (location.pathname) {
-            case '/':
-                return '적금';
-            case '/ISRegister':
-                switch (step) {
-                    case 0:
-                        return '적금 정보';
-                    case 1:
-                        return '적금 가입 1/4';
-                    case 2:
-                        return '적금 가입 2/4';
-                    case 3:
-                        return '적금 가입 3/4';
-                    case 4:
-                        return '적금 가입 4/4';
-                    case 5:
-                        return '가입 완료';
-                    default:
-                        return '적금';
-                }
+        switch (location.pathname.toLowerCase()) {
+            case '/isinfo':
+                return '적금 정보';
+            case '/isregister1':
+                return '적금 가입 1/4';
+            case '/isregister2':
+                return '적금 가입 2/4';
+            case '/isregister3':
+                return '적금 가입 3/4';
+            case '/isregister4':
+                return '적금 가입 4/4';
+            case '/isregister5':
+                return '가입 완료';
             case '/attendance/main':
                 return '출석부';
             case '/attendance/post':
                 return '글쓰기';
-            case '/dipositHistory':
+            case '/deposithistory':
                 return '거래 내역';
-            case '/myAccount':
+            case '/myaccount':
                 return '내 계좌';
-            case '/myCan':
+            case '/mycan':
                 return '내 깡통';
             default:
                 return '';
         }
     };
-    const handleBackClick = () => {
-        if (location.pathname === '/attendance/post') {
-            if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
-                navigate('/attendance/main');
-            }
-        } else {
-            onBack(navigate);
-        }
-    };
 
     return (
         <header className="header">
-            {step < 5 && ( // step이 5가 아닐 때만 뒤로가기 버튼을 표시
-                <button className="header-button" onClick={handleBackClick}>
-                    &lt;
-                </button>
-            )}
+            <button className="header-button" onClick={handleBackClick}>
+                &lt;
+            </button>
             <h1 className="header-title">{getTitle()}</h1>
-            {step > 0 && step < 5 && (
-                <button className="header-button" onClick={onCancel}>
+            {[
+                '/isregister1',
+                '/isregister2',
+                '/isregister3',
+                '/isregister4',
+            ].includes(location.pathname.toLowerCase()) && (
+                <button
+                    className="header-button"
+                    onClick={() => navigate('/isinfo')}
+                >
                     취소
                 </button>
             )}

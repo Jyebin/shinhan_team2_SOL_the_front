@@ -3,7 +3,7 @@ import ActiveSavings from '../components/main/ActiveSavings';
 import NoSavings from '../components/main/NoSavings';
 import { SavingsContext } from '../store/SavingsProvider';
 
-const userID = 1;
+const userID = 2;
 
 const MainPage = () => {
     const {

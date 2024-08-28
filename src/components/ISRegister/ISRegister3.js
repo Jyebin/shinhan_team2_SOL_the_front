@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
-function ISRegister3({ nextStep, setFormData, formData }) {
+function ISRegister3({ formData, updateFormData }) {
     const [account, setAccount] = useState(formData.account || '');
     const [enteredPassword, setEnteredPassword] = useState('');
     const [warning, setWarning] = useState('비밀번호 네 자리를 입력해주세요.');
@@ -10,45 +11,33 @@ function ISRegister3({ nextStep, setFormData, formData }) {
     const [shuffledDigits, setShuffledDigits] = useState([]);
 
     const correctPassword = '1234'; // 예시 비밀번호, 실제로는 서버에서 확인해야 합니다.
+    const navigate = useNavigate();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         handleShuffle(); // 초기화 시에 키패드 숫자를 셔플
     }, []);
 
     const handleAccountSelect = (e) => {
         const selectedAccount = e.target.value;
 
-        // 콘솔에 선택한 값을 출력
-        console.log('Selected Account:', selectedAccount);
-
         if (selectedAccount === '') {
-            // 기본 옵션이 선택된 경우
-            setAccount(''); // 계좌 상태 초기화
-            setShowPasswordModal(false); // 비밀번호 모달 닫기
-            setIsPasswordCorrect(false); // 비밀번호 상태 초기화
+            setAccount('');
+            setShowPasswordModal(false);
+            setIsPasswordCorrect(false);
         } else {
-            // 다른 계좌가 선택된 경우
-            const updatedAccount = selectedAccount;
-
-            setAccount(updatedAccount); // 상태 업데이트
-            setFormData((prevData) => ({
-                ...prevData,
-                account: updatedAccount, // formData 업데이트
-            }));
-
-            console.log('Updated Form Data:', { ...formData, account: updatedAccount });
-
+            setAccount(selectedAccount);
             setEnteredPassword('');
             setWarning('비밀번호 네 자리를 입력해주세요.');
             setIsPasswordCorrect(false);
-            setShowPasswordModal(true); // 비밀번호 모달 열기
+            setShowPasswordModal(true);
         }
     };
 
     const handlePasswordChange = (digit) => {
         if (enteredPassword.length < 4) {
             setEnteredPassword((prev) => prev + digit);
-            setWarning('비밀번호 네 자리를 입력해주세요.'); // 입력 중엔 파란색 유지
+            setWarning('비밀번호 네 자리를 입력해주세요.');
         }
     };
 
@@ -67,7 +56,6 @@ function ISRegister3({ nextStep, setFormData, formData }) {
             if (enteredPassword === correctPassword) {
                 setIsPasswordCorrect(true);
                 setShowPasswordModal(false);
-                nextStep();
             } else {
                 setWarning('올바른 비밀번호가 아닙니다. 다시 입력해주세요.');
                 setEnteredPassword('');
@@ -76,12 +64,8 @@ function ISRegister3({ nextStep, setFormData, formData }) {
     };
 
     const handleNext = () => {
-        // 다음 단계로 넘어가기 전에 formData 업데이트
-        setFormData((prevData) => ({
-            ...prevData,
-            account: account, // 최종적으로 formData에 account 반영
-        }));
-        nextStep();
+        updateFormData({ account });
+        navigate('/ISRegister4');
     };
 
     return (

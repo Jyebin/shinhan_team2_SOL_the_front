@@ -24,6 +24,7 @@ const MyAccountPage = () => {
             const res = await axios.get(
                 'http://localhost:9070/account/list?userID=' + userID,
             );
+            console.log(res);
             setAccountsData(res.data);
         } catch (error) {
             console.error('Failed to fetch "getAccountList"', error);
