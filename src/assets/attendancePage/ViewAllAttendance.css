@@ -149,12 +149,22 @@ main {
     text-decoration: none;
 }
 
+.attendance-button.disabled {
+    background-color: #a5a5a5;
+    cursor: default;
+}
+
 .attendance-button:active {
     background-color: #40a9ff;
 }
 
 .attendance-button:visited {
     color: white;
+}
+
+.attendance-button.disabled:active {
+    background-color: #a5a5a5;
+    cursor: default;
 }
 
 /* 주의사항 */
