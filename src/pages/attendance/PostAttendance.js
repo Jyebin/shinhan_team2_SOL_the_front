@@ -10,6 +10,7 @@ const PostAttendance = ({ onBack }) => {
 
     const handleSubmit = async () => {
         const length = message.trim().length;
+        console.log(message);
         if (length >= 1 && length <= 300) {
             try {
                 const response = await axios.post(
@@ -32,6 +33,7 @@ const PostAttendance = ({ onBack }) => {
                     setButtonColor('default');
                 }, 3000);
             } catch (error) {
+                console.error(error);
                 setButtonColor('error');
                 setPopupMessage(
                     '출석 인증에 실패했습니다. 다시 시도해 주세요.',
