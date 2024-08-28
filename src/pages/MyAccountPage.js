@@ -22,9 +22,11 @@ const MyAccountPage = () => {
     const getAccountList = async (userID) => {
         try {
             const res = await axios.get(
-                'http://localhost:9070/account/list?userID=' + userID,
+                'http://localhost:9070/api/account/list',
+                {
+                    withCredentials: true, // 쿠키 포함
+                },
             );
-            console.log(res);
             setAccountsData(res.data);
         } catch (error) {
             console.error('Failed to fetch "getAccountList"', error);
