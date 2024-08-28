@@ -17,7 +17,7 @@ import Login from './pages/Login';
 import SolPage from './pages/SolPage';
 import ErrorPage from './pages/ErrorPage';
 
-import LoginSuccess from './pages/attendance/LoginSuccess';
+import LoginSuccess from './components/common/LoginSuccess';
 import PrivateRoute from './components/common/PrivateRoute';
 
 function App() {

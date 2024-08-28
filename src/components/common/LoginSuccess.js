@@ -19,10 +19,6 @@ function LoginSuccess() {
         redirect('/');
         if (token) {
             sessionStorage.setItem('token', token); // sessionStorage에 저장
-            console.log(
-                'Token stored in session storage:',
-                sessionStorage.getItem('token'),
-            ); // 토큰 저장 확인
 
             axios
                 .get('http://localhost:3000/', {
