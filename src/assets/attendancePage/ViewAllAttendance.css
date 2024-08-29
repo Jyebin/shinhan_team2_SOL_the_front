@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Permanent+Marker&display=swap');
 .mainContainer {
+    flex-direction: column;
     justify-content: flex-start;
 }
 
@@ -148,12 +149,22 @@ main {
     text-decoration: none;
 }
 
+.attendance-button.disabled {
+    background-color: #a5a5a5;
+    cursor: default;
+}
+
 .attendance-button:active {
     background-color: #40a9ff;
 }
 
 .attendance-button:visited {
     color: white;
+}
+
+.attendance-button.disabled:active {
+    background-color: #a5a5a5;
+    cursor: default;
 }
 
 /* 주의사항 */

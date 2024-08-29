@@ -10,32 +10,40 @@ import ConfirmModal from '../components/myCan/ConfirmModal'; // ConfirmModal 컴
 import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
-const days = 40;
-const interestRate = days >= 20 ? '10.0' : '8.0';
-
 const MyCanPage = () => {
     const location = useLocation();
     const { account } = location.state;
     const accountID = account.accountID;
 
     const [amount, setAmount] = useState(0);
+    const [attendanceDays, setAttendanceDays] = useState();
     const [coinFlipped, setCoinFlipped] = useState(false);
     const [coins, setCoins] = useState([]);
     const [isAnimating, setIsAnimating] = useState(false);
     const [showModal, setShowModal] = useState(false); // 모달 상태 추가
 
+    let interestRate = `8.0`;
+
     useEffect(() => {
-        const getCanAmount = async (accountID) => {
+        const getCanAmount = async () => {
             try {
-                const res = await axios.get('http://localhost:9070/account/can/amount?accountID=' + accountID);
-                setAmount(res.data);
+                const res = await axios.get(
+                    'http://localhost:9070/api/account/can/balance?accountID=' +
+                        accountID,
+                    {
+                        withCredentials: true, // 쿠키 포함
+                    },
+                );
+                setAmount(res.data.canAmount);
+                setAttendanceDays(res.data.userAttendanceCnt);
+                interestRate = attendanceDays >= 20 ? '10.0' : '8.0';
             } catch (error) {
                 console.error('Failed to fetch "getCanAmount"', error);
             }
         };
 
-        getCanAmount(accountID);
-    }, [accountID]); // accountID가 변경될 때만 호출되도록 의존성을 설정
+        getCanAmount();
+    }, []);
 
     const onClick = () => {
         if (isAnimating) return;
@@ -112,7 +120,7 @@ const MyCanPage = () => {
             />
             <img src={lineUrl} className="my-can-line" alt="line" />
             <div className="my-interest-rate">
-                총 {days}일 출석 완료로 <br /> 현재 적용중인 이율은
+                총 {attendanceDays}일 출석 완료로 <br /> 현재 적용중인 이율은
                 <span> {interestRate}% </span>입니다.
             </div>
             <TerminateButton onClick={handleTerminateClick} />

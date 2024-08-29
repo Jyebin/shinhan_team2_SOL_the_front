@@ -86,9 +86,10 @@ input[type='checkbox']:checked + label {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    gap: 10px;
 }
 
-.confirm-button {
+.can-confirm-button {
     background-color: #0066ff;
     color: white;
     padding: 10px 20px;
@@ -96,10 +97,9 @@ input[type='checkbox']:checked + label {
     border-radius: 5px;
     cursor: pointer;
     flex: 1;
-    margin-right: 10px;
 }
 
-.cancel-button {
+.can-cancel-button {
     background-color: #e0e0e0;
     color: #555;
     padding: 10px 20px;

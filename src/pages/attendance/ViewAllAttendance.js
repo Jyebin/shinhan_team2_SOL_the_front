@@ -1,24 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/attendancePage/ViewAllAttendance.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function ViewAllAttendance() {
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자
     const [currentDate, setCurrentDate] = useState(new Date()); // 달력 호출을 위한 현재 날짜, 기본: 오늘
     const [attendanceData, setAttendanceData] = useState([]); // 출석한 날짜 및 출석글 타입, 총 출석 일자를 계산하기 때문에 전체 데이터를 한번에 호출
+    const [todayAttendance, setTodayAttendance] = useState(false); // 오늘 출석 여부
+
+    const getPostList = () => {
+        axios
+            .get('http://localhost:9070/attendance/view', {
+                withCredentials: true,
+            })
+            .then((response) => {
+                // 출석한 날짜 설정
+                setAttendanceData(response.data);
+
+                // 총 출석 일자 설정
+                if (response.data.length > 0) {
+                    setTotalAttendanceDays(response.data.length);
+                } else {
+                    setTotalAttendanceDays(0);
+                }
+
+                // 오늘 날짜와 일치하는 출석 정보가 있는지 확인
+                const today = new Date().toISOString().split('T')[0];
+                const hasAttendedToday = response.data.some(
+                    (item) => item.date === today,
+                );
+                setTodayAttendance(hasAttendedToday);
+            })
+
+            .catch((error) => {
+                console.error('Error in viewAllattendance Page with:', error);
+            });
+    };
 
     useEffect(() => {
-        // 여기서 출석 데이터 호출 API 호출
-        // dummy data
-        const dummyData = [
-            { date: '2024-08-01', type: 'overspending' },
-            { date: '2024-08-02', type: 'saving' },
-            { date: '2024-08-12', type: 'overspending' },
-            { date: '2024-08-13', type: 'saving' },
-            { date: '2024-08-17', type: 'overspending' },
-        ];
-        setAttendanceData(dummyData); // 출석한 날짜 설정
-        setTotalAttendanceDays(dummyData.length); // 총 출석 일자 설정
+        getPostList();
     }, []);
 
     // 달력 생성을 위한 함수
@@ -95,6 +116,14 @@ function ViewAllAttendance() {
         alert('출력');
     };
 
+    // 링크 클릭 막기
+    const handleAttendanceClick = (event) => {
+        if (todayAttendance) {
+            event.preventDefault();
+            alert('오늘은 이미 출석했습니다.');
+        }
+    };
+
     return (
         <div className="ViewAllAttendance">
             <br />
@@ -135,7 +164,10 @@ function ViewAllAttendance() {
 
             <Link
                 to="http://localhost:3000/attendance/post"
-                className="attendance-button"
+                className={`attendance-button ${
+                    todayAttendance ? 'disabled' : ''
+                }`}
+                onClick={handleAttendanceClick}
             >
                 오늘 출석체크하기
             </Link>
