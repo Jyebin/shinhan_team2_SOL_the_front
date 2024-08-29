@@ -1,36 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
 function ISRegister3({ formData, updateFormData }) {
-    const [account, setAccount] = useState(formData.account || '');
+    const [accountsData, setAccountsData] = useState([]);
     const [enteredPassword, setEnteredPassword] = useState('');
     const [warning, setWarning] = useState('비밀번호 네 자리를 입력해주세요.');
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [shuffledDigits, setShuffledDigits] = useState([]);
+    const [correctPassword, setCorrectPassword] = useState('');
 
-    const correctPassword = '1234'; // 예시 비밀번호, 실제로는 서버에서 확인해야 합니다.
     const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        handleShuffle(); // 초기화 시에 키패드 숫자를 셔플
+        handleShuffle();
+        fetchAccountData();
     }, []);
 
-    const handleAccountSelect = (e) => {
-        const selectedAccount = e.target.value;
+    const fetchAccountData = async () => {
+        try {
+            const res = await axios.get(
+                'http://localhost:9070/account/list?userID=1',
+            );
+            setAccountsData(res.data);
+        } catch (err) {
+            console.error('Failed to fetch accounts', err);
+        }
+    };
 
-        if (selectedAccount === '') {
-            setAccount('');
-            setShowPasswordModal(false);
-            setIsPasswordCorrect(false);
-        } else {
-            setAccount(selectedAccount);
+    const handleAccountSelect = async (e) => {
+        const selectedAccountID = e.target.value;
+        const selectedAccount = accountsData.find(
+            (account) => account.accountID === parseInt(selectedAccountID),
+        );
+
+        if (selectedAccount) {
+            updateFormData({
+                accountID: selectedAccount.accountID,
+                accountName: selectedAccount.name,
+                accountNumber: selectedAccount.number,
+            });
+
             setEnteredPassword('');
             setWarning('비밀번호 네 자리를 입력해주세요.');
             setIsPasswordCorrect(false);
             setShowPasswordModal(true);
+
+            try {
+                const res = await axios.get(
+                    `http://localhost:9070/account/password/${selectedAccountID}`,
+                );
+                setCorrectPassword(res.data);
+            } catch (error) {
+                console.error('Failed to fetch account password', error);
+                alert('비밀번호를 불러오는데 실패했습니다.');
+            }
+        } else {
+            setShowPasswordModal(false);
+            setIsPasswordCorrect(false);
         }
     };
 
@@ -52,19 +82,26 @@ function ISRegister3({ formData, updateFormData }) {
     };
 
     const handlePasswordSubmit = () => {
-        if (enteredPassword.length === 4) {
-            if (enteredPassword === correctPassword) {
+        const trimmedEnteredPassword = enteredPassword.trim();
+        const trimmedCorrectPassword = correctPassword.toString().trim();
+
+        console.log('Entered Password: ', trimmedEnteredPassword);
+        console.log('Correct Password: ', trimmedCorrectPassword);
+
+        if (trimmedEnteredPassword.length === 4) {
+            if (trimmedEnteredPassword === trimmedCorrectPassword) {
                 setIsPasswordCorrect(true);
                 setShowPasswordModal(false);
+                console.log('Password is correct!');
             } else {
                 setWarning('올바른 비밀번호가 아닙니다. 다시 입력해주세요.');
                 setEnteredPassword('');
+                console.log('Password is incorrect.');
             }
         }
     };
 
     const handleNext = () => {
-        updateFormData({ account });
         navigate('/ISRegister4');
     };
 
@@ -78,17 +115,15 @@ function ISRegister3({ formData, updateFormData }) {
                 <div className="form-group">
                     <label>출금 계좌 선택</label>
                     <select
-                        value={account}
                         onChange={handleAccountSelect}
                         className="account-select"
                     >
                         <option value="">출금 계좌를 선택하세요</option>
-                        <option value="우리은행 1230-23423-233">
-                            우리은행 1230-23423-233
-                        </option>
-                        <option value="신한은행 110-459-123456">
-                            신한은행 110-459-123456
-                        </option>
+                        {accountsData.map((acc) => (
+                            <option key={acc.accountID} value={acc.accountID}>
+                                {acc.name} {acc.number}
+                            </option>
+                        ))}
                     </select>
                     <p className="info-text">
                         깡통 적금을 연결할 계좌를 선택하세요.
@@ -122,27 +157,7 @@ function ISRegister3({ formData, updateFormData }) {
                                 {warning}
                             </p>
                             <div className="password-keypad">
-                                {shuffledDigits.slice(0, 3).map((digit) => (
-                                    <button
-                                        key={digit}
-                                        onClick={() =>
-                                            handlePasswordChange(digit)
-                                        }
-                                    >
-                                        {digit}
-                                    </button>
-                                ))}
-                                {shuffledDigits.slice(3, 6).map((digit) => (
-                                    <button
-                                        key={digit}
-                                        onClick={() =>
-                                            handlePasswordChange(digit)
-                                        }
-                                    >
-                                        {digit}
-                                    </button>
-                                ))}
-                                {shuffledDigits.slice(6, 9).map((digit) => (
+                                {shuffledDigits.map((digit) => (
                                     <button
                                         key={digit}
                                         onClick={() =>
@@ -153,13 +168,6 @@ function ISRegister3({ formData, updateFormData }) {
                                     </button>
                                 ))}
                                 <button onClick={handleShuffle}>재배열</button>
-                                <button
-                                    onClick={() =>
-                                        handlePasswordChange(shuffledDigits[9])
-                                    }
-                                >
-                                    {shuffledDigits[9]}
-                                </button>
                                 <button onClick={handleBackspace}>정정</button>
                             </div>
                             <button

@@ -11,7 +11,7 @@ function ISRegister5({ formData }) {
     };
 
     const handleConfirmation = () => {
-        navigate('/isinfo');
+        navigate('/ISInfo');
     };
 
     const formatDate = (date) => {
