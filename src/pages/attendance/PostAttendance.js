@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // axios를 import합니다
+import axios from 'axios';
 import '../../assets/PostAttendance.css';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 const PostAttendance = ({ onBack }) => {
     const [message, setMessage] = useState('');
     const [buttonColor, setButtonColor] = useState('default');
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async () => {
         const length = message.trim().length;
         console.log(message);
         if (length >= 1 && length <= 300) {
+            setIsLoading(true);
             try {
                 const response = await axios.post(
                     '/attendance/create',
@@ -28,7 +31,6 @@ const PostAttendance = ({ onBack }) => {
                 setPopupVisible(true);
                 setMessage('');
 
-                // 버튼 색상 복원
                 setTimeout(() => {
                     setButtonColor('default');
                 }, 3000);
@@ -40,10 +42,11 @@ const PostAttendance = ({ onBack }) => {
                 );
                 setPopupVisible(true);
 
-                // 버튼 색상 복원
                 setTimeout(() => {
                     setButtonColor('default');
                 }, 3000);
+            } finally {
+                setIsLoading(false);
             }
         } else {
             setButtonColor('error');
@@ -54,12 +57,6 @@ const PostAttendance = ({ onBack }) => {
         }
     };
 
-    // 팝업을 닫기 위한 함수
-    const closePopupOnly = () => {
-        setPopupVisible(false);
-    };
-
-    // 팝업 닫고 페이지 이동하는 함수
     const closePopup = () => {
         setPopupVisible(false);
         window.location.href = '/attendance/main';
@@ -67,6 +64,7 @@ const PostAttendance = ({ onBack }) => {
 
     return (
         <div className="container">
+            {isLoading && <LoadingSpinner />}
             <br />
             <br />
             <textarea
@@ -99,7 +97,7 @@ const PostAttendance = ({ onBack }) => {
                             />
                             <button
                                 className="close-button close-popup-button"
-                                onClick={closePopup} // X -> 팝업 닫고 출석부로 이동
+                                onClick={closePopup}
                             >
                                 X
                             </button>
