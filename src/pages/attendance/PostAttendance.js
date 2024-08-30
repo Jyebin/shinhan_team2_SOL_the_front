@@ -17,9 +17,12 @@ const PostAttendance = ({ onBack }) => {
             try {
                 setIsLoading(true);
 
-                const response = await axios.post('/attendance/create', {
-                    message: message,
-                });
+                const response = await axios.post(
+                    'http://localhost:9070/attendance/create',
+                    {
+                        message: message,
+                    },
+                );
                 const [status, content] = response.data;
 
                 if (status === '판단안됨') {
