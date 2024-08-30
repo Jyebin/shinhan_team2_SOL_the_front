@@ -24,9 +24,11 @@ function ISRegister4({ formData }) {
             };
 
             await axios.put(
-                'http://localhost:9070/account/updateCanInfo',
+                'http://localhost:9070/api/account/updateCanInfo',
                 accountDTO,
+                { withCredentials: true }, // 쿠키 포함
             );
+
             navigate('/ISRegister5');
         } catch (error) {
             console.error('Failed to update account', error);

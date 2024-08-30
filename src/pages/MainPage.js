@@ -14,7 +14,15 @@ const MainPage = () => {
         return <div>Loading...</div>;
     }
 
-    return <div>{hasSavings ? <ActiveSavings /> : <NoSavings />}</div>;
+    return (
+        <div>
+            {hasSavings ? (
+                <ActiveSavings hasSavings={hasSavings} />
+            ) : (
+                <NoSavings hasSavings={hasSavings} />
+            )}
+        </div>
+    );
 };
 
 export default MainPage;
