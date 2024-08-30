@@ -22,10 +22,10 @@ const PostAttendance = ({ onBack }) => {
                 });
                 const [status, content] = response.data;
 
-                if (status === '부적절') {
+                if (status === '판단안됨') {
                     setPopupMessage(content);
                     setPopupVisible(true);
-                    setPopupType('부적절'); // popupType 설정
+                    setPopupType('판단안됨'); // popupType 설정
                     setMessage('');
                     setButtonColor('default');
                 } else if (status === '과소비') {
@@ -104,7 +104,7 @@ const PostAttendance = ({ onBack }) => {
                                     __html: popupMessage,
                                 }}
                             />
-                            {popupType === '부적절' ? (
+                            {popupType === '판단안됨' ? (
                                 <button
                                     className="popup-button"
                                     onClick={closePopupOnly} // 돌아가기 -> 팝업만 닫음
