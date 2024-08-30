@@ -8,44 +8,50 @@ const PostAttendance = ({ onBack }) => {
     const [buttonColor, setButtonColor] = useState('default');
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
+    const [popupType, setPopupType] = useState(''); // popupType 상태 추가
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async () => {
         const length = message.trim().length;
-        console.log(message);
         if (length >= 1 && length <= 300) {
-            setIsLoading(true);
             try {
-                const response = await axios.post(
-                    '/attendance/create',
-                    { message },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    },
-                );
+                setIsLoading(true);
 
-                setPopupMessage(response.data);
-                setButtonColor('success');
-                setPopupVisible(true);
-                setMessage('');
+                const response = await axios.post('/attendance/create', {
+                    message: message,
+                });
+                const [status, content] = response.data;
 
-                setTimeout(() => {
+                if (status === '부적절') {
+                    setPopupMessage(content);
+                    setPopupVisible(true);
+                    setPopupType('부적절'); // popupType 설정
+                    setMessage('');
                     setButtonColor('default');
-                }, 3000);
+                } else if (status === '과소비') {
+                    setButtonColor('success');
+                    setMessage('');
+                    setPopupMessage(content);
+                    setPopupVisible(true);
+                    setPopupType('과소비'); // popupType 설정
+
+                    setTimeout(() => {
+                        setButtonColor('default');
+                    }, 3000);
+                } else if (status === '절약') {
+                    setButtonColor('success');
+                    setMessage('');
+                    setPopupMessage(content);
+                    setPopupVisible(true);
+                    setPopupType('절약'); // popupType 설정
+
+                    setTimeout(() => {
+                        setButtonColor('default');
+                    }, 20000);
+                }
+                setIsLoading(false);
             } catch (error) {
-                console.error(error);
-                setButtonColor('error');
-                setPopupMessage(
-                    '출석 인증에 실패했습니다. 다시 시도해 주세요.',
-                );
-                setPopupVisible(true);
-
-                setTimeout(() => {
-                    setButtonColor('default');
-                }, 3000);
-            } finally {
+                alert('오류가 발생했습니다. 다시 시도해 주세요.');
                 setIsLoading(false);
             }
         } else {
@@ -60,6 +66,10 @@ const PostAttendance = ({ onBack }) => {
     const closePopup = () => {
         setPopupVisible(false);
         window.location.href = '/attendance/main';
+    };
+
+    const closePopupOnly = () => {
+        setPopupVisible(false);
     };
 
     return (
@@ -84,7 +94,6 @@ const PostAttendance = ({ onBack }) => {
                 되지 않습니다. 출석 인증 관련 이상이 있을 시 고객 센터로 문의
                 바랍니다.
             </h1>
-
             {popupVisible && (
                 <div className="popup-background">
                     <div className="popup-content">
@@ -95,12 +104,21 @@ const PostAttendance = ({ onBack }) => {
                                     __html: popupMessage,
                                 }}
                             />
-                            <button
-                                className="close-button close-popup-button"
-                                onClick={closePopup}
-                            >
-                                X
-                            </button>
+                            {popupType === '부적절' ? (
+                                <button
+                                    className="popup-button"
+                                    onClick={closePopupOnly} // 돌아가기 -> 팝업만 닫음
+                                >
+                                    돌아가기
+                                </button>
+                            ) : (
+                                <button
+                                    className="close-button close-popup-button"
+                                    onClick={closePopup} // X -> 팝업 닫고 출석부로 이동
+                                >
+                                    X
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
