@@ -11,19 +11,14 @@ function ISRegister3({ formData, updateFormData }) {
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [shuffledDigits, setShuffledDigits] = useState([]);
     const [correctPassword, setCorrectPassword] = useState('');
+    const [userID, setUserID] = useState(null); // User ID 상태 추가
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        handleShuffle();
-        fetchAccountData();
-    }, []);
-
     const fetchAccountData = async () => {
         try {
             const res = await axios.get(
-                'http://localhost:9070/account/list?userID=1',
+                `http://localhost:9070/api/account/list`,
+                { withCredentials: true }, // 쿠키 포함
             );
             setAccountsData(res.data);
         } catch (err) {
@@ -31,6 +26,24 @@ function ISRegister3({ formData, updateFormData }) {
         }
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        handleShuffle();
+        fetchUserID(); // 유저 ID를 먼저 가져옴
+    }, []);
+
+    const fetchUserID = async () => {
+        try {
+            const res = await axios.get('http://localhost:9070/api/user/info', {
+                withCredentials: true, // 쿠키 포함
+            });
+            const id = res.data.userID;
+            setUserID(id);
+            fetchAccountData(); // userID 없이 계좌 데이터를 가져옴
+        } catch (err) {
+            console.error('Failed to fetch user ID', err);
+        }
+    };
     const handleAccountSelect = async (e) => {
         const selectedAccountID = e.target.value;
         const selectedAccount = accountsData.find(
@@ -51,7 +64,10 @@ function ISRegister3({ formData, updateFormData }) {
 
             try {
                 const res = await axios.get(
-                    `http://localhost:9070/account/password/${selectedAccountID}`,
+                    `http://localhost:9070/api/account/password/${selectedAccountID}`, // 경로 수정
+                    {
+                        withCredentials: true, // 쿠키 포함
+                    },
                 );
                 setCorrectPassword(res.data);
             } catch (error) {

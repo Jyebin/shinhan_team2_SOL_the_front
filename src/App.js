@@ -15,7 +15,7 @@ import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
 
 import LoginPage from './pages/LoginPage';
-import CommunityPage from './pages/CommunityPage';
+// import CommunityPage from './pages/CommunityPage';
 import SolPage from './pages/SolPage';
 import ErrorPage from './pages/ErrorPage';
 
