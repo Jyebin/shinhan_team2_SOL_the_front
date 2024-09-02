@@ -22,6 +22,9 @@ const PostAttendance = ({ onBack }) => {
                     {
                         message: message,
                     },
+                    {
+                        withCredentials: true,
+                    },
                 );
                 const [status, content] = response.data;
 
