@@ -27,10 +27,7 @@ const PostAttendance = ({ onBack }) => {
                     },
                 );
 
-                console.log('Response data: ', response.data);
                 const [status, content] = response.data;
-                console.log('status : ', status);
-                console.log('content : ', content);
 
                 if (status === "'판단안됨'") {
                     setPopupMessage(content);
