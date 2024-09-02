@@ -7,7 +7,7 @@ function ISRegister5({ formData }) {
     const navigate = useNavigate();
 
     const handleMainPageRedirect = () => {
-        navigate('/attendance/main');
+        navigate('/');
     };
 
     const handleConfirmation = () => {
