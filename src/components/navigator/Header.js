@@ -28,7 +28,10 @@ function Header({ onBack, onCancel, step }) {
 
     // 이전 버튼 클릭 시 처리
     const handleBackClick = () => {
-        if (location.pathname.toLowerCase() === '/isinfo') {
+        if (
+            location.pathname.toLowerCase() === '/isinfo' ||
+            location.pathname.toLowerCase() === '/myaccount'
+        ) {
             navigate('/'); // MainPage로 이동
         } else {
             if (onBack) {
