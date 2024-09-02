@@ -111,6 +111,10 @@ const PostAttendance = ({ onBack }) => {
                                     __html: popupMessage,
                                 }}
                             />
+                            {/* popupType에 따라 다른 배경 이미지를 설정 */}
+                            <div
+                                className={`popupImg ${popupType === '과소비' ? 'popupImg' : popupType === '절약인증' ? 'popupImg2' : ''}`}
+                            />
                             {popupType === '판단안됨' ? (
                                 <button
                                     className="popup-button"
