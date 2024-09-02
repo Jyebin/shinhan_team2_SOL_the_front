@@ -150,6 +150,10 @@ body {
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .popup-content div {
     margin: auto;
@@ -160,14 +164,20 @@ body {
     height: 250px;
 }
 
+/* Popup message */
 .popup-message {
     font-size: 17px;
     color: #010101;
     margin-bottom: 20px;
-    margin-top: 30px;
     white-space: pre-line;
     font-weight: normal;
     line-height: 1.5;
+    text-align: center; /* Center text horizontally */
+    overflow-y: auto;
+    max-height: 250px; /* Ensure message area is scrollable if needed */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
 /* 팝업 돌아가기 버튼 */
@@ -188,16 +198,16 @@ body {
     background-image: url('../assets/attendancePage/img/sadBird.png');
     background-size: contain;
     background-repeat: no-repeat;
-    max-width: 50%;
-    height: 100px;
-    margin-left: 72px;
+    max-width: 100%;
+    height: 200px;
+    margin-left: 30px;
 }
 
 .popup-content .popupImg2 {
     background-image: url('../assets/attendancePage/img/richBird.png');
     background-size: contain;
     background-repeat: no-repeat;
-    max-width: 50%;
-    height: 100px;
-    margin-left: 70px;
+    max-width: 100%;
+    height: 200px;
+    margin-left: 30px;
 }

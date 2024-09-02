@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../assets/attendancePage/ViewAllAttendance.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import AttendanceView from '../../components/attendance/AttendanceView';
 
 function ViewAllAttendance() {
     const [totalAttendanceDays, setTotalAttendanceDays] = useState(0); // 총 출석 일자
@@ -9,6 +10,9 @@ function ViewAllAttendance() {
     const [attendanceData, setAttendanceData] = useState([]); // 출석한 날짜 및 출석글 타입, 총 출석 일자를 계산하기 때문에 전체 데이터를 한번에 호출
     const [todayAttendance, setTodayAttendance] = useState(false); // 오늘 출석 여부
 
+    const [selectedAttendance, setSelectedAttendance] = useState(null); // 작성한 글
+
+    // 작성 글 리스트
     const getPostList = () => {
         axios
             .get('http://localhost:9070/attendance/view', {
@@ -41,6 +45,11 @@ function ViewAllAttendance() {
     useEffect(() => {
         getPostList();
     }, []);
+
+    // 날짜를 클릭할 시
+    const viewAttendancePosts = (attendanceInfo) => {
+        setSelectedAttendance(attendanceInfo);
+    };
 
     // 달력 생성을 위한 함수
     const daysInMonth = new Date(
@@ -112,11 +121,7 @@ function ViewAllAttendance() {
         });
     };
 
-    const viewAttendancePosts = () => {
-        alert('출력');
-    };
-
-    // 링크 클릭 막기
+    // 당일 출석을 이미 했을 시 클릭 방지
     const handleAttendanceClick = (event) => {
         if (todayAttendance) {
             event.preventDefault();
@@ -161,6 +166,13 @@ function ViewAllAttendance() {
                     </div>
                 </section>
             </main>
+
+            {selectedAttendance && (
+                <AttendanceView
+                    attendanceInfo={selectedAttendance}
+                    onClose={() => setSelectedAttendance(null)}
+                />
+            )}
 
             <Link
                 to="http://localhost:3000/attendance/post"
