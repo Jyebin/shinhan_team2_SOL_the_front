@@ -13,8 +13,9 @@ import DepositHistoryPage from './pages/DepositHistoryPage';
 import MyCanPage from './pages/MyCanPage';
 import ViewAllAttendance from './pages/attendance/ViewAllAttendance';
 import PostAttendance from './pages/attendance/PostAttendance';
-import Login from './pages/Login';
-import CommunityPage from './pages/CommunityPage';
+
+import LoginPage from './pages/LoginPage';
+// import CommunityPage from './pages/CommunityPage';
 import SolPage from './pages/SolPage';
 import ErrorPage from './pages/ErrorPage';
 
@@ -166,7 +167,7 @@ function App() {
                             </PrivateRoute>
                         }
                     />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/sol" element={<SolPage />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>

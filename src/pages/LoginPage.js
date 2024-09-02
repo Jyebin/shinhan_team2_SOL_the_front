@@ -6,9 +6,9 @@ const login = () => {
     window.location.href = KAKAO_AUTH_URL;
 };
 
-function Login() {
+function LoginPage() {
     return (
-        <div className="Login">
+        <div className="LoginPage">
             <div className="background">
                 <div className="login-button" onClick={login}>
                     <div className="kakao-chat" />
@@ -19,4 +19,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

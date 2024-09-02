@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../assets/ISRegisterPage/ISRegister.css';
 
 function ISRegister4({ formData }) {
     const today = new Date().toISOString().slice(0, 10);
-    const selectedAccount = formData?.account || '계좌 정보 없음';
+    const selectedAccountName = formData?.accountName || '계좌 이름 없음';
+    const selectedAccountNumber = formData?.accountNumber || '계좌 번호 없음';
+    const selectedAccountID = formData?.accountID || '계좌 정보 없음';
     const appliedInterestRate = formData?.totalInterestRate || '0.00';
     const navigate = useNavigate();
 
@@ -13,19 +16,41 @@ function ISRegister4({ formData }) {
         window.scrollTo(0, 0);
     }, []);
 
+    const handleConfirmation = async () => {
+        try {
+            const accountDTO = {
+                accountID: selectedAccountID,
+                canInterestRate: parseFloat(appliedInterestRate),
+            };
+
+            await axios.put(
+                'http://localhost:9070/api/account/updateCanInfo',
+                accountDTO,
+                { withCredentials: true }, // 쿠키 포함
+            );
+
+            navigate('/ISRegister5');
+        } catch (error) {
+            console.error('Failed to update account', error);
+            alert('계좌 정보를 업데이트하는데 실패했습니다.');
+        }
+    };
+
     return (
         <div className="register-container">
             <div className="register-content isregister4">
                 <br />
                 <br />
-                {/* <h2>적금 정보확인</h2> */}
                 <h3>적금 가입 정보를 확인하세요</h3>
                 <hr />
-                {/* <br /> */}
                 <div className="info-section">
                     <div className="info-row">
-                        <span className="label">출금계좌</span>
-                        <span className="value">{selectedAccount}</span>
+                        <span className="label">출금계좌명</span>
+                        <span className="value">{selectedAccountName}</span>
+                    </div>
+                    <div className="info-row">
+                        <span className="label">계좌번호</span>
+                        <span className="value">{selectedAccountNumber}</span>
                     </div>
                     <div className="info-row">
                         <span className="label highlight">적용이율</span>
@@ -58,11 +83,8 @@ function ISRegister4({ formData }) {
                 </div>
             </div>
             <footer className="register-footer">
-                <button
-                    onClick={() => navigate('/ISRegister5')}
-                    className="next-button"
-                >
-                    다음
+                <button onClick={handleConfirmation} className="next-button">
+                    확인
                 </button>
             </footer>
         </div>

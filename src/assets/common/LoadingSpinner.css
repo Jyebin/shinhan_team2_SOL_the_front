@@ -1,30 +1,30 @@
 .LoadingSpinner {
-    background-image: url('D:\shinhan_team2_SOL_the_poor\shinhan_team2_SOL_the_poor_front\src\assets\mainPage\img\main_empty.png');
+    position: fixed;
+    top: 0;
+    left: 0;
     background-size: cover;
     background-position: center;
-    width: 390px;
-    height: 844px;
+    width: 100%;
+    height: 100%;
     display: flex;
+    z-index: 1000;
 }
 
 .spinnerContainer {
     background-color: rgba(45, 45, 45, 0.868);
     height: 100%;
     width: 100%;
-    z-index: 500;
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #spinner {
-    margin: 40vh auto;
     width: 50px;
     height: 50px;
     border: 4px solid rgba(255, 255, 255, 0.365);
     box-sizing: border-box;
-
-    /* border-top-color: white; */
     border-bottom-color: rgb(255, 255, 255);
-
     border-radius: 100%;
     animation: spin 1.2s ease-in-out infinite;
 }

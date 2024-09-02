@@ -83,7 +83,7 @@ function Header({ onBack, onCancel, step }) {
             ].includes(location.pathname.toLowerCase()) && (
                 <button
                     className="header-button"
-                    onClick={() => navigate('/isinfo')}
+                    onClick={() => navigate('/ISInfo')}
                 >
                     취소
                 </button>
