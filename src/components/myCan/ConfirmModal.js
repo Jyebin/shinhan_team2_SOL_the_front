@@ -7,7 +7,6 @@ import axios from 'axios';
 const ConfirmModal = ({ onClose, accountID }) => {
     const [isConfirmed, setIsConfirmed] = useState(false); // 확인 상태 추가
     const [isContinueChecked, setIsContinueChecked] = useState(false); // 체크박스 상태 추가
-    const [navigateTo, setNavigateTo] = useState('');
     const navigate = useNavigate(); // useNavigate 훅 사용
 
     const handleConfirm = async (id) => {
@@ -31,18 +30,16 @@ const ConfirmModal = ({ onClose, accountID }) => {
                 },
             );
 
-            console.log(res.data.redirectUrl);
+            const redirectUrl = res.data.redirectUrl;
 
-            setNavigateTo(res.data.redirectUrl);
+            // 페이지 이동
+            setTimeout(() => {
+                navigate(redirectUrl); // 서버로부터 받은 URL로 탐색
+                onClose(); // 모달 닫기
+            }, 1000); // 1초 지연
         } catch (error) {
             console.error('Failed to fetch', error);
         }
-
-        // 페이지 이동
-        setTimeout(() => {
-            navigate(navigateTo); // navigateTo URL로 탐색
-            onClose(); // 모달 닫기
-        }, 1000); // 1초 지연
     };
 
     const handleCheckboxChange = () => {
