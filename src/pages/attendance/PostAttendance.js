@@ -22,16 +22,23 @@ const PostAttendance = ({ onBack }) => {
                     {
                         message: message,
                     },
+                    {
+                        withCredentials: true, //쿠키를 함께 보내기 위해 설정
+                    },
                 );
-                const [status, content] = response.data;
 
-                if (status === '판단안됨') {
+                console.log('Response data: ', response.data);
+                const [status, content] = response.data;
+                console.log('status : ', status);
+                console.log('content : ', content);
+
+                if (status === "'판단안됨'") {
                     setPopupMessage(content);
                     setPopupVisible(true);
                     setPopupType('판단안됨'); // popupType 설정
                     setMessage('');
                     setButtonColor('default');
-                } else if (status === '과소비') {
+                } else if (status === "'과소비'") {
                     setButtonColor('success');
                     setMessage('');
                     setPopupMessage(content);
@@ -41,12 +48,12 @@ const PostAttendance = ({ onBack }) => {
                     setTimeout(() => {
                         setButtonColor('default');
                     }, 3000);
-                } else if (status === '절약') {
+                } else if (status === "'절약인증'") {
                     setButtonColor('success');
                     setMessage('');
                     setPopupMessage(content);
                     setPopupVisible(true);
-                    setPopupType('절약'); // popupType 설정
+                    setPopupType('절약인증'); // popupType 설정
 
                     setTimeout(() => {
                         setButtonColor('default');
