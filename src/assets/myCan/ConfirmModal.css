@@ -24,9 +24,13 @@ p {
 }
 
 .modal-ask {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
+}
+
+.can-clear-info {
+    width: 100%;
 }
 
 .modal-content h2 {

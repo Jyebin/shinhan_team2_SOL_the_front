@@ -11,9 +11,11 @@ import lineUrl from '../assets/common/img/line.png';
 import '../assets/myCan/MyCanPage.css';
 
 const MyCanPage = () => {
-    const location = useLocation();
-    const { account } = location.state;
-    const accountID = account.accountID;
+    // const location = useLocation();
+    // const { account } = location.state || {};
+    // const accountID = account?.accountID;
+
+    const accountID = sessionStorage.getItem('accountID'); // session에서 값 불러와서 사용
 
     const [amount, setAmount] = useState(0);
     const [attendanceDays, setAttendanceDays] = useState();
@@ -34,6 +36,7 @@ const MyCanPage = () => {
                         withCredentials: true, // 쿠키 포함
                     },
                 );
+                console.log(res.data);
                 setAmount(res.data.canAmount);
                 setAttendanceDays(res.data.userAttendanceCnt);
                 interestRate = attendanceDays >= 20 ? '10.0' : '8.0';
@@ -124,7 +127,12 @@ const MyCanPage = () => {
                 <span> {interestRate}% </span>입니다.
             </div>
             <TerminateButton onClick={handleTerminateClick} />
-            {showModal && <ConfirmModal onClose={handleCloseModal} />}
+            {showModal && (
+                <ConfirmModal
+                    onClose={handleCloseModal}
+                    accountID={accountID}
+                />
+            )}
         </Container>
     );
 };

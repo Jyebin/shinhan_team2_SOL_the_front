@@ -1,5 +1,5 @@
 .checkCan {
-    bottom: 3%;
+    bottom: 9%;
     left: 3%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_btn2.png);
@@ -17,8 +17,9 @@
 }
 
 .logout {
+    width: 100px;
     bottom: 60%;
-    left: 8%; /* 왼쪽 아래 배치 */
+    left: 13%; /* 왼쪽 아래 배치 */
 
     background: url(img/main_logout.png);
     background-size: contain;
