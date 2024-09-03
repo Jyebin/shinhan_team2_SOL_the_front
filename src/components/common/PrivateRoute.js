@@ -12,8 +12,17 @@ const PrivateRoute = ({ children }) => {
             .get('http://localhost:9070/api/validate', {
                 withCredentials: true,
             })
+            .then((response) => {
+                if (response.data && response.data.token) {
+                    sessionStorage.setItem('token', response.data.token);
+                }
+            })
             .catch((error) => {
                 console.error('Error in viewAllattendance Page with:', error);
+                console.log(
+                    '로그인 인증이 만료되었습니다. 다시 로그인 해주십시오.',
+                );
+                sessionStorage.removeItem('token');
             });
     };
 
