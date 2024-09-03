@@ -11,7 +11,7 @@ const TransactionHistory = (accountID) => {
     const getTransactionList = async (accountID) => {
         try {
             const res = await axios.get(
-                'http://localhost:9070/api/account/transaction/list?accountID=' +
+                'http://localhost:9070/api/transaction/list?accountID=' +
                     accountID,
             );
             console.log(res.data);
