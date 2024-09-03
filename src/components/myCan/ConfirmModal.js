@@ -23,7 +23,7 @@ const ConfirmModal = ({ onClose, accountID }) => {
 
         try {
             const res = await axios.post(
-                'http://localhost:9070/api/account/can/manage',
+                'http://localhost:9070/api/can/manage',
                 {
                     accountID: id,
                     status: status,

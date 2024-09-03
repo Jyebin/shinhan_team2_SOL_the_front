@@ -24,7 +24,7 @@ function ISRegister4({ formData }) {
             };
 
             await axios.put(
-                'http://localhost:9070/api/account/updateCanInfo',
+                'http://localhost:9070/api/can/updateCanInfo',
                 accountDTO,
                 { withCredentials: true }, // 쿠키 포함
             );
