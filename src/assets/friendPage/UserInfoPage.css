@@ -1,0 +1,104 @@
+.settings-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-quote {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-id {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.follow-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.following,
+.followers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.follow-count {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-friends-btn {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.attendance-section {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.attendance-days {
+    color: red;
+    font-weight: bold;
+}
+
+.attendance-link {
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ranking-section {
+    width: 100%;
+    text-align: center;
+}
+
+.ranking-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

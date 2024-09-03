@@ -1,0 +1,96 @@
+.ranking-container {
+    width: 100%;
+    background-color: #f3f6fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.ranking-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.league-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.league-title h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.remaining-time {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.ranking-list {
+    width: 100%;
+}
+
+.ranking-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.rank-number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ranking-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.ranking-name {
+    font-size: 18px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.ranking-points {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ranking-status {
+    font-size: 14px;
+    color: gray;
+}
+
+.wake-up-btn {
+    background-color: #ffcc00;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.not-participating-title {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+    margin: 20px 0;
+}
