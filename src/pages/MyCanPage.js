@@ -30,7 +30,7 @@ const MyCanPage = () => {
         const getCanAmount = async () => {
             try {
                 const res = await axios.get(
-                    'http://localhost:9070/api/account/can/balance?accountID=' +
+                    'http://localhost:9070/api/can/balance?accountID=' +
                         accountID,
                     {
                         withCredentials: true, // 쿠키 포함
