@@ -7,47 +7,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    width: 100%;
+
+    background-color: #e5e5e5;
 }
 
 .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+
+    position: relative;
+    top: 19%;
 }
 
 .profile-quote {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
+
+    position: relative;
+    top: 35%;
 }
 
 .user-info {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: left;
+    margin-bottom: 10px;
 }
 
 .user-name {
     font-size: 20px;
     font-weight: bold;
+    margin: 20px 0px 0px 20px;
 }
 
 .user-id {
     font-size: 16px;
     color: gray;
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 .follow-info {
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .following,
@@ -55,6 +63,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 }
 
 .follow-count {
@@ -62,14 +71,28 @@
     font-weight: bold;
 }
 
+.btn-div {
+    text-align: center;
+    margin: 10px 0 10px 0;
+    height: 50px;
+}
+
 .add-friends-btn {
-    background-color: #007bff;
-    color: white;
+    width: 80%;
+    color: #1cb0f6;
+    background-color: white;
     font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    font-weight: bold;
+    border: solid #e5e5e5;
+    border-width: 3px 3px 4px 3px;
+    padding: 10px 30px;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.add-friends-btn:active {
+    border-width: 3px;
+    color: #1899d6;
 }
 
 .attendance-section {
@@ -77,28 +100,86 @@
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.attendance-top {
+    font-size: 20px;
 }
 
 .attendance-days {
-    color: red;
+    color: rgb(123, 123, 123);
+    background-color: rgb(255, 240, 33);
     font-weight: bold;
 }
 
 .attendance-link {
     color: gray;
-    text-decoration: underline;
+    font-size: 15px;
     cursor: pointer;
+    margin-top: 8px;
 }
 
 .ranking-section {
+    text-align: left;
     width: 100%;
-    text-align: center;
+    margin-left: 30px;
 }
 
 .ranking-section h2 {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
+}
+
+.rank-images {
+    position: relative;
+    display: inline-block;
+}
+
+.rank-mark {
+    width: 70px; /* Adjust size as needed */
+    top: -20px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.rank-info {
+    display: inline-block;
+    position: relative;
+}
+
+.speech-container {
+    position: absolute;
+    top: -20px; /* Adjust this to move the speech bubble above the bird */
+    left: 80px; /* Adjust for horizontal alignment */
+    text-align: left;
+    width: 300px;
+}
+
+.speech-bubble {
+    width: 256px;
+    height: 50px;
+    position: relative;
+    top: -5px;
+    left: -8px;
+}
+
+.speech-text {
+    position: absolute;
+    top: 16%; /* Adjust for proper text positioning */
+    left: 15%;
+    width: 70%;
+    font-size: 14px; /* Adjust text size */
+    color: black;
+    font-weight: 500;
+}
+
+.rank-description {
+    position: absolute;
+    top: 36%;
+    font-size: 16px;
+    left: 105%;
+    width: 500px;
 }

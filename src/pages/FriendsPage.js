@@ -47,6 +47,8 @@ const FriendsPage = () => {
                 justifyContent: 'flex-start',
             }}
         >
+            <br />
+            <br />
             <div className="tab-menu">
                 <span
                     className={`tab-item ${activeTab === 'following' ? 'active' : ''}`}
@@ -65,9 +67,6 @@ const FriendsPage = () => {
                 {activeTab === 'following'
                     ? renderFriendsList(dummyFollowing)
                     : renderFriendsList(dummyFollowers)}
-            </div>
-            <div className="add-friends">
-                <button className="add-friends-btn">ADD FRIENDS</button>
             </div>
         </Container>
     );

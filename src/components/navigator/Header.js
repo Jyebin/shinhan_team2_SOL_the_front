@@ -19,6 +19,8 @@ function Header({ onBack, onCancel, step }) {
         '/deposithistory',
         '/myaccount',
         '/mycan',
+        '/friend',
+        '/userinfo',
     ];
 
     // 경로가 유효하지 않으면 헤더를 표시하지 않음
@@ -67,6 +69,10 @@ function Header({ onBack, onCancel, step }) {
                 return '내 계좌';
             case '/mycan':
                 return '내 깡통';
+            case '/friend':
+                return '친구 목록';
+            case '/userinfo':
+                return '친구 목록';
             default:
                 return '';
         }
