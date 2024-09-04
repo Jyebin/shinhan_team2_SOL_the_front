@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/friendPage/UserInfoPage.css';
 import Container from '../components/common/Container';
+import AddFriendsModal from '../components/friends/AddFriendsModal'; // Modal 컴포넌트를 import
 
 import flexBird from '../assets/attendancePage/img/flexBird.png';
 import poorBird from '../assets/attendancePage/img/poorBird.png';
 
 import goldBird from '../assets/common/img/goldBird.png';
 import speechBubble from '../assets/common/img/speechBubble.png';
+
 const UserInfoPage = () => {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
 
     const quote_flex = '나는 부목눈이!';
     const quote_poor = '나는 거목눈이...';
@@ -30,6 +33,14 @@ const UserInfoPage = () => {
 
     const goToFollowers = () => {
         navigate('/friend'); // '/followers' 경로로 이동
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true); // 모달 열기
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false); // 모달 닫기
     };
 
     return (
@@ -69,7 +80,9 @@ const UserInfoPage = () => {
                     </div>
                 </div>
                 <div className="btn-div">
-                    <button className="add-friends-btn">+ ADD FRIENDS</button>
+                    <button className="add-friends-btn" onClick={openModal}>
+                        + ADD FRIENDS
+                    </button>
                 </div>
             </div>
             <div className="attendance-section">
@@ -109,6 +122,8 @@ const UserInfoPage = () => {
                     </div>
                 </div>
             </div>
+            {/* 모달 컴포넌트 */}
+            <AddFriendsModal isOpen={isModalOpen} onClose={closeModal} />
         </Container>
     );
 };
