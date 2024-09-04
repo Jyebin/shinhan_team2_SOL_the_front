@@ -2,6 +2,53 @@ import React from 'react';
 import '../assets/friendPage/RankingPage.css';
 import Container from '../components/common/Container';
 
+import flexBird from '../assets/attendancePage/img/flexBird.png';
+import poorBird from '../assets/attendancePage/img/poorBird.png';
+
+// 더미 데이터 생성
+const rankingData = [
+    {
+        rank: 1,
+        name: '김철수',
+        points: '1000 PT',
+        status: '12시간 전',
+        avatar: flexBird,
+        participating: true,
+    },
+    {
+        rank: 2,
+        name: '홍길동',
+        points: null,
+        status: '2일째 자는 중',
+        avatar: flexBird,
+        participating: false,
+    },
+    {
+        rank: 3,
+        name: '라따뚜이',
+        points: null,
+        status: '리그 미참여',
+        avatar: poorBird,
+        participating: false,
+    },
+    {
+        rank: 4,
+        name: '불쌍한나',
+        points: null,
+        status: '9일째 자는 중',
+        avatar: poorBird,
+        participating: false,
+    },
+    {
+        rank: 5,
+        name: '기타맨',
+        points: null,
+        status: '리그 미참여',
+        avatar: poorBird,
+        participating: false,
+    },
+];
+
 const RankingPage = () => {
     return (
         <Container
@@ -20,66 +67,29 @@ const RankingPage = () => {
             </div>
 
             <div className="ranking-list">
-                <div className="ranking-item">
-                    <span className="rank-number">1</span>
-                    <img
-                        src="/assets/codro.png"
-                        alt="Codro"
-                        className="ranking-avatar"
-                    />
-                    <span className="ranking-name">코드로</span>
-                    <span className="ranking-points">1000 PT</span>
-                    <span className="ranking-status">12시간 전</span>
-                </div>
+                {rankingData.map((item, index) => (
+                    <div className="ranking-item" key={index}>
+                        <span className="rank-number">{item.rank}</span>
+                        <img
+                            src={item.avatar}
+                            alt={item.name}
+                            className="ranking-avatar"
+                        />
+                        <span className="ranking-name">{item.name}</span>
+                        {item.points && (
+                            <span className="ranking-points">
+                                {item.points}
+                            </span>
+                        )}
+                        <span className="ranking-status">{item.status}</span>
+                        {!item.participating && (
+                            <button className="wake-up-btn">깨우기</button>
+                        )}
+                    </div>
+                ))}
 
                 <div className="not-participating-title">
                     아직 리그에 참여하지 않은 친구
-                </div>
-
-                <div className="ranking-item">
-                    <span className="rank-number">-</span>
-                    <img
-                        src="/assets/epop.png"
-                        alt="ePop"
-                        className="ranking-avatar"
-                    />
-                    <span className="ranking-name">ePop</span>
-                    <span className="ranking-status">2일째 자는 중</span>
-                    <button className="wake-up-btn">깨우기</button>
-                </div>
-
-                <div className="ranking-item">
-                    <span className="rank-number">-</span>
-                    <img
-                        src="/assets/raddatty.png"
-                        alt="Raddatty"
-                        className="ranking-avatar"
-                    />
-                    <span className="ranking-name">라따뚜이</span>
-                    <span className="ranking-status">리그 미참여</span>
-                </div>
-
-                <div className="ranking-item">
-                    <span className="rank-number">-</span>
-                    <img
-                        src="/assets/samin.png"
-                        alt="Samin"
-                        className="ranking-avatar"
-                    />
-                    <span className="ranking-name">삼민</span>
-                    <span className="ranking-status">9일째 자는 중</span>
-                    <button className="wake-up-btn">깨우기</button>
-                </div>
-
-                <div className="ranking-item">
-                    <span className="rank-number">-</span>
-                    <img
-                        src="/assets/choiguitar.png"
-                        alt="ChoiGuitar"
-                        className="ranking-avatar"
-                    />
-                    <span className="ranking-name">최기타</span>
-                    <span className="ranking-status">리그 미참여</span>
                 </div>
             </div>
         </Container>

@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import '../assets/friendPage/FriendsPage.css';
 import Container from '../components/common/Container';
 
+import flexBird from '../assets/attendancePage/img/flexBird.png';
+import poorBird from '../assets/attendancePage/img/poorBird.png';
+
 const dummyFollowing = [
-    { id: 1, name: 'Minji', xp: 42616, avatar: '/assets/minji.png' },
-    { id: 2, name: '서민구', xp: 30876, avatar: '/assets/seomin.png' },
-    { id: 3, name: '조명근', xp: 7534, avatar: '/assets/jomyung.png' },
-    { id: 4, name: 'Jiwan Back', xp: 4162, avatar: '/assets/jiwan.png' },
-    { id: 5, name: 'minseo', xp: 1052, avatar: '/assets/minseo.png' },
-    { id: 6, name: '임지섭', xp: 203, avatar: '/assets/limjisub.png' },
+    { id: 1, name: 'John Doe', xp: 42616, avatar: flexBird },
+    { id: 2, name: 'Jane Smith', xp: 30876, avatar: poorBird },
+    { id: 3, name: 'Alice Johnson', xp: 7534, avatar: flexBird },
+    { id: 4, name: 'Bob Brown', xp: 4162, avatar: poorBird },
+    { id: 5, name: 'bob', xp: 1052, avatar: flexBird },
+    { id: 6, name: 'john', xp: 203, avatar: poorBird },
 ];
 
 const dummyFollowers = [
-    { id: 1, name: 'John Doe', xp: 50000, avatar: '/assets/johndoe.png' },
-    { id: 2, name: 'Jane Smith', xp: 35000, avatar: '/assets/janesmith.png' },
-    { id: 3, name: 'Alice Johnson', xp: 20000, avatar: '/assets/alice.png' },
-    { id: 4, name: 'Bob Brown', xp: 15000, avatar: '/assets/bobbrown.png' },
+    { id: 1, name: 'John Doe', xp: 50000, avatar: poorBird },
+    { id: 2, name: 'Jane Smith', xp: 35000, avatar: flexBird },
+    { id: 3, name: 'Alice Johnson', xp: 20000, avatar: flexBird },
+    { id: 4, name: 'Bob Brown', xp: 15000, avatar: flexBird },
 ];
 
 const FriendsPage = () => {
