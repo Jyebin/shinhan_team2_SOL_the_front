@@ -7,22 +7,32 @@ import flexBird from '../assets/attendancePage/img/flexBird.png';
 import poorBird from '../assets/attendancePage/img/poorBird.png';
 import League from '../components/ranking/league';
 
-// 더미 데이터 생성
-
 const RankingPage = () => {
     const [rankingData, setRankingData] = useState([]);
+    const [leagueKind, setLeagueKind] = useState('');
+    const [userId, setUserId] = useState(0);
 
     useEffect(() => {
-        const fetchRankingData = async () => {
-            try {
-                const response = await axios.get('/api/ranking'); // 백엔드 API 엔드포인트
-                setRankingData(response.data); // 응답 데이터 설정
-            } catch (error) {
-                console.error('데이터 요청 에러:', error);
-            }
+        const rankingData = () => {
+            axios
+                .get('http://localhost:9070/ranking', {
+                    withCredentials: true,
+                })
+                .then((response) => {
+                    setLeagueKind(response.data.leagueKind);
+                    setRankingData(response.data.rankingDTOList);
+                    setUserId(response.data.rankingUserID);
+                })
+
+                .catch((error) => {
+                    console.error(
+                        'Error in viewAllattendance Page with:',
+                        error,
+                    );
+                });
         };
 
-        fetchRankingData();
+        rankingData();
     }, []);
 
     return (
@@ -31,35 +41,73 @@ const RankingPage = () => {
                 <div className="league-title">
                     <h2>월간 리그</h2>
                 </div>
-                <League league="platinum" endDate="2024-09-10T00:00:00" />
+                <League league={leagueKind} endDate="2024-09-10T00:00:00" />
             </div>
 
             <div className="ranking-list">
-                {rankingData.map((item, index) => (
-                    <div className="ranking-item" key={index}>
-                        <span className="rank-number">{item.rank}</span>
-                        <img
-                            src={item.avatar}
-                            alt={item.name}
-                            className="ranking-avatar"
-                        />
-                        <span className="ranking-name">{item.name}</span>
+                {rankingData.map((item, index) => {
+                    const isPromotionZone = index == 5; // 승급존 체크
+                    const isRelegationZone = index == rankingData.length - 6; // 강등존 체크
 
-                        <span className="ranking-status">{item.status}</span>
-                        {!item.participating && (
-                            <button className="wake-up-btn">깨우기</button>
-                        )}
-                        {item.participating && item.points && (
-                            <span className="ranking-points">
-                                {item.points}
-                            </span>
-                        )}
-                    </div>
-                ))}
+                    return (
+                        <>
+                            {isPromotionZone && (
+                                <div className="zone-status">
+                                    <hr className="promotion-zone" />
+                                    <p className="promotion-text">
+                                        ⬆ 승급존 ⬆
+                                    </p>
+                                    <hr className="promotion-zone" />
+                                </div>
+                            )}
 
-                <div className="not-participating-title">
-                    아직 리그에 참여하지 않은 친구
-                </div>
+                            <div
+                                className={`ranking-item ${userId == item.rankingUserID ? 'my-rank' : ''}`}
+                                key={index}
+                            >
+                                <span className="rank-number">
+                                    {item.rankingNum}
+                                </span>
+                                <img
+                                    src={
+                                        item.rankingNum <= 5
+                                            ? flexBird
+                                            : poorBird
+                                    }
+                                    className="ranking-avatar"
+                                />
+                                <span className="ranking-name">
+                                    {item.rankingUserName}
+                                </span>
+                                <div className="score-info">
+                                    {item.rankingScore === 0 && (
+                                        <button className="wake-up-btn">
+                                            깨우기
+                                        </button>
+                                    )}
+                                    {item.rankingScore !== 0 && (
+                                        <span className="ranking-score">
+                                            {item.rankingScore} PT
+                                        </span>
+                                    )}
+                                    <span className="ranking-total-score">
+                                        {item.userTotalScore} PT
+                                    </span>
+                                </div>
+                            </div>
+
+                            {isRelegationZone && (
+                                <div className="zone-status">
+                                    <hr className="relegation-zone" />
+                                    <p className="relegation-text">
+                                        ⬇ 강등존 ⬇
+                                    </p>
+                                    <hr className="relegation-zone" />
+                                </div>
+                            )}
+                        </>
+                    );
+                })}
             </div>
         </Container>
     );
