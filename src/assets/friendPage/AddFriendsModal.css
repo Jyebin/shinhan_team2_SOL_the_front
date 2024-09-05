@@ -1,0 +1,72 @@
+.find-user-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.find-user-modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.find-user-modal-title {
+    display: flex;
+    justify-content: space-between; /* 버튼과 제목을 양쪽 끝으로 */
+    align-items: center; /* 수직 가운데 정렬 */
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.find-user-modal-title h2 {
+    flex-grow: 1; /* 중앙 정렬을 위해 flex-grow 사용 */
+    text-align: center; /* 제목을 중앙에 배치 */
+    margin: 0; /* 기본 margin 제거 */
+}
+
+.find-user-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal-option:hover {
+    background-color: #f0f0f0;
+}
+
+.modal-icon {
+    width: 24px;
+    height: 24px;
+}
