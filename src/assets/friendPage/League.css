@@ -1,0 +1,86 @@
+.league-container {
+    width: 100%;
+    display: block;
+}
+
+.rank-image {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    height: 120px;
+}
+
+.rank-bird {
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    width: 70px;
+    height: 70px;
+
+    filter: grayscale(60%);
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.active {
+    filter: grayscale(0);
+    opacity: 1;
+    width: 90px;
+    height: 90px;
+    margin: 4px 2px;
+    filter: drop-shadow(1px 5px 2px rgba(79, 84, 138, 0.4));
+}
+
+.bronze {
+    background-image: url('../../assets/friendPage/img/bronze.png');
+}
+
+.silver {
+    background-image: url('../../assets/friendPage/img/silver.png');
+}
+
+.gold {
+    background-image: url('../../assets/friendPage/img/gold.png');
+}
+
+.platinum {
+    background-image: url('../../assets/friendPage/img/platinum.png');
+}
+
+.dia {
+    background-image: url('../../assets/friendPage/img/dia.png');
+}
+
+.league-kind {
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 95%;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.league-kind > p {
+    text-align: center;
+    width: 200px;
+}
+
+.league-name {
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.league-remain {
+    font-size: 14px;
+    font-weight: 500;
+    color: crimson;
+    margin-top: 3px;
+    margin-bottom: 7px;
+}

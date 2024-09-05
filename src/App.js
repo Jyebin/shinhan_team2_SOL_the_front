@@ -21,6 +21,9 @@ import ErrorPage from './pages/ErrorPage';
 
 import LoginSuccess from './components/common/LoginSuccess';
 import PrivateRoute from './components/common/PrivateRoute';
+import UserInfoPage from './pages/UserInfoPage';
+import RankingPage from './pages/RankingPage';
+import FriendsPage from './pages/FriendsPage';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -43,6 +46,31 @@ function App() {
                         element={
                             <PrivateRoute>
                                 <MainPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* 테스트 */}
+                    <Route
+                        path="/userInfo"
+                        element={
+                            <PrivateRoute>
+                                <UserInfoPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ranking"
+                        element={
+                            <PrivateRoute>
+                                <RankingPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/friend"
+                        element={
+                            <PrivateRoute>
+                                <FriendsPage />
                             </PrivateRoute>
                         }
                     />
