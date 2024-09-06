@@ -24,6 +24,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 import UserInfoPage from './pages/UserInfoPage';
 import RankingPage from './pages/RankingPage';
 import FriendsPage from './pages/FriendsPage';
+import MyPage from './pages/MyPage';
 
 function App() {
     const [formData, setFormData] = useState({});
@@ -50,6 +51,14 @@ function App() {
                         }
                     />
                     {/* 테스트 */}
+                    <Route
+                        path="/myPage"
+                        element={
+                            <PrivateRoute>
+                                <MyPage />
+                            </PrivateRoute>
+                        }
+                    />
                     <Route
                         path="/userInfo"
                         element={

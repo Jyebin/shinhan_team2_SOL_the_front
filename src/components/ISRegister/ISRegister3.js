@@ -101,9 +101,6 @@ function ISRegister3({ formData, updateFormData }) {
         const trimmedEnteredPassword = enteredPassword.trim();
         const trimmedCorrectPassword = correctPassword.toString().trim();
 
-        console.log('Entered Password: ', trimmedEnteredPassword);
-        console.log('Correct Password: ', trimmedCorrectPassword);
-
         if (trimmedEnteredPassword.length === 4) {
             if (trimmedEnteredPassword === trimmedCorrectPassword) {
                 setIsPasswordCorrect(true);
