@@ -60,6 +60,7 @@ const RankingPage = () => {
                                     <hr className="promotion-zone" />
                                 </div>
                             )}
+                            {console.log(item)}
 
                             <div
                                 className={`ranking-item ${userId == item.rankingUserID ? 'my-rank' : ''}`}
@@ -80,22 +81,15 @@ const RankingPage = () => {
                                     {item.rankingUserName}
                                 </span>
                                 <div className="score-info">
-                                    {item.rankingScore === 0 && (
-                                        <button className="wake-up-btn">
-                                            깨우기
-                                        </button>
-                                    )}
-                                    {item.rankingScore !== 0 && (
-                                        <span className="ranking-score">
-                                            {item.rankingScore} PT
-                                        </span>
-                                    )}
+                                    <span className="ranking-score">
+                                        {item.rankingScore} PT
+                                    </span>
+
                                     <span className="ranking-total-score">
                                         {item.userTotalScore} PT
                                     </span>
                                 </div>
                             </div>
-
                             {isRelegationZone && (
                                 <div className="zone-status">
                                     <hr className="relegation-zone" />
