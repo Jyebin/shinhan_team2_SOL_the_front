@@ -14,7 +14,6 @@ const TransactionHistory = (accountID) => {
                 'http://localhost:9070/api/transaction/list?accountID=' +
                     accountID,
             );
-            console.log(res.data);
             setTransactionData(res.data);
         } catch (error) {
             console.error('Failed to fetch "getAccountList"', error);

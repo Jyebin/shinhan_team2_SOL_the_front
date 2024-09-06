@@ -48,6 +48,7 @@ function Header({ onBack }) {
         '/mycan',
         '/friend',
         '/userinfo',
+        '/mypage',
     ];
 
     // 경로가 유효하지 않으면 헤더를 표시하지 않음
@@ -100,7 +101,9 @@ function Header({ onBack }) {
             case '/friend':
                 return '친구 목록';
             case '/userinfo':
-                return '친구 목록';
+                return '친구';
+            case '/mypage':
+                return '마이페이지';
             default:
                 return '';
         }

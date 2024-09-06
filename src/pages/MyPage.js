@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/friendPage/UserInfoPage.css';
 import Container from '../components/common/Container';
+import AddFriendsModal from '../components/friends/AddFriendsModal'; // Modal 컴포넌트를 import
 import axios from 'axios';
 
 import flexBird from '../assets/attendancePage/img/flexBird.png';
@@ -11,10 +12,10 @@ import goldBird from '../assets/common/img/goldBird.png';
 import bronzeBird from '../assets/common/img/bronzeBird.png';
 import speechBubble from '../assets/common/img/speechBubble.png';
 
-const UserInfoPage = () => {
+const MyPage = () => {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
     const [userData, setUserData] = useState(null); // userData를 상태로 관리
-    const userID = sessionStorage.getItem('findUserID');
 
     const quote_flex = '나는 부목눈이!';
     const quote_poor = '나는 거목눈이...';
@@ -25,9 +26,9 @@ const UserInfoPage = () => {
 
     const fetchUserID = async () => {
         try {
-            const res = await axios.get(
-                'http://localhost:9070/api/user/info/other?userID=' + userID,
-            );
+            const res = await axios.get('http://localhost:9070/api/user/info', {
+                withCredentials: true, // 쿠키 포함
+            });
 
             // res.data의 내용을 기반으로 새로운 객체 생성
             const updatedUserData = {
@@ -53,30 +54,18 @@ const UserInfoPage = () => {
         navigate('/friend'); // '/followers' 경로로 이동
     };
 
+    const openModal = () => {
+        setIsModalOpen(true); // 모달 열기
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false); // 모달 닫기
+    };
+
     // userData가 로드되기 전 로딩 상태 처리
     if (!userData) {
         return <div>Loading...</div>; // userData가 없을 때 로딩 메시지 표시
     }
-
-    const followUser = async () => {
-        // follow table에 저장해야함
-        // 현재 유저 (로그인한 유저, 토큰에서 값 받아옴) fromUser
-        // 페이지 유저 (session에 잇는 userID) toUser 해서 하고
-        // 각 유저 follow follower 맞춰서 +1
-        try {
-            const res = await axios.post(
-                'http://localhost:9070/api/follow/change',
-                {
-                    withCredentials: true, // 쿠키 포함
-                    toUserID: userID,
-                },
-            );
-            // 버튼 상태 변경
-            // Follow => Following, 색상도 흰 바탕에 글자 초록색으로 변경
-        } catch (err) {
-            console.error('검색 결과를 불러오는 도중 문제가 생겼습니다.', err);
-        }
-    };
 
     return (
         <Container
@@ -115,8 +104,8 @@ const UserInfoPage = () => {
                     </div>
                 </div>
                 <div className="btn-div">
-                    <button className="follow-btn" onClick={followUser}>
-                        + FOLLOW
+                    <button className="add-friends-btn" onClick={openModal}>
+                        + ADD FRIENDS
                     </button>
                 </div>
             </div>
@@ -157,8 +146,10 @@ const UserInfoPage = () => {
                     </div>
                 </div>
             </div>
+            {/* 모달 컴포넌트 */}
+            <AddFriendsModal isOpen={isModalOpen} onClose={closeModal} />
         </Container>
     );
 };
 
-export default UserInfoPage;
+export default MyPage;

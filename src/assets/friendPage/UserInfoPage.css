@@ -63,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .follow-count {
@@ -89,9 +90,26 @@
     cursor: pointer;
 }
 
+.follow-btn {
+    width: 80%;
+    color: white;
+    background-color: #1cb0f6;
+    font-size: 16px;
+    font-weight: bold;
+    border: solid #1ca1de;
+    border-width: 3px 3px 4px 3px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .add-friends-btn:active {
     border-width: 3px;
     color: #1899d6;
+}
+
+.follow-btn:active {
+    border-width: 3px;
 }
 
 .attendance-section {
@@ -110,7 +128,6 @@
 
 .attendance-days {
     color: rgb(123, 123, 123);
-    background-color: rgb(255, 240, 33);
     font-weight: bold;
 }
 

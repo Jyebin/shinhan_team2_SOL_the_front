@@ -5,6 +5,7 @@ import ToMyAccount from '../../pages/mainLoading/ToMyAccount';
 import '../../assets/mainPage/MainPage.css';
 import '../../assets/mainPage/MainButton.css';
 import MainButton from './MainButton';
+import noMoneyManUrl from '../../assets/common/img/noMoneyMan.png';
 import axios from 'axios';
 
 const SavingsMain = ({ hasSavings, imgSrc }) => {
@@ -56,6 +57,11 @@ const SavingsMain = ({ hasSavings, imgSrc }) => {
                             <MainButton
                                 className="attendanceBtn"
                                 onClick={navigateTo('/attendance/main')}
+                            />
+                            <img src={noMoneyManUrl} className="noMoneyMan" />
+                            <MainButton
+                                className="friendsBtn"
+                                onClick={navigateTo('/mypage')}
                             />
                         </>
                     ) : (

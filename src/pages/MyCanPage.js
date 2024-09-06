@@ -36,7 +36,6 @@ const MyCanPage = () => {
                         withCredentials: true, // 쿠키 포함
                     },
                 );
-                console.log(res.data);
                 setAmount(res.data.canAmount);
                 setAttendanceDays(res.data.userAttendanceCnt);
                 interestRate = attendanceDays >= 20 ? '10.0' : '8.0';
