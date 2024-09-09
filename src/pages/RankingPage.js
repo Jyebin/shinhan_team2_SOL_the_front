@@ -15,8 +15,14 @@ const RankingPage = () => {
         bronze: [
             {
                 name: '박민준',
-                monthlyAttendance: 20,
+                monthlyAttendance: 22,
                 totalAttendance: 150,
+                rankLeague: 'Bronze',
+            },
+            {
+                name: '하소영',
+                monthlyAttendance: 20,
+                totalAttendance: 85,
                 rankLeague: 'Bronze',
             },
             {
@@ -37,12 +43,7 @@ const RankingPage = () => {
                 totalAttendance: 130,
                 rankLeague: 'Bronze',
             },
-            {
-                name: '하소영',
-                monthlyAttendance: 17,
-                totalAttendance: 85,
-                rankLeague: 'Bronze',
-            },
+
             {
                 name: '백지호',
                 monthlyAttendance: 16,
@@ -690,78 +691,25 @@ const RankingPage = () => {
             </div>
 
             <div className="ranking-list">
-                {/* {rankingData.map((item, index) => {
-                    const isPromotionZone = index === 5; // 승급존 체크
-                    const isRelegationZone = index === rankingData.length - 6; // 강등존 체크
-
-                    return (
-                        <>
-                            {isPromotionZone && (
-                                <div className="zone-status">
-                                    <hr className="promotion-zone" />
-                                    <p className="promotion-text">
-                                        ⬆ 승급존 ⬆
-                                    </p>
-                                    <hr className="promotion-zone" />
-                                </div>
-                            )}
-                            {console.log(item)}
-
-                            <div
-                                className={`ranking-item ${userId === item.rankingUserID ? 'my-rank' : ''}`}
-                                key={index}
-                            >
-                                <span className="rank-number">
-                                    {item.rankingNum}
-                                </span>
-                                <img
-                                    src={
-                                        item.rankingNum <= 5
-                                            ? flexBird
-                                            : poorBird
-                                    }
-                                    className="ranking-avatar"
-                                />
-                                <span className="ranking-name">
-                                    {item.rankingUserName}
-                                </span>
-                                <div className="score-info">
-                                    <span className="ranking-score">
-                                        {item.rankingScore} PT
-                                    </span>
-
-                                    <span className="ranking-total-score">
-                                        {item.userTotalScore} PT
-                                    </span>
-                                </div>
-                            </div>
-                            {isRelegationZone && (
-                                <div className="zone-status">
-                                    <hr className="relegation-zone" />
-                                    <p className="relegation-text">
-                                        ⬇ 강등존 ⬇
-                                    </p>
-                                    <hr className="relegation-zone" />
-                                </div>
-                            )}
-                        </>
-                    );
-                })} */}
                 {rankingData.map((item, index) => {
                     const isPromotionZone = index === 5;
-                    const isRelegationZone = index === rankingData.length - 6;
+                    const isRelegationZone =
+                        item.rankLeague === 'Diamond'
+                            ? index === rankingData.length - 11
+                            : index === rankingData.length - 6;
 
                     return (
                         <React.Fragment key={index}>
-                            {isPromotionZone && (
-                                <div className="zone-status">
-                                    <hr className="promotion-zone" />
-                                    <p className="promotion-text">
-                                        ⬆ 승급존 ⬆
-                                    </p>
-                                    <hr className="promotion-zone" />
-                                </div>
-                            )}
+                            {isPromotionZone &&
+                                item.rankLeague !== 'Diamond' && (
+                                    <div className="zone-status">
+                                        <hr className="promotion-zone" />
+                                        <p className="promotion-text">
+                                            ⬆ 승급존 ⬆
+                                        </p>
+                                        <hr className="promotion-zone" />
+                                    </div>
+                                )}
 
                             <div
                                 className={`ranking-item ${item.name === '하소영' ? 'my-rank' : ''}`}
@@ -771,9 +719,13 @@ const RankingPage = () => {
                                 </span>
                                 <img
                                     src={
-                                        item.rankingNum <= 5
-                                            ? flexBird
-                                            : poorBird
+                                        item.rankLeague !== 'Diamond'
+                                            ? item.rankingNum <= 5
+                                                ? flexBird
+                                                : poorBird
+                                            : item.rankingNum <= 10
+                                              ? flexBird
+                                              : poorBird
                                     }
                                     className="ranking-avatar"
                                     alt="Ranking avatar"
