@@ -17,6 +17,7 @@
     max-width: 100%;
     width: 70px;
     height: 70px;
+    cursor: pointer;
 
     filter: grayscale(60%);
     opacity: 0.7;

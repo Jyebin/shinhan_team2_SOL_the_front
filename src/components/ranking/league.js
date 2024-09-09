@@ -1,7 +1,12 @@
 import '../../assets/friendPage/League.css';
 import React, { useEffect, useState } from 'react';
 
-const League = ({ league, endDate }) => {
+const League = ({ initialLeague, endDate, onLeagueChange }) => {
+    const [league, setLeague] = useState('bronze');
+    const [remainingTime, setRemainingTime] = useState('');
+
+    const leagueOrder = ['bronze', 'silver', 'gold', 'platinum', 'dia'];
+
     const translateXValue = {
         bronze: 0,
         silver: -60,
@@ -9,7 +14,11 @@ const League = ({ league, endDate }) => {
         platinum: -210,
         dia: -275,
     };
-    const [remainingTime, setRemainingTime] = useState('');
+
+    useEffect(() => {
+        console.log('Current league state:', league);
+    }, [league]);
+
     useEffect(() => {
         const calculateRemainingTime = () => {
             const now = new Date();
@@ -32,6 +41,23 @@ const League = ({ league, endDate }) => {
 
         return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
     }, [endDate]);
+
+    const handleLeagueClick = (clickedLeague) => {
+        setLeague(clickedLeague);
+        onLeagueChange(clickedLeague);
+    };
+
+    const getLeagueName = (leagueKind) => {
+        const leagueNames = {
+            bronze: '브론즈 리그🤎',
+            silver: '실버 리그🩶',
+            gold: '골드 리그💛',
+            platinum: '플래티넘 리그💚',
+            dia: '다이아 리그🩵',
+        };
+        return leagueNames[leagueKind];
+    };
+
     return (
         <div className="league-container">
             <div
@@ -41,21 +67,17 @@ const League = ({ league, endDate }) => {
                     transition: 'transform 0.4s ease',
                 }}
             >
-                {['bronze', 'silver', 'gold', 'platinum', 'dia'].map((kind) => (
+                {leagueOrder.map((kind) => (
                     <div
                         key={kind}
                         className={`rank-bird ${kind} ${kind === league ? 'active' : ''}`}
+                        onClick={() => handleLeagueClick(kind)}
+                        style={{ cursor: 'pointer' }}
                     />
                 ))}
             </div>
             <div className="league-kind">
-                <p className="league-name">
-                    {league === 'bronze' && '브론즈 리그🤎'}
-                    {league === 'silver' && '실버 리그🩶'}
-                    {league === 'gold' && '골드 리그💛'}
-                    {league === 'platinum' && '플래티넘 리그💚'}
-                    {league === 'dia' && '다이아 리그🩵'}
-                </p>
+                <p className="league-name">{getLeagueName(league)}</p>
                 <p className="league-remain">남은 시간: {remainingTime}</p>
             </div>
         </div>
