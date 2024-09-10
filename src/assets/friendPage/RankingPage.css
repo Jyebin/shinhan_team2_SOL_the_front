@@ -1,0 +1,218 @@
+.ranking-container {
+    max-width: 100%;
+    background-color: #f3f6fb;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.mobileViewContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+}
+
+.ranking-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.league-info {
+    width: 390px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* 패딩 포함 */
+    z-index: 200;
+    background-color: #f3f6fb;
+}
+
+.league-title {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    background-color: #ffffff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.league-title h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ranking-list {
+    width: 95%;
+    margin-top: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.ranking-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ranking-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.ranking-list::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
+}
+
+.ranking-list::-webkit-scrollbar-thumb:hover {
+    background: #8e8e8e;
+}
+
+.ranking-item {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.my-rank {
+    background-color: #d6ffb2;
+    border: 1px #38b136 solid;
+}
+
+.rank-number {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 7px;
+    width: 30px;
+}
+
+.ranking-avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.score-info {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.ranking-name {
+    font-size: 18px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.ranking-score {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: end;
+}
+
+.ranking-total-score {
+    font-size: 10px;
+    color: gray;
+    text-align: end;
+    margin-right: 10px;
+}
+
+.wake-up-btn {
+    background-color: #ffcc00;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.not-participating-title {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+    margin: 20px 0;
+}
+
+.promotion-zone {
+    border: 2px solid green;
+    width: 100%;
+    height: 0;
+}
+
+.relegation-zone {
+    border: 2px solid red;
+    width: 100%;
+    height: 0;
+}
+
+.zone-status {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.zone-status > p {
+    font-size: 16px;
+    font-weight: 700;
+    width: 230px;
+    text-align: center;
+}
+.promotion-text {
+    color: green;
+}
+.relegation-text {
+    color: red;
+}
+@media (max-width: 500px) {
+    .mobileViewContainer {
+        width: 100vw;
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+    .ranking-item {
+        padding: 8px;
+    }
+
+    .ranking-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .ranking-name {
+        font-size: 16px;
+    }
+
+    .ranking-points {
+        font-size: 14px;
+    }
+
+    .league-info {
+        width: 100%;
+        position: fixed;
+        box-sizing: border-box; /* 패딩 포함 */
+        z-index: 200;
+        background-color: #f3f6fb;
+    }
+
+    .wake-up-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}

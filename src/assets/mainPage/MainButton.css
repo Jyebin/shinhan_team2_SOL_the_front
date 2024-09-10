@@ -1,0 +1,54 @@
+.checkCan {
+    bottom: 3%;
+    left: 3%; /* 왼쪽 아래 배치 */
+
+    background: url(img/main_btn2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.makeCan {
+    bottom: 3%;
+    left: 3%; /* 왼쪽 아래 배치 */
+
+    background: url(img/main_btn1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.logout {
+    width: 100px;
+    bottom: 60%;
+    left: 13%;
+
+    background: url(img/main_logout.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.checkAccount {
+    bottom: 9%;
+    left: 3%; /* 왼쪽 아래 배치 */
+
+    background: url(img/main_btn3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.noMoneyMan {
+    z-index: 10;
+    width: 100px;
+    position: absolute;
+    top: 14%;
+    right: 3%;
+}
+
+.friendsBtn {
+    width: 100px;
+    bottom: 69%;
+    left: 71%;
+
+    background: url(img/main_btn4.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}

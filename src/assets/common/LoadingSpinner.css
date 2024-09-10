@@ -1,0 +1,46 @@
+.LoadingSpinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 1000;
+}
+
+.spinnerContainer {
+    background-color: rgba(45, 45, 45, 0.868);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.365);
+    box-sizing: border-box;
+    border-bottom-color: rgb(255, 255, 255);
+    border-radius: 100%;
+    animation: spin 1.2s ease-in-out infinite;
+}
+
+.spinning-word {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+    30% {
+        transform: rotate(40deg);
+    }
+}

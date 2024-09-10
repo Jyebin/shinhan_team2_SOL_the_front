@@ -1,0 +1,138 @@
+/* 배경 스타일 */
+.find-user-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.find-user-modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 330px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.find-user-modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.find-user-modal-title h2 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.find-user-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #2980b9;
+}
+
+/* 검색 결과 스타일링 */
+.search-results {
+    margin-top: 20px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* 프로필 이미지 */
+.search-profile-image img {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 사용자 정보 */
+.search-profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.search-user-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.search-user-code {
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+}
+
+/* 친구 추가 버튼 */
+.search-add-friend-btn {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search-add-friend-btn:hover {
+    background-color: #2980b9;
+}

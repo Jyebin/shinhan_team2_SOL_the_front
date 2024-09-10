@@ -1,0 +1,19 @@
+.mobileViewContainer {
+    width: 390px; /* 일반적인 모바일 화면 크기 */
+    height: 804px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    .mobileViewContainer {
+        width: 100vw;
+        height: 100vh; /* 기본 높이 설정 */
+        height: -webkit-fill-available; /* 웹킷 기반 브라우저에서만 */
+    }
+}

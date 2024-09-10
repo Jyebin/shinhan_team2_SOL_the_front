@@ -1,0 +1,7 @@
+.transaction-history {
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    overflow: auto;
+    height: auto;
+}
