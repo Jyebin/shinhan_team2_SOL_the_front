@@ -2,7 +2,7 @@ import '../../assets/friendPage/League.css';
 import React, { useEffect, useState } from 'react';
 
 const League = ({ initialLeague, endDate, onLeagueChange }) => {
-    const [league, setLeague] = useState('bronze');
+    const [league, setLeague] = useState(initialLeague);
     const [remainingTime, setRemainingTime] = useState('');
 
     const leagueOrder = ['bronze', 'silver', 'gold', 'platinum', 'dia'];
