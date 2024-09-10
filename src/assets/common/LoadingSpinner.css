@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #spinner {
@@ -27,6 +28,12 @@
     border-bottom-color: rgb(255, 255, 255);
     border-radius: 100%;
     animation: spin 1.2s ease-in-out infinite;
+}
+
+.spinning-word {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 @keyframes spin {
